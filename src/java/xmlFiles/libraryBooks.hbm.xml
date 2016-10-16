@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class catalog="system" name="beans.LibraryBooks" optimistic-lock="version" table="libraryBooks">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="bookName" type="string">
+      <column length="150" name="bookName"/>
+    </property>
+   <property name="author" type="string">
+      <column length="150" name="author"/>
+    </property>
+    <property name="state" type="string">
+      <column length="150" name="state"/>
+    </property>
+  </class>
+</hibernate-mapping>

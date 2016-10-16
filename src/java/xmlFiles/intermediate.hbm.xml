@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class catalog="system" name="beans.Intermediate" optimistic-lock="version" table="intermediate">
+    <id name="uniRollNum" type="string">
+      <column name="uniRollNum"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="collageName" type="string">
+      <column length="256" name="collageName"/>
+    </property>
+    <property name="district" type="string">
+      <column length="256" name="district"/>
+    </property>
+    <property name="obtainedMarks" type="string">
+      <column length="256" name="obtainedMarks"/>
+    </property>
+    <property name="totalMarks" type="string">
+      <column length="30" name="totalMarks"/>
+    </property>
+    
+    <property name="grade" type="string">
+      <column length="10" name="grade"/>
+    </property>
+    
+    <property name="board" type="string">
+      <column length="256" name="board"/>
+    </property>
+    
+    <property name="passingYear" type="string">
+      <column length="30" name="passingYear"/>
+    </property>
+  </class>
+</hibernate-mapping>

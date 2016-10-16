@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class catalog="system" name="beans.StudentSemesterResult" optimistic-lock="version" table="studentsemesterResult">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="semester" type="string">
+      <column length="100" name="semester"/>
+    </property>
+   <property name="rollNum" type="string">
+      <column length="100" name="rollNum"/>
+    </property>
+    <property name="result" type="string">
+      <column length="100" name="result"/>
+    </property>
+    <property name="depart" type="string">
+      <column length="150" name="depart"/>
+    </property>
+    <property name="theoryOrPractical" type="string">
+      <column length="256" name="theoryOrPractical"/>
+    </property>
+    <property name="batch" type="string">
+      <column length="100" name="batch"/>
+    </property>
+   <property name="subject" type="string">
+      <column length="100" name="subject"/>
+    </property>
+    <property name="semesterState" type="string">
+      <column length="100" name="semesterState"/>
+    </property>
+  </class>
+</hibernate-mapping>

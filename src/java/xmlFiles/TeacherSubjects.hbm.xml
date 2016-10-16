@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class catalog="system" name="beans.TeacherSubjects" optimistic-lock="version" table="TeacherSubjects">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="teacherName" type="string">
+      <column length="256" name="teacherName"/>
+    </property>
+    <property name="batch" type="string">
+      <column length="256" name="batch"/>
+    </property>
+    <property name="department" type="string">
+      <column length="256" name="department"/>
+    </property>
+    <property name="subject" type="string">
+      <column length="256" name="subject"/>
+    </property>
+    <property name="semester" type="string">
+      <column length="256" name="semester"/>
+    </property>
+  </class>
+</hibernate-mapping>

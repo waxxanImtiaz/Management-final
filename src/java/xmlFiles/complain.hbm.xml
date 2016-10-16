@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class catalog="system" name="beans.Complain" optimistic-lock="version" table="complain">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="name" type="string">
+      <column length="256" name="name"/>
+    </property>
+    <property name="rollNumber" type="string">
+      <column length="256" name="rollNumber"/>
+    </property>
+    <property name="complain" type="string">
+      <column length="256" name="complain"/>
+    </property>
+  </class>
+</hibernate-mapping>

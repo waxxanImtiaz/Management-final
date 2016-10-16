@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class catalog="system" name="beans.LibraryDetails" optimistic-lock="version" table="booksIssueDetails">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="rollNum" type="string">
+      <column length="150" name="rollNum"/>
+    </property>
+   <property name="department" type="string">
+      <column length="150" name="department"/>
+    </property>
+    <property name="bookName" type="string">
+      <column length="150" name="bookName"/>
+    </property>
+    <property name="issueDate" type="string">
+      <column length="150" name="issueDate"/>
+    </property>
+    <property name="returnDate" type="string">
+      <column length="150" name="returnDate"/>
+    </property>
+    <property name="state" type="string">
+      <column length="150" name="state"/>
+    </property>
+    <property name="name" type="string">
+      <column length="150" name="name"/>
+    </property>
+  </class>
+</hibernate-mapping>
