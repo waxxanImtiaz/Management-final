@@ -87,8 +87,7 @@ public class Checker extends HttpServlet {
                 Criteria cr = initializer.getSession().createCriteria(TeacherSubjects.class);
                 if(cr != null )
                 {
-                    TeacherSubjects subj =(TeacherSubjects)cr.list().get(0);
-                    request.getSession().setAttribute("teacherSubject", subj);
+                    request.getSession().setAttribute("teacherSubject", cr.list());
                     response.sendRedirect("./TeacherDataLoader");
                 }else
                     printWriter.println("TeacherSujbects table is empty");

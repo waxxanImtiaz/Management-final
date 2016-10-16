@@ -69,7 +69,7 @@
                 <div class="search">
                 	                    	<div class="mw_button">
                         	
-                        </div>
+             -           </div>
                                         <form role="search" method="get" id="searchform" class="searchform" action="http://duet.edu.pk/">
                         <div>
                             <!--<label class="screen-reader-text" for="s"></label>-->
@@ -188,20 +188,30 @@
 						<div class="accordion"> 
 						<div class="panel-content activeClass">
 <div>
+    <%@page import="java.util.*" %>
+    <%@page import="beans.*" %>
+    
+    <%
+    List<TeacherSubjects> subjects = (List<TeacherSubjects>)session.getAttribute("subjects");
+    List<Students> students = (List<Students>)session.getAttribute("studentsList");
+    
+    %>
 <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="0">
+    
 <tbody>
-</div>
-<div>
 <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="10">
 <tbody>
 <align="center" width="780">
-            <tr><td colspan="5" width="197">Subject : Digital Logic Design</FONT></td>   
+    <tr><td colspan="5" width="197">Subject : <%=subjects.get(0).getSubject().toUpperCase() %></FONT></td>   
           </tbody>
 </table>
 	<br/>
 	<FORM>
-	   <INPUT Type="BUTTON" Value="D_13_CS_01" style="color:blue" Onclick="#"> 
-&nbsp; <INPUT Type="BUTTON" Value="D_13_CS_02" style="color:blue" Onclick="#"> 
+            <% for(Students st  : students ) { %>
+            <INPUT Type="BUTTON" Value=<%= st.getRollNum().toUpperCase() %> style="color:blue" Onclick="#">
+           <% } %>
+           &nbsp;
+<!--p; <INPUT Type="BUTTON" Value="D_13_CS_02" style="color:blue" Onclick="#"> 
 &nbsp; <INPUT Type="BUTTON" Value="D_13_CS_03" style="color:blue" Onclick="#"> 
 &nbsp; <INPUT Type="BUTTON" Value="D_13_CS_04" style="color:blue" Onclick="#"> 
 &nbsp; <INPUT Type="BUTTON" Value="D_13_CS_05" style="color:blue" Onclick="#"> 
@@ -245,8 +255,9 @@
 &nbsp; <INPUT Type="BUTTON" Value="D_13_CS_43" style="color:blue"Onclick="#"> 
 &nbsp; <INPUT Type="BUTTON" Value="D_13_CS_44" style="color:blue"Onclick="#"> 
 &nbsp; <INPUT Type="BUTTON" Value="D_13_CS_45" style="color:blue"Onclick="#"> 
-&nbsp; <INPUT Type="BUTTON" Value="D_13_CS_46" style="color:blue"Onclick="#"> <br/>
-<INPUT Type="BUTTON" Value="Submit" Onclick="#"> 
+&nbsp; <INPUT Type="BUTTON" Value="D_13_CS_46" style="color:blue"Onclick="#"> -->
+<br/>
+<!--<INPUT Type="BUTTON" Value="Submit" Onclick="#">--> 
 </FORM>  
 
 </div>

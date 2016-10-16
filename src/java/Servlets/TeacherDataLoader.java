@@ -44,14 +44,22 @@ public class TeacherDataLoader extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        TeacherSubjects subjects = (TeacherSubjects) request.getSession().getAttribute("teacherSubject");
+        List<TeacherSubjects> subjects = (List<TeacherSubjects>) request.getSession().getAttribute("teacherSubject");
+        TeacherSubjects s = subjects.get(0);
 
-        // String subject = subjects.getSubject();
-        String department = subjects.getDepartment();
-        String semester = subjects.getSemester();
-        String batch = subjects.getBatch();
-
-        List<Students> students = getStudentList(department, semester, batch);
+        if (s != null) {
+            // String subject = subjects.getSubject();
+            String department = s.getDepartment();
+            String semester = s.getSemester();
+            String batch = s.getBatch();
+            List<Students> students = getStudentList(department, semester, batch);
+         
+            request.getSession().setAttribute("subjects", subjects);
+            request.getSession().setAttribute("studentsList", students);
+            response.sendRedirect("about-us/teacher_attendance.jsp");
+            
+            
+        }
 
     }
 
