@@ -4,10 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/Fyp%20final/final%20year%20project/web/about-us/startProject.jsp</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/ComplaintHandler.java</file>
             <file>file:/F:/Fyp%20final/final%20year%20project/web/handler.js</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/controller/InsertAttendance.java</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/web/about-us/teacher_attendance.jsp</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/web/attendance.js</file>
             <file>file:/F:/Fyp%20final/final%20year%20project/web/about-us/complaint.jsp</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/LibraryIssuedBooksList.java</file>
         </group>
     </open-files>
 </project-private>
