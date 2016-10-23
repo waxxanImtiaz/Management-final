@@ -205,11 +205,7 @@
                                                                 </tbody>
                                                                 </table>
                                                             <br/>
-                                                            <% 
-                                                                Students s = new Students();
-                                                                s.setRollNum("13_CS_30");
-                                                                students.add(s);
-                                                            %>
+                                                         
                                                             <div id = "output"> </div>
                                                                 <% for (int i  = 0; i<students.size(); i++) {
                                                                 Students st = students.get(i);

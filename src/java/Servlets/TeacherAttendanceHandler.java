@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import beans.Students;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,7 +22,10 @@ public class TeacherAttendanceHandler extends HttpServlet {
         String rollNumber = request.getParameter("rollNumber");
         PrintWriter pw = response.getWriter();
         
-        pw.println(rollNumber );
+        Students st = (Students)request.getSession().getAttribute(rollNumber);
+        
+        pw.print(st.getBatch());
+        //pw.println( rollNumber );
 
     }
 
