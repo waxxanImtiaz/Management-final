@@ -213,6 +213,7 @@
                                                             <div id = "output"> </div>
                                                                 <% for (int i  = 0; i<students.size(); i++) {
                                                                 Students st = students.get(i);
+                                                                session.setAttribute(students.get(i).getRollNum(), st);
                                                                 %>
                                                                 <INPUT Type="BUTTON" name="student" id=<%= st.getRollNum().toUpperCase()%> value = <%= st.getRollNum().toUpperCase()%> style="color:blue" onClick="teacherAttendance(this.id)">
                                                                 &nbsp;
