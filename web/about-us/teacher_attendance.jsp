@@ -193,7 +193,7 @@
                                                 <%
                                                     List<TeacherSubjects> subjects = (List<TeacherSubjects>) session.getAttribute("subjects");
                                                     List<Students> students = (List<Students>) session.getAttribute("studentsList");
-
+                                                    List<String> db = (List<String>) session.getAttribute("departments");
                                                 %>
                                                 <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="0">
 
@@ -232,10 +232,14 @@
                                                                 <ul class="tb_side">
                                                                     <li class="page_item page-item-51 page_item_has_children">
                                                                         <div class="dropdown">
-                                                                            <select name="subjects" class="drop_down"  >
-                                                                                <option value="Milk">ITC</option>
-                                                                                <option value="Cheese">CPP-I</option>
-                                                                                <option value="Bread">PS</option>
+                                                                            <select name="subjects" class="drop_down" onchange="location = this.value;"  >
+
+                                                                                <option value="" selected = "selected">Subject</option>
+                                                                                <% for (TeacherSubjects sub : subjects) {%>
+                                                                                <option value=<%
+                                                                                    session.setAttribute("subjectName", sub.getSubject());
+                                                                                    out.println(sub.getSubject());%>  ><%= sub.getSubject()%></option>
+                                                                                <% } %>
                                                                             </select>
                                                                         </div>
                                                                         <ul class='children'>
@@ -244,13 +248,17 @@
                                                                     </li>
                                                                     <li class="page_item page-item-53 page_item_has_children">
                                                                         <div class="dropdown">
-                                                                            <select name="subjects" class="department"  >
-                                                                                <option value="Milk">Computer Engineering</option>
-                                                                                <option value="Cheese">Ch</option>
-                                                                                <option value="Bread">EE</option>
+                                                                            <select name="department" class="department" onchange="location = this.value;" >
+                                                                                <option value="" selected = "selected">Department</option>
+
+                                                                                <% for (String dep : db) {%>
+                                                                                
+                                                                                <option value="../index.html"  ><%=dep %></option>
+
+                                                                                <% }%>
                                                                             </select>
                                                                         </div>      
-                                                                         <ul class='children'>
+                                                                        <ul class='children'>
 
                                                                         </ul>
                                                                     </li>
@@ -358,9 +366,9 @@
                                                             <script type='text/javascript' src='../wp-content/plugins/elite-accordion/js/main68b3.js?ver=1'></script>
                                                             <script type='text/javascript' src='../wp-content/plugins/elite-accordion/js/modernizr68b3.js?ver=1'></script>
                                                             <script type='text/javascript'>
-                                                                /* <![CDATA[ */
-                                                                var JQLBSettings = {"fitToScreen": "0", "resizeSpeed": "400", "displayDownloadLink": "0", "navbarOnTop": "0", "loopImages": "", "resizeCenter": "", "marginSize": "", "linkTarget": "", "help": "", "prevLinkTitle": "previous image", "nextLinkTitle": "next image", "prevLinkText": "\u00ab Previous", "nextLinkText": "Next \u00bb", "closeTitle": "close image gallery", "image": "Image ", "of": " of ", "download": "Download", "jqlb_overlay_opacity": "80", "jqlb_overlay_color": "#000000", "jqlb_overlay_close": "1", "jqlb_border_width": "10", "jqlb_border_color": "#ffffff", "jqlb_border_radius": "0", "jqlb_image_info_background_transparency": "100", "jqlb_image_info_bg_color": "#ffffff", "jqlb_image_info_text_color": "#000000", "jqlb_image_info_text_fontsize": "10", "jqlb_show_text_for_image": "1", "jqlb_next_image_title": "next image", "jqlb_previous_image_title": "previous image", "jqlb_next_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/next.gif", "jqlb_previous_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/prev.gif", "jqlb_maximum_width": "", "jqlb_maximum_height": "", "jqlb_show_close_button": "1", "jqlb_close_image_title": "close image gallery", "jqlb_close_image_max_heght": "22", "jqlb_image_for_close_lightbox": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/closelabel.gif", "jqlb_keyboard_navigation": "1", "jqlb_popup_size_fix": "0"};
-                                                                /* ]]> */
+                                                                                /* <![CDATA[ */
+                                                                                var JQLBSettings = {"fitToScreen": "0", "resizeSpeed": "400", "displayDownloadLink": "0", "navbarOnTop": "0", "loopImages": "", "resizeCenter": "", "marginSize": "", "linkTarget": "", "help": "", "prevLinkTitle": "previous image", "nextLinkTitle": "next image", "prevLinkText": "\u00ab Previous", "nextLinkText": "Next \u00bb", "closeTitle": "close image gallery", "image": "Image ", "of": " of ", "download": "Download", "jqlb_overlay_opacity": "80", "jqlb_overlay_color": "#000000", "jqlb_overlay_close": "1", "jqlb_border_width": "10", "jqlb_border_color": "#ffffff", "jqlb_border_radius": "0", "jqlb_image_info_background_transparency": "100", "jqlb_image_info_bg_color": "#ffffff", "jqlb_image_info_text_color": "#000000", "jqlb_image_info_text_fontsize": "10", "jqlb_show_text_for_image": "1", "jqlb_next_image_title": "next image", "jqlb_previous_image_title": "previous image", "jqlb_next_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/next.gif", "jqlb_previous_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/prev.gif", "jqlb_maximum_width": "", "jqlb_maximum_height": "", "jqlb_show_close_button": "1", "jqlb_close_image_title": "close image gallery", "jqlb_close_image_max_heght": "22", "jqlb_image_for_close_lightbox": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/closelabel.gif", "jqlb_keyboard_navigation": "1", "jqlb_popup_size_fix": "0"};
+                                                                                /* ]]> */
                                                             </script>
                                                             <script type='text/javascript' src='../wp-content/plugins/wp-lightbox-2/wp-lightbox-2.min1894.js?ver=1.3.4.1'></script>
                                                             <script type='text/javascript' src='../wp-content/plugins/social-sharing-toolkit/script_2.1.28686.js?ver=4.5.1'></script>
@@ -374,12 +382,12 @@
                                                             </html>
 
                                                             <script type="text/javascript">
-                                                                jQuery(document).ready(function () {
-                                                                    jQuery("h3.activeClass a").attr("aria-expanded", "true").addClass("active");
-                                                                    jQuery("div.activeClass").attr("aria-hidden", "false").show();
+                                                                                jQuery(document).ready(function () {
+                                                                                    jQuery("h3.activeClass a").attr("aria-expanded", "true").addClass("active");
+                                                                                    jQuery("div.activeClass").attr("aria-hidden", "false").show();
 
-                                                                    jQuery(".mwUpcomingEvents a.pressRelease[href=#]").siblings('a.watchVideo').css('width', '100%');
-                                                                    jQuery(".mwUpcomingEvents a.watchVideo[href=#]").siblings('a.pressRelease').css('width', '100%');
-                                                                    jQuery(".singleEvent a.btn[href=#], a.watchVideo[href=#], a.pressRelease[href=#]").hide();
-                                                                });
+                                                                                    jQuery(".mwUpcomingEvents a.pressRelease[href=#]").siblings('a.watchVideo').css('width', '100%');
+                                                                                    jQuery(".mwUpcomingEvents a.watchVideo[href=#]").siblings('a.pressRelease').css('width', '100%');
+                                                                                    jQuery(".singleEvent a.btn[href=#], a.watchVideo[href=#], a.pressRelease[href=#]").hide();
+                                                                                });
                                                             </script>

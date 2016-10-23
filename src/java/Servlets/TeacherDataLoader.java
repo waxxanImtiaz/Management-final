@@ -5,11 +5,13 @@
  */
 package Servlets;
 
+import beans.DepartAndBatches;
 import beans.Students;
 import beans.TeacherSubjects;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,15 +48,19 @@ public class TeacherDataLoader extends HttpServlet {
 
         List<TeacherSubjects> subjects = (List<TeacherSubjects>) request.getSession().getAttribute("teacherSubject");
         TeacherSubjects s = subjects.get(0);
-
+        List<DepartAndBatches> db = session.createCriteria(DepartAndBatches.class).list();
+        
+       
         if (s != null) {
             // String subject = subjects.getSubject();
             String department = s.getDepartment();
             String semester = s.getSemester();
             String batch = s.getBatch();
             List<Students> students = getStudentList(department, semester, batch);
+            
          
             request.getSession().setAttribute("subjects", subjects);
+            request.getSession().setAttribute("departments", removeDuplicates(db));
             request.getSession().setAttribute("studentsList", students);
             response.sendRedirect("about-us/teacher_attendance.jsp");
             
@@ -77,6 +83,20 @@ public class TeacherDataLoader extends HttpServlet {
 
     }
 
+    public List<String> removeDuplicates(List<DepartAndBatches> db){
+         java.util.Set<String> set = new java.util.HashSet<String>(); 
+         
+         for(DepartAndBatches d : db){
+             set.add(d.getDepart());
+         }
+         
+         Iterator itr = set.iterator();
+         List<String> departs = new ArrayList<String>();
+         while(itr.hasNext()){
+             departs.add((String)itr.next());
+         }
+         return departs;
+    }
     @Override
     public String getServletInfo() {
         return "Short description";
