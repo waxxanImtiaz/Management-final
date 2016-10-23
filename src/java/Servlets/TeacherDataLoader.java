@@ -48,7 +48,7 @@ public class TeacherDataLoader extends HttpServlet {
 
         List<TeacherSubjects> subjects = (List<TeacherSubjects>) request.getSession().getAttribute("teacherSubject");
         TeacherSubjects s = subjects.get(0);
-        List<DepartAndBatches> db = session.createCriteria(DepartAndBatches.class).list();
+       // List<DepartAndBatches> db = session.createCriteria(DepartAndBatches.class).list();
         
        
         if (s != null) {
@@ -57,10 +57,12 @@ public class TeacherDataLoader extends HttpServlet {
             String semester = s.getSemester();
             String batch = s.getBatch();
             List<Students> students = getStudentList(department, semester, batch);
-            
          
+            
+            request.getSession().setAttribute("subjectName", subjects.get(0).getSubject());
             request.getSession().setAttribute("subjects", subjects);
-            request.getSession().setAttribute("departments", removeDuplicates(db));
+            request.getSession().setAttribute("departments"
+                    + "", removeDuplicates(subjects));
             request.getSession().setAttribute("studentsList", students);
             response.sendRedirect("about-us/teacher_attendance.jsp");
             
@@ -83,11 +85,11 @@ public class TeacherDataLoader extends HttpServlet {
 
     }
 
-    public List<String> removeDuplicates(List<DepartAndBatches> db){
+    public List<String> removeDuplicates(List<TeacherSubjects> db){
          java.util.Set<String> set = new java.util.HashSet<String>(); 
          
-         for(DepartAndBatches d : db){
-             set.add(d.getDepart());
+         for(TeacherSubjects d : db){
+             set.add(d.getDepartment());
          }
          
          Iterator itr = set.iterator();

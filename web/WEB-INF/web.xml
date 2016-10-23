@@ -48,6 +48,10 @@
         <servlet-name>TeacherAttendanceHandler</servlet-name>
         <servlet-class>Servlets.TeacherAttendanceHandler</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TeacherSubjectsAndStudentLoader</servlet-name>
+        <servlet-class>Servlets.TeacherSubjectsAndStudentLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -91,6 +95,10 @@
     <servlet-mapping>
         <servlet-name>TeacherAttendanceHandler</servlet-name>
         <url-pattern>/TeacherAttendanceHandler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherSubjectsAndStudentLoader</servlet-name>
+        <url-pattern>/TeacherSubjectsAndStudentLoader</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

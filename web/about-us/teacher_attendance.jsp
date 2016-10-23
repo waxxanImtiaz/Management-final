@@ -194,6 +194,7 @@
                                                     List<TeacherSubjects> subjects = (List<TeacherSubjects>) session.getAttribute("subjects");
                                                     List<Students> students = (List<Students>) session.getAttribute("studentsList");
                                                     List<String> db = (List<String>) session.getAttribute("departments");
+                                                    String s = (String)session.getAttribute("subjectName");
                                                 %>
                                                 <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="0">
 
@@ -201,7 +202,7 @@
                                                     <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="10">
                                                         <tbody>
                                                         <align="center" width="780">
-                                                            <tr><td colspan="5" width="197">Subject : <%=subjects.get(0).getSubject().toUpperCase()%></FONT></td>   
+                                                            <tr><td colspan="5" width="197">Subject : <%=s %></FONT></td>   
                                                                 </tbody>
                                                                 </table>
                                                             <br/>
@@ -232,28 +233,30 @@
                                                                 <ul class="tb_side">
                                                                     <li class="page_item page-item-51 page_item_has_children">
                                                                         <div class="dropdown">
-                                                                            <select name="subjects" class="drop_down" onchange="location = this.value;"  >
-
-                                                                                <option value="" selected = "selected">Subject</option>
-                                                                                <% for (TeacherSubjects sub : subjects) {%>
-                                                                                <option value=<%
-                                                                                    session.setAttribute("subjectName", sub.getSubject());
-                                                                                    out.println(sub.getSubject());%>  ><%= sub.getSubject()%></option>
+                                                                             <!--onchange="location =this.value;"--> 
+                                                                             <select id="subjects" name="subjects" class="drop_down" >
+                                                                                 <option  value ="" selected="selected" >Subject</option>
+                                                                                <% for (int i = 0 ; i<subjects.size(); i++) {%>
+                                                                                <option value=<%=subjects.get(i).getSubject()  %> > <%= subjects.get(i).getSubject() %></option>
                                                                                 <% } %>
+                                                                              
                                                                             </select>
                                                                         </div>
+                                                                            
+                                                                            
                                                                         <ul class='children'>
 
                                                                         </ul>
                                                                     </li>
                                                                     <li class="page_item page-item-53 page_item_has_children">
                                                                         <div class="dropdown">
-                                                                            <select name="department" class="department" onchange="location = this.value;" >
-                                                                                <option value="" selected = "selected">Department</option>
+                                                                            <!--location = this.value;-->
+                                                                            <select name="department" class="department" onchange="subjects(this.value)" >
+                                                                                <option value ="" selected="selected">Department</option>
 
-                                                                                <% for (String dep : db) {%>
+                                                                                <% for (int i = 0; i<db.size(); i++) {%>
                                                                                 
-                                                                                <option value="../index.html"  ><%=dep %></option>
+                                                                                <option value=<%=db.get(i)%> ><%=db.get(i) %></option>
 
                                                                                 <% }%>
                                                                             </select>
