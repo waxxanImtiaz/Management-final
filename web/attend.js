@@ -73,42 +73,19 @@ window.onclick = function (event) {
 function process(value) {
     alert("value=" + value);
 }
-function subjects(val) {
+function subjects(department) {
     
     var e = document.getElementById("subjects");
-    var value = e.options[e.selectedIndex].value;
+    var subject = e.options[e.selectedIndex].value;
 
-    if(value != "" && val != ""){
-        alert(value);
+    if(subject != "" && department != ""){
+        alert(subject);
     
      if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
-//        xmlHttp.open("GET", "../TeacherSubjectsAndStudentLoader?subjectName=" + value, true);
-//        xmlHttp.onreadystatechange = ResponseOfServer;
-//        xmlHttp.send(null);
-
-        document.location = "../TeacherSubjectsAndStudentLoader?subjectName=" + value;
+        document.location = "../TeacherSubjectsAndStudentLoader?subjectName=" + subject+
+                +"&department="+department;
     } else {
         //alert("Teachers");
     }
-    }
-}
-
-function ResponseOfServer() {
-
-
-    if (xmlHttp.readyState == 4) {
-
-        try {
-
-            xmlResponse = xmlHttp.responseText;
-            var message = xmlResponse.toString();
-            alert(message);
-          
-
-        } catch (e) {
-            alert(e.toString());
-        }
-    } else {
-        setTimeout('process()', 1000);
     }
 }

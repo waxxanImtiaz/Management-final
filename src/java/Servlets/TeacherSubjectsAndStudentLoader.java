@@ -20,8 +20,11 @@ public class TeacherSubjectsAndStudentLoader extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        request.getSession().removeAttribute("subjectName");
+        
         String subj = request.getParameter("subjectName");
-        response.getWriter().print("ServerResponse="+subj);
+        String department = request.getParameter("department");
         
         response.sendRedirect("about-us/teacher_attendance.jsp");
     }
