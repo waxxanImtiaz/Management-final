@@ -79,11 +79,11 @@ function subjects(department) {
     var subject = e.options[e.selectedIndex].value;
 
     if(subject != "" && department != ""){
-        alert(subject);
+        alert(department+" system");
     
      if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
         document.location = "../TeacherSubjectsAndStudentLoader?subjectName=" + subject+
-                +"&department="+department;
+                +"&department="+department+" system";
     } else {
         //alert("Teachers");
     }
