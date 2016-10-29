@@ -267,12 +267,14 @@
                                                                     </li>
 
 
-                                                                    <li class="page_item page-item-59 page_item_has_children"><a>Subject: Digital Logic Design</a>
+                                                                    <li class="page_item page-item-59 page_item_has_children">
+                                                                        
+                                                                        
                                                                         <ul class='children'>
 
                                                                         </ul>
                                                                     </li>
-                                                                    <li class="page_item page-item-53 page_item_has_children"><a>Contact No: 0312 4381011 </a>
+<!--                                                                    <li class="page_item page-item-53 page_item_has_children"><a>Contact No: 0312 4381011 </a>
                                                                         <ul class='children'>
 
                                                                         </ul>
@@ -283,8 +285,8 @@
                                                                         <ul class='children'>
 
                                                                         </ul>
-                                                                    </li>
-                                                                    <li class="page_item page-item-7830"><a href="#">Complaints/Help</a></li>
+                                                                    </li>-->
+                                                                    <!--<li class="page_item page-item-7830"><a href="#">Complaints/Help</a></li>-->
                                                                 </ul>			
                                                             </div><!-- #primary .widget-area -->
 

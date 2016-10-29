@@ -17,9 +17,11 @@ function createXmlHttpRequestObject() {
 }
 
 function teacherAttendance(clicked_id) {
+    var e = document.getElementById("subjects");
+    var subject = e.options[e.selectedIndex].value;
 
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
-        xmlHttp.open("GET", "../TeacherAttendanceHandler?rollNumber=" + clicked_id, true);
+        xmlHttp.open("GET", "../TeacherAttendanceHandler?rollNumber=" + clicked_id+"&subject="+subject, true);
         xmlHttp.onreadystatechange = handleAttendanceResponse;
         xmlHttp.send(null);
     } else {
@@ -37,13 +39,13 @@ function handleAttendanceResponse() {
             xmlResponse = xmlHttp.responseText;
             var message = xmlResponse.toString();
             alert(message);
-            setTimeout('process()', 1000);
+            //setTimeout('process()', 1000);
 
         } catch (e) {
             alert(e.toString());
         }
     } else {
-        setTimeout('process()', 1000);
+        //setTimeout('process()', 1000);
     }
 }
 
@@ -53,6 +55,7 @@ function handleAttendanceResponse() {
  toggle between hiding and showing the dropdown content */
 function subjects() {
     document.getElementById("subjects").classList.toggle("show");
+    
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -79,13 +82,12 @@ function subjects(department) {
     var subject = e.options[e.selectedIndex].value;
 
     if(subject != "" && department != ""){
-        alert(department+" system");
-    
+        //alert(department+" system");
      if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
-        document.location = "../TeacherSubjectsAndStudentLoader?subjectName=" + subject+
-                +"&department="+department+" system";
+        document.location = "../TeacherSubjectsAndStudentLoader?subjectName=" + subject+"&department="+department+" system";
     } else {
         //alert("Teachers");
     }
-    }
+ }
 }
+
