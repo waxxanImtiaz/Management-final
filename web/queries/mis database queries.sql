@@ -129,3 +129,10 @@ select*from departAndBatches;
 
 create table news(id int primary key,news varchar2(500),datestamp varchar2(50) );
 create table message(id int primary key,rollNumber varchar2(40),message varchar2(500),datestamp varchar2(50));
+
+insert into news(id,news,datestamp) values(1,'It is informed to all students that examination of 8th semester 
+will start from 5 december 2016','29/10/2016');
+
+
+insert into message(id,rollNumber,message,datestamp) values(1,'13_CS_19','It is informed to you that you have not returned the book of 
+library','29/10/2016');

@@ -52,6 +52,14 @@
         <servlet-name>TeacherSubjectsAndStudentLoader</servlet-name>
         <servlet-class>Servlets.TeacherSubjectsAndStudentLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MessagesAndNewsLoader</servlet-name>
+        <servlet-class>Servlets.NewsLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MessageLoader</servlet-name>
+        <servlet-class>Servlets.MessageLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -99,6 +107,14 @@
     <servlet-mapping>
         <servlet-name>TeacherSubjectsAndStudentLoader</servlet-name>
         <url-pattern>/TeacherSubjectsAndStudentLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MessagesAndNewsLoader</servlet-name>
+        <url-pattern>/MessagesAndNewsLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MessageLoader</servlet-name>
+        <url-pattern>/MessageLoader</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
