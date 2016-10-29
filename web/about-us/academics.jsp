@@ -122,8 +122,8 @@
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37"><a href="miscellaneous.jsp"> Miscellenous </a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="#">News</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="#">Messege</a>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="${pageContext.request.contextPath}/NewsLoader">News</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="${pageContext.request.contextPath}/MessageLoader">Messege</a>
 
                                             </ul>
                                         </li>
@@ -149,15 +149,15 @@
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7300"><a href="m_attendance.jsp"> Attendance </a>
                                             <ul class="sub-menu">
-                                                
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=1st">1st Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=2nd">2nd Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=3rd">3rd Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=4th">4th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=5th">5th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=6th">6th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=7th">7th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=8th">8th Semister</a></li>
+
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=1st">1st Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=2nd">2nd Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=3rd">3rd Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=4th">4th Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=5th">5th Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=6th">6th Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=7th">7th Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=8th">8th Semister</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7300"><a href="library.jsp"> Library </a>

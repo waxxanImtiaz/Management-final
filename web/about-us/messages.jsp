@@ -122,8 +122,8 @@
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37"><a href="miscellaneous.jsp"> Miscellenous </a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="#">News</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="#">Messege</a>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="${pageContext.request.contextPath}/NewsLoader">News</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="${pageContext.request.contextPath}/MessageLoader">Messege</a>
 
                                             </ul>
                                         </li>
@@ -195,167 +195,184 @@
                                                     <div>
                                                         <%@ page import="java.util.*" %>
 
+                                                        <%@ page import="beans.*" %>
+
                                                         <%
                                                             beans.Students personalInfo = (beans.Students) session.getAttribute("personalInfo");
-                                                        %> 
+                                                            List<beans.Message> messageList = (List<beans.Message>) session.getAttribute("messageList");
+                                                        %>  
                                                         <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="10">
                                                             <tbody>
                                                             <align="center" width="780">
-                                                                <tr><td colspan="5" width="197"><font> From Admin</FONT></td> </tr>    
+                                                                <tr><td colspan="5" width="197"><font>Messages From Admin</FONT></td> </tr>    
                                                                 <tr><td>
-                                                                    <!-- MESSAGE -->
-                                                                    </td></tr>     
-    
-                                                                    </tbody>
-                                                                    
-                                                                    </table>
-                                                                    </div>
-                                                                <p></p></div> </div>
-                                                                </div><!-- .entry-content -->
-                                                                </div><!-- #post-## -->
+                                                                        <h1>Date </h1>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h1>Message</h1>
+                                                                    </td>
+                                                                </tr>
+                                                                <% for (Message m : messageList) {%>
+                                                                <tr><td>
+                                                                        <%=m.getDate()%>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%=m.getMessage() %>
+                                                                    </td>
+                                                                </tr>     
+                                                                <% }%>    
+                                                                </tbody>
 
 
 
-                                                                </div><!-- #content -->
-
-                                                                <div id="primary" class="widget-area" role="complementary">
-
-                                                                    <h3 class="widget-title side"><%=personalInfo.getName()%></h3>
-                                                                    <ul class="tb_side">
-                                                                        <li class="page_item page-item-51 page_item_has_children"><a><%=personalInfo.getRollNum()%></a>
-                                                                            <ul class='children'>
-
-                                                                            </ul>
-                                                                        </li>
-                                                                        <li class="page_item page-item-53 page_item_has_children"><a><%=personalInfo.getFatherName()%></a>
-                                                                            <ul class='children'>
-
-                                                                            </ul>
-                                                                        </li>
-
-
-                                                                        <li class="page_item page-item-59 page_item_has_children"><a><%=personalInfo.getDepartment()%></a>
-                                                                            <ul class='children'>
-
-                                                                            </ul>
-                                                                        </li>
-                                                                        <li class="page_item page-item-53 page_item_has_children"><a>Contact No:<%=personalInfo.getStContactNum()%> </a>
-                                                                            <ul class='children'>
-
-                                                                            </ul>
-                                                                        </li>
-
-
-                                                                        <li class="page_item page-item-59 page_item_has_children"><a>F/contact: <%=personalInfo.getFtContactNum()%></a>
-                                                                            <ul class='children'>
-
-                                                                            </ul>
-                                                                        </li>
-                                                                        <li class="page_item page-item-7830"><a href="#">Complaints/Help</a></li>
-                                                                    </ul>
+                                                        </table>
+                                                    </div>
+                                                    <p></p></div> </div>
+                                    </div><!-- .entry-content -->
+                                </div><!-- #post-## -->
 
 
 
+                            </div><!-- #content -->
 
-                                                                </div><!-- #primary .widget-area -->
+                            <div id="primary" class="widget-area" role="complementary">
+
+                                <h3 class="widget-title side"><%=personalInfo.getName()%></h3>
+                                <ul class="tb_side">
+                                    <li class="page_item page-item-51 page_item_has_children"><a><%=personalInfo.getRollNum()%></a>
+                                        <ul class='children'>
+
+                                        </ul>
+                                    </li>
+                                    <li class="page_item page-item-53 page_item_has_children"><a><%=personalInfo.getFatherName()%></a>
+                                        <ul class='children'>
+
+                                        </ul>
+                                    </li>
 
 
-                                                                </div><!-- #container -->
+                                    <li class="page_item page-item-59 page_item_has_children"><a><%=personalInfo.getDepartment()%></a>
+                                        <ul class='children'>
+
+                                        </ul>
+                                    </li>
+                                    <li class="page_item page-item-53 page_item_has_children"><a>Contact No:<%=personalInfo.getStContactNum()%> </a>
+                                        <ul class='children'>
+
+                                        </ul>
+                                    </li>
 
 
-                                                                </div>
-                                                                <!-- #main -->
-                                                                </div>
-                                                                <!--.inner_wrap-->
-                                                                <div id="footer" role="contentinfo">
-                                                                    <div class="inner_footer">
-                                                                        <div class="main_footer">
-                                                                            <div class="footer_col">
-                                                                                <li id="nav_menu-2" class="widget-container widget_nav_menu"><h3 class="widget-title">PERSONEL</h3><div class="menu-about-us-container"><ul id="menu-about-us" class="menu"><li id="menu-item-65" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65"><a href="#">Personel Information</a></li>
-                                                                                        </ul></div></li>
-                                                                                <li id="nav_menu-3" class="widget-container widget_nav_menu"><h3 class="widget-title"> </h3></a> <div class="menu-footer-house-of-habib-container"><ul id="menu-footer-house-of-habib" class="menu">
-                                                                                            <li id="menu-item-6363" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6363"><a href="#">Complaints/Help</a></li>
+                                    <li class="page_item page-item-59 page_item_has_children"><a>F/contact: <%=personalInfo.getFtContactNum()%></a>
+                                        <ul class='children'>
 
-                                                                                        </ul></div></li>      </div>
-                                                                            <div class="footer_col">
-                                                                                <li id="nav_menu-4" class="widget-container widget_nav_menu"><h3 class="widget-title">DEPARTMENTS</h3><div class="menu-footer-prospective-container"><ul id="menu-footer-prospective" class="menu"><li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="#">Computer System Engineering</a></li>
-                                                                                            <li id="menu-item-242" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-242"><a href="#">Chemical Engineering</a></li>
-                                                                                            <li id="menu-item-240" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-240"><a href="#">Telecommunication Engineering</a></li>
-                                                                                            <li id="menu-item-6373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6373"><a href="#">Petrolium and Gas Engineering</a></li>
-                                                                                            <li id="menu-item-243" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-243"><a href="#">Electronics Engineering</a></li>
-                                                                                            <li id="menu-item-6373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6373"><a href="#">Metaulargy and Materials Engineering</a></li>
-                                                                                            <li id="menu-item-6374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6374"><a href="#">Industrial Engineering and Management</a></li>
-                                                                                            <li id="menu-item-6375" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6375"><a href="#">Energy and Enviroment Engineering </a></li>
-                                                                                            <li id="menu-item-6729" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6729"><a href="#">Architecture</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_item page-item-7830"><a href="#">Complaints/Help</a></li>
+                                </ul>
 
-                                                                                        </ul></div></li>      </div>
-                                                                            <div class="footer_col">
-                                                                                <li id="nav_menu-5" class="widget-container widget_nav_menu"><h3 class="widget-title">DUET</h3><div class="menu-footer-life-habib-container">
-                                                                                        <ul id="menu-footer-life-habib" class="menu">
-                                                                                            <li id="menu-item-6248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6248"><a href="#">Duet Website</a></li>
-                                                                                            <li id="menu-item-6249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6249"><a href="#">Duet QEC</a></li>
-                                                                                            <li id="menu-item-6250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6250"><a href="#">Duet Mail</a></li>
-                                                                                        </ul></div></li>
-                                                                                </ul></div></li>      </div>
-                                                                        <div class="footer_col">
-                                                                            <li id="nav_menu-6" class="widget-container widget_nav_menu"><h3 class="widget-title">Contact Us</h3><div class="menu-footer-current-student-container"><ul id="menu-footer-current-student" class="menu"><li id="menu-item-9091" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9091"><a href="#">Duet M.A Jinnah Road, Karachi-74800</a></li>
-                                                                                        <li id="menu-item-9093" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9093"><a href="#">Telephone: 
-                                                                                                +92 21 9923 1195/96/97/98 Ext: 267 </a></li>
-                                                                                        <li id="menu-item-9094" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9094"><a href="#">Vice Chancellor
-                                                                                                Dr. Faiz ullah Abbasi 
-                                                                                                PS to VC: +92 021 9923 1195/98 Ext: 267 </a></li>
-                                                                                        <li id="menu-item-288" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-288"><a href="#">Registrar 
-                                                                                                Engr. Capt(R) Syed Waqar Hussain
-                                                                                                Ph: +92 21 9923 2645 Ext: 262
-                                                                                                registrar@duet.edu.pk </a></li>
-                                                                                    </ul></div></li>
-                                                                            </ul></div></li>      </div>
-                                                                    <div class="footer_col">
-                                                                        <li id="nav_menu-7" class="widget-container widget_nav_menu"><h3 class="widget-title">About Us</h3><div class="menu-footer-library-container"><ul id="menu-footer-library" class="menu"><li id="menu-item-8039" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8039"><a href="#">Imtiaz Ali Wassan</a></li>
-                                                                                    <li id="menu-item-6459" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6459"><a target="_blank" href="#">Abdul Qayyum Laghari</a></li>
-                                                                                    <li id="menu-item-9379" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9379"><a href="#">Asghar Ali Lashari</a></li>
-                                                                                    <li id="menu-item-9380" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9380"><a href="#">Munesh Kumar Rathore</a></li>
-                                                                                </ul></div></li>
-                                                                        </ul></div></li>      </div>
-                                                                </div>
-                                                                </div>
 
-                                                                <div id="site-info">
-                                                                    <div class="inner_wraper">
-                                                                        <div class="footer_social"> 
-                                                                        </div>
-                                                                        <div class="footer_right">
 
-                                                                            © Dawood unniversity Of Engineering and Technology karachi - All Rights Reserved | Laghari - Wassan - Lashari - Kumar <a href="#" target="_blank" style="color:#fff !important;"></a></p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- #site-info --> 
 
-                                                                </div>
-                                                                </div>
-                                                                <!-- #footer -->
-                                                                </div>
-                                                                <!-- #wrapper -->
-                                                                <link rel='stylesheet' id='elite-accordion-plugin-style-css'  href='../wp-content/plugins/elite-accordion/css/elite_style8686.css?ver=4.5.1' type='text/css' media='all' />
-                                                                <script type='text/javascript' src='../wp-content/plugins/elite-accordion/js/main68b3.js?ver=1'></script>
-                                                                <script type='text/javascript' src='../wp-content/plugins/elite-accordion/js/modernizr68b3.js?ver=1'></script>
-                                                                <script type='text/javascript'>
+                            </div><!-- #primary .widget-area -->
+
+
+                        </div><!-- #container -->
+
+
+                    </div>
+                    <!-- #main -->
+                </div>
+                <!--.inner_wrap-->
+                <div id="footer" role="contentinfo">
+                    <div class="inner_footer">
+                        <div class="main_footer">
+                            <div class="footer_col">
+                                <li id="nav_menu-2" class="widget-container widget_nav_menu"><h3 class="widget-title">PERSONEL</h3><div class="menu-about-us-container"><ul id="menu-about-us" class="menu"><li id="menu-item-65" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65"><a href="#">Personel Information</a></li>
+                                        </ul></div></li>
+                                <li id="nav_menu-3" class="widget-container widget_nav_menu"><h3 class="widget-title"> </h3></a> <div class="menu-footer-house-of-habib-container"><ul id="menu-footer-house-of-habib" class="menu">
+                                            <li id="menu-item-6363" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6363"><a href="#">Complaints/Help</a></li>
+
+                                        </ul></div></li>      </div>
+                            <div class="footer_col">
+                                <li id="nav_menu-4" class="widget-container widget_nav_menu"><h3 class="widget-title">DEPARTMENTS</h3><div class="menu-footer-prospective-container"><ul id="menu-footer-prospective" class="menu"><li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="#">Computer System Engineering</a></li>
+                                            <li id="menu-item-242" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-242"><a href="#">Chemical Engineering</a></li>
+                                            <li id="menu-item-240" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-240"><a href="#">Telecommunication Engineering</a></li>
+                                            <li id="menu-item-6373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6373"><a href="#">Petrolium and Gas Engineering</a></li>
+                                            <li id="menu-item-243" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-243"><a href="#">Electronics Engineering</a></li>
+                                            <li id="menu-item-6373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6373"><a href="#">Metaulargy and Materials Engineering</a></li>
+                                            <li id="menu-item-6374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6374"><a href="#">Industrial Engineering and Management</a></li>
+                                            <li id="menu-item-6375" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6375"><a href="#">Energy and Enviroment Engineering </a></li>
+                                            <li id="menu-item-6729" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6729"><a href="#">Architecture</a></li>
+
+                                        </ul></div></li>      </div>
+                            <div class="footer_col">
+                                <li id="nav_menu-5" class="widget-container widget_nav_menu"><h3 class="widget-title">DUET</h3><div class="menu-footer-life-habib-container">
+                                        <ul id="menu-footer-life-habib" class="menu">
+                                            <li id="menu-item-6248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6248"><a href="#">Duet Website</a></li>
+                                            <li id="menu-item-6249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6249"><a href="#">Duet QEC</a></li>
+                                            <li id="menu-item-6250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6250"><a href="#">Duet Mail</a></li>
+                                        </ul></div></li>
+                                </ul></div></li>      </div>
+                        <div class="footer_col">
+                            <li id="nav_menu-6" class="widget-container widget_nav_menu"><h3 class="widget-title">Contact Us</h3><div class="menu-footer-current-student-container"><ul id="menu-footer-current-student" class="menu"><li id="menu-item-9091" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9091"><a href="#">Duet M.A Jinnah Road, Karachi-74800</a></li>
+                                        <li id="menu-item-9093" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9093"><a href="#">Telephone: 
+                                                +92 21 9923 1195/96/97/98 Ext: 267 </a></li>
+                                        <li id="menu-item-9094" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9094"><a href="#">Vice Chancellor
+                                                Dr. Faiz ullah Abbasi 
+                                                PS to VC: +92 021 9923 1195/98 Ext: 267 </a></li>
+                                        <li id="menu-item-288" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-288"><a href="#">Registrar 
+                                                Engr. Capt(R) Syed Waqar Hussain
+                                                Ph: +92 21 9923 2645 Ext: 262
+                                                registrar@duet.edu.pk </a></li>
+                                    </ul></div></li>
+                            </ul></div></li>      </div>
+                    <div class="footer_col">
+                        <li id="nav_menu-7" class="widget-container widget_nav_menu"><h3 class="widget-title">About Us</h3><div class="menu-footer-library-container"><ul id="menu-footer-library" class="menu"><li id="menu-item-8039" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8039"><a href="#">Imtiaz Ali Wassan</a></li>
+                                    <li id="menu-item-6459" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6459"><a target="_blank" href="#">Abdul Qayyum Laghari</a></li>
+                                    <li id="menu-item-9379" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9379"><a href="#">Asghar Ali Lashari</a></li>
+                                    <li id="menu-item-9380" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9380"><a href="#">Munesh Kumar Rathore</a></li>
+                                </ul></div></li>
+                        </ul></div></li>      </div>
+            </div>
+        </div>
+
+        <div id="site-info">
+            <div class="inner_wraper">
+                <div class="footer_social"> 
+                </div>
+                <div class="footer_right">
+
+                    © Dawood unniversity Of Engineering and Technology karachi - All Rights Reserved | Laghari - Wassan - Lashari - Kumar <a href="#" target="_blank" style="color:#fff !important;"></a></p>
+                </div>
+            </div>
+            <!-- #site-info --> 
+
+        </div>
+    </div>
+    <!-- #footer -->
+</div>
+<!-- #wrapper -->
+<link rel='stylesheet' id='elite-accordion-plugin-style-css'  href='../wp-content/plugins/elite-accordion/css/elite_style8686.css?ver=4.5.1' type='text/css' media='all' />
+<script type='text/javascript' src='../wp-content/plugins/elite-accordion/js/main68b3.js?ver=1'></script>
+<script type='text/javascript' src='../wp-content/plugins/elite-accordion/js/modernizr68b3.js?ver=1'></script>
+<script type='text/javascript'>
             /* <![CDATA[ */
             var JQLBSettings = {"fitToScreen": "0", "resizeSpeed": "400", "displayDownloadLink": "0", "navbarOnTop": "0", "loopImages": "", "resizeCenter": "", "marginSize": "", "linkTarget": "", "help": "", "prevLinkTitle": "previous image", "nextLinkTitle": "next image", "prevLinkText": "\u00ab Previous", "nextLinkText": "Next \u00bb", "closeTitle": "close image gallery", "image": "Image ", "of": " of ", "download": "Download", "jqlb_overlay_opacity": "80", "jqlb_overlay_color": "#000000", "jqlb_overlay_close": "1", "jqlb_border_width": "10", "jqlb_border_color": "#ffffff", "jqlb_border_radius": "0", "jqlb_image_info_background_transparency": "100", "jqlb_image_info_bg_color": "#ffffff", "jqlb_image_info_text_color": "#000000", "jqlb_image_info_text_fontsize": "10", "jqlb_show_text_for_image": "1", "jqlb_next_image_title": "next image", "jqlb_previous_image_title": "previous image", "jqlb_next_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/next.gif", "jqlb_previous_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/prev.gif", "jqlb_maximum_width": "", "jqlb_maximum_height": "", "jqlb_show_close_button": "1", "jqlb_close_image_title": "close image gallery", "jqlb_close_image_max_heght": "22", "jqlb_image_for_close_lightbox": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/closelabel.gif", "jqlb_keyboard_navigation": "1", "jqlb_popup_size_fix": "0"};
             /* ]]> */
-                                                                </script>
-                                                                <script type='text/javascript' src='../wp-content/plugins/wp-lightbox-2/wp-lightbox-2.min1894.js?ver=1.3.4.1'></script>
-                                                                <script type='text/javascript' src='../wp-content/plugins/social-sharing-toolkit/script_2.1.28686.js?ver=4.5.1'></script>
-                                                                <script type='text/javascript' src='../../connect.facebook.net/en_US/all8686.js?ver=4.5.1#xfbml=1&#038;appId=188707654478'></script>
-                                                                <script type='text/javascript' src='../wp-content/plugins/social-sharing-toolkit/includes/buttons/button.googleplus8686.js?ver=4.5.1'></script>
-                                                                <script type='text/javascript' src='../../platform.twitter.com/widgets8686.js?ver=4.5.1'></script>
-                                                                <script type='text/javascript' src='../wp-includes/js/wp-embed.min8686.js?ver=4.5.1'></script>
-                                                                <script type="text/javascript" src="../wp-content/themes/duet/js/script.js"></script>
-                                                                </body>
-                                                                <!-- Mirrored from habib.edu.pk/about-us/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 May 2016 10:03:10 GMT -->
-                                                                </html>
+</script>
+<script type='text/javascript' src='../wp-content/plugins/wp-lightbox-2/wp-lightbox-2.min1894.js?ver=1.3.4.1'></script>
+<script type='text/javascript' src='../wp-content/plugins/social-sharing-toolkit/script_2.1.28686.js?ver=4.5.1'></script>
+<script type='text/javascript' src='../../connect.facebook.net/en_US/all8686.js?ver=4.5.1#xfbml=1&#038;appId=188707654478'></script>
+<script type='text/javascript' src='../wp-content/plugins/social-sharing-toolkit/includes/buttons/button.googleplus8686.js?ver=4.5.1'></script>
+<script type='text/javascript' src='../../platform.twitter.com/widgets8686.js?ver=4.5.1'></script>
+<script type='text/javascript' src='../wp-includes/js/wp-embed.min8686.js?ver=4.5.1'></script>
+<script type="text/javascript" src="../wp-content/themes/duet/js/script.js"></script>
+</body>
+<!-- Mirrored from habib.edu.pk/about-us/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 May 2016 10:03:10 GMT -->
+</html>
 
-                                                                <script type="text/javascript">
+<script type="text/javascript">
             jQuery(document).ready(function () {
                 jQuery("h3.activeClass a").attr("aria-expanded", "true").addClass("active");
                 jQuery("div.activeClass").attr("aria-hidden", "false").show();
@@ -364,4 +381,4 @@
                 jQuery(".mwUpcomingEvents a.watchVideo[href=#]").siblings('a.pressRelease').css('width', '100%');
                 jQuery(".singleEvent a.btn[href=#], a.watchVideo[href=#], a.pressRelease[href=#]").hide();
             });
-                                                                </script>
+</script>

@@ -122,8 +122,8 @@
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37"><a href="miscellaneous.jsp"> Miscellenous </a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="#">News</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="#">Messege</a>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="${pageContext.request.contextPath}/NewsLoader">News</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="${pageContext.request.contextPath}/MessageLoader">Messege</a>
 
                                             </ul>
                                         </li>
@@ -194,18 +194,32 @@
                                                         </div>
                                                     <div>
                                                         <%@ page import="java.util.*" %>
+                                                        <%@ page import="beans.*" %>
 
                                                         <%
                                                             beans.Students personalInfo = (beans.Students) session.getAttribute("personalInfo");
+                                                            List<beans.News> newsList = (List<beans.News>) session.getAttribute("newsList");
                                                         %> 
                                                         <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="10">
                                                             <tbody>
                                                             <align="center" width="780">
-                                                                <tr><td colspan="5" width="197"><font> From Admin</FONT></td> </tr>    
+                                                                <tr><td colspan="5" width="197"><font>News From Admin</FONT></td> </tr>    
                                                                 <tr><td>
-                                                                    <!-- MESSAGE -->
-                                                                    </td></tr>     
-    
+                                                                        <h1>Date </h1>
+                                                                    </td>
+                                                                <td>
+                                                                    <h1>News</h1>
+                                                                 </td>
+                                                                </tr>
+                                                                <% for(News news : newsList){ %>
+                                                                <tr><td>
+                                                                        <%=news.getDate() %>
+                                                                    </td>
+                                                                <td>
+                                                                    <%=news.getNews() %>
+                                                                 </td>
+                                                                </tr>     
+                                                                    <% } %>    
                                                                     </tbody>
                                                                     
                                                                     </table>

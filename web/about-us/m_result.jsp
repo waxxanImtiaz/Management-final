@@ -117,8 +117,8 @@
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37"><a href="miscellaneous.jsp"> Miscellenous </a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="#">News</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="#">Messege</a>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="${pageContext.request.contextPath}/NewsLoader">News</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="${pageContext.request.contextPath}/MessageLoader">Messege</a>
 
                                             </ul>
                                         </li>
@@ -144,14 +144,14 @@
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7300"><a href="m_attendance.jsp"> Attendance </a>
                                             <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=1st">1st Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=2nd">2nd Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=3rd">3rd Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=4th">4th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=5th">5th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=6th">6th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=7th">7th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=8th">8th Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=1st">1st Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=2nd">2nd Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=3rd">3rd Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=4th">4th Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=5th">5th Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=6th">6th Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=7th">7th Semister</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="${pageContext.request.contextPath}/SemesterChecker?semester=8th">8th Semister</a></li>
                                             </ul>
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7300"><a href="${pageContext.request.contextPath}/LibraryManager"> Library </a>
@@ -321,9 +321,9 @@
 <script type='text/javascript' src='../wp-content/plugins/elite-accordion/js/main68b3.js?ver=1'></script>
 <script type='text/javascript' src='../wp-content/plugins/elite-accordion/js/modernizr68b3.js?ver=1'></script>
 <script type='text/javascript'>
-                    /* <![CDATA[ */
-                    var JQLBSettings = {"fitToScreen": "0", "resizeSpeed": "400", "displayDownloadLink": "0", "navbarOnTop": "0", "loopImages": "", "resizeCenter": "", "marginSize": "", "linkTarget": "", "help": "", "prevLinkTitle": "previous image", "nextLinkTitle": "next image", "prevLinkText": "\u00ab Previous", "nextLinkText": "Next \u00bb", "closeTitle": "close image gallery", "image": "Image ", "of": " of ", "download": "Download", "jqlb_overlay_opacity": "80", "jqlb_overlay_color": "#000000", "jqlb_overlay_close": "1", "jqlb_border_width": "10", "jqlb_border_color": "#ffffff", "jqlb_border_radius": "0", "jqlb_image_info_background_transparency": "100", "jqlb_image_info_bg_color": "#ffffff", "jqlb_image_info_text_color": "#000000", "jqlb_image_info_text_fontsize": "10", "jqlb_show_text_for_image": "1", "jqlb_next_image_title": "next image", "jqlb_previous_image_title": "previous image", "jqlb_next_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/next.gif", "jqlb_previous_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/prev.gif", "jqlb_maximum_width": "", "jqlb_maximum_height": "", "jqlb_show_close_button": "1", "jqlb_close_image_title": "close image gallery", "jqlb_close_image_max_heght": "22", "jqlb_image_for_close_lightbox": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/closelabel.gif", "jqlb_keyboard_navigation": "1", "jqlb_popup_size_fix": "0"};
-                    /* ]]> */
+            /* <![CDATA[ */
+            var JQLBSettings = {"fitToScreen": "0", "resizeSpeed": "400", "displayDownloadLink": "0", "navbarOnTop": "0", "loopImages": "", "resizeCenter": "", "marginSize": "", "linkTarget": "", "help": "", "prevLinkTitle": "previous image", "nextLinkTitle": "next image", "prevLinkText": "\u00ab Previous", "nextLinkText": "Next \u00bb", "closeTitle": "close image gallery", "image": "Image ", "of": " of ", "download": "Download", "jqlb_overlay_opacity": "80", "jqlb_overlay_color": "#000000", "jqlb_overlay_close": "1", "jqlb_border_width": "10", "jqlb_border_color": "#ffffff", "jqlb_border_radius": "0", "jqlb_image_info_background_transparency": "100", "jqlb_image_info_bg_color": "#ffffff", "jqlb_image_info_text_color": "#000000", "jqlb_image_info_text_fontsize": "10", "jqlb_show_text_for_image": "1", "jqlb_next_image_title": "next image", "jqlb_previous_image_title": "previous image", "jqlb_next_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/next.gif", "jqlb_previous_button_image": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/prev.gif", "jqlb_maximum_width": "", "jqlb_maximum_height": "", "jqlb_show_close_button": "1", "jqlb_close_image_title": "close image gallery", "jqlb_close_image_max_heght": "22", "jqlb_image_for_close_lightbox": "http:\/\/habib.edu.pk\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/closelabel.gif", "jqlb_keyboard_navigation": "1", "jqlb_popup_size_fix": "0"};
+            /* ]]> */
 </script>
 <script type='text/javascript' src='../wp-content/plugins/wp-lightbox-2/wp-lightbox-2.min1894.js?ver=1.3.4.1'></script>
 <script type='text/javascript' src='../wp-content/plugins/social-sharing-toolkit/script_2.1.28686.js?ver=4.5.1'></script>
@@ -337,12 +337,12 @@
 </html>
 
 <script type="text/javascript">
-                    jQuery(document).ready(function () {
-                        jQuery("h3.activeClass a").attr("aria-expanded", "true").addClass("active");
-                        jQuery("div.activeClass").attr("aria-hidden", "false").show();
+            jQuery(document).ready(function () {
+                jQuery("h3.activeClass a").attr("aria-expanded", "true").addClass("active");
+                jQuery("div.activeClass").attr("aria-hidden", "false").show();
 
-                        jQuery(".mwUpcomingEvents a.pressRelease[href=#]").siblings('a.watchVideo').css('width', '100%');
-                        jQuery(".mwUpcomingEvents a.watchVideo[href=#]").siblings('a.pressRelease').css('width', '100%');
-                        jQuery(".singleEvent a.btn[href=#], a.watchVideo[href=#], a.pressRelease[href=#]").hide();
-                    });
+                jQuery(".mwUpcomingEvents a.pressRelease[href=#]").siblings('a.watchVideo').css('width', '100%');
+                jQuery(".mwUpcomingEvents a.watchVideo[href=#]").siblings('a.pressRelease').css('width', '100%');
+                jQuery(".singleEvent a.btn[href=#], a.watchVideo[href=#], a.pressRelease[href=#]").hide();
+            });
 </script>

@@ -53,7 +53,7 @@
         <servlet-class>Servlets.TeacherSubjectsAndStudentLoader</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>MessagesAndNewsLoader</servlet-name>
+        <servlet-name>NewsLoader</servlet-name>
         <servlet-class>Servlets.NewsLoader</servlet-class>
     </servlet>
     <servlet>

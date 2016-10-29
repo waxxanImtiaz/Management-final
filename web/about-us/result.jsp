@@ -115,8 +115,8 @@
                                         </li>
                                         <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37"><a href="miscellaneous.jsp"> Miscellaneous </a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="#">News</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="#">Messege</a>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="${pageContext.request.contextPath}/NewsLoader">News</a></li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="${pageContext.request.contextPath}/MessageLoader">Messege</a>
 
                                             </ul>
                                         </li>
@@ -229,7 +229,7 @@
                                                                                 break;
                                                                             }
                                                                         }//end of loop
-                                                                %>
+%>
                                                                 <tr>
                                                                     <!--====theroy result -->
                                                                     <td>
@@ -271,8 +271,7 @@
 //                                                                        }
                                                                     %>       
                                                                     <!--====practical result -->
-                                                                    <td> <%
-                                                                        if (practicalSub != null) {
+                                                                    <td> <%                                                                        if (practicalSub != null) {
                                                                             out.println("50");
                                                                         } else {
                                                                             out.println("---");
