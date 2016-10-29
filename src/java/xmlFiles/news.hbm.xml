@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class catalog="system" name="beans.News" optimistic-lock="version" table="news">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="news" type="string">
+      <column length="500" name="news"/>
+    </property>
+    <property name="date" type="string">
+      <column length="256" name="datestamp"/>
+    </property>
+  </class>
+</hibernate-mapping>

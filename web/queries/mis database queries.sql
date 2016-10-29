@@ -126,3 +126,6 @@ insert into teacherSubjects (id,teacherName,department,semester,subject,batch) v
 
 select*from teacherSubjects;
 select*from departAndBatches;
+
+create table news(id int primary key,news varchar2(500),datestamp varchar2(50) );
+create table message(id int primary key,rollNumber varchar2(40),message varchar2(500),datestamp varchar2(50));
