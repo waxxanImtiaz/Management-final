@@ -60,6 +60,10 @@
         <servlet-name>MessageLoader</servlet-name>
         <servlet-class>Servlets.MessageLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertStudentServlet</servlet-name>
+        <servlet-class>Servlets.InsertStudentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -116,13 +120,17 @@
         <servlet-name>MessageLoader</servlet-name>
         <url-pattern>/MessageLoader</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertStudentServlet</servlet-name>
+        <url-pattern>/InsertStudentServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-<!--        <welcome-file>startProject.jsp</welcome-file>-->
-        <welcome-file>front.jsp</welcome-file>
+        <!--        <welcome-file>startProject.jsp</welcome-file>-->
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

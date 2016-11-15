@@ -9,6 +9,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import org.hibernate.SessionFactory;
+import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
 /**
@@ -28,9 +29,7 @@ public class ContextLoader implements ServletContextListener {
                 cf.configure("xmlFiles/hibernate.cfg.xml");
                 SessionFactory sf = cf.buildSessionFactory();
                 sc.setAttribute("sessionFactory", sf);
-                sc.setAttribute("name", "imtiaz");
-                
-                
+                sc.setAttribute("hibernateSession", sf.openSession());
           }catch(Exception e)
           {
               

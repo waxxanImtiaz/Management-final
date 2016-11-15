@@ -28,19 +28,27 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" action="${pageContext.request.contextPath}/InsertStudentServlet">
               <div class="box-body">
                   <div class="form-group">
-                  <label for="id">Id</label>
-                  <input type="text" class="form-control" id="id" placeholder="Enter ID">
+                  <label for="id">Roll Number</label>
+                  <input type="text" class="form-control" id="id" placeholder="Enter roll number">
               </div>
                   <div class="form-group">
-                  <label for="exampleInputName">Name</label>
-                  <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name">
+                  <label for="student_name">Name</label>
+                  <input type="text" class="form-control" id="student_name" placeholder="Enter name">
                 </div>
                   <div class="form-group">
                   <label for="fatherName">Father Name</label>
                   <input type="text" class="form-control" id="fatherName" placeholder="Enter father name">
+                </div>
+                  <div class="form-group">
+                  <label for="batch">Batch</label>
+                  <input type="text" class="form-control" id="batch" placeholder="Enter batch">
+                </div>
+                  <div class="form-group">
+                  <label for="dob">Date of birth</label>
+                  <input type="text" class="form-control" id="dob" placeholder="Enter date of birth">
                 </div>
                   
                   <div class="form-group">
@@ -51,7 +59,7 @@
                   
                   <div class="form-group">
                   <label for="caste">Caste</label>
-                  <input type="text" class="form-control" id="cast" placeholder="Enter caste">
+                  <input type="text" class="form-control" id="caste" placeholder="Enter caste">
                 </div>
                   <div class="form-group">
                   <label for="address">Address</label>
@@ -59,8 +67,12 @@
                 </div>
                   
                   <div class="form-group">
-                  <label for="perm-address">Permanent Address</label>
-                  <input type="text" class="form-control" id="perm-address" placeholder="Enter permanent address">
+                  <label for="perm_address">Permanent Address</label>
+                  <input type="text" class="form-control" id="perm_address" placeholder="Enter permanent address">
+                </div>
+                  <div class="form-group">
+                  <label for="nic">NIC #</label>
+                  <input type="text" class="form-control" id="nic" placeholder="Enter nic #">
                 </div>
                   <div class="form-group">
                   <label for="gender">Gender</label>
@@ -76,12 +88,12 @@
                 </div>
                   
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  <label for="email">Email address</label>
+                  <input type="email" class="form-control" id="email" placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Password">
                 </div>
              
                 

@@ -1,16 +1,18 @@
   
     $(document).ready(function(){
+       $(".content-wrapper").load("content_pages/add_student.jsp", function(responseTxt, statusTxt, xhr){
+        });
     $("#add_student").click(function(){
         $(".content-wrapper").load("content_pages/add_student.jsp", function(responseTxt, statusTxt, xhr){
         });
     });
     $("#view_students").click(function(){
-        $(".content-wrapper").load("content_pages/student_list.html", function(responseTxt, statusTxt, xhr){
+        $(".content-wrapper").load("content_pages/student_list.jsp", function(responseTxt, statusTxt, xhr){
         });
     });
    
     $("#m").click(function(){
-        $(".content-wrapper").load("content_pages/messages.html", function(responseTxt, statusTxt, xhr){
+        $(".content-wrapper").load("content_pages/messages.jsp", function(responseTxt, statusTxt, xhr){
         });
     });
     $("#inter").click(function(){
