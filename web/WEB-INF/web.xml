@@ -109,8 +109,8 @@
         <url-pattern>/TeacherSubjectsAndStudentLoader</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>MessagesAndNewsLoader</servlet-name>
-        <url-pattern>/MessagesAndNewsLoader</url-pattern>
+        <servlet-name>NewsLoader</servlet-name>
+        <url-pattern>/NewsLoader</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MessageLoader</servlet-name>
@@ -122,6 +122,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>startProject.jsp</welcome-file>
+<!--        <welcome-file>startProject.jsp</welcome-file>-->
+        <welcome-file>front.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

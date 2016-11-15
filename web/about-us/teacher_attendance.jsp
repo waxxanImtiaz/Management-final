@@ -234,7 +234,7 @@
                                                                     <li class="page_item page-item-51 page_item_has_children">
                                                                         <div class="dropdown">
                                                                              <!--onchange="location =this.value;"--> 
-                                                                             <select id="subjects" name="subjects" class="drop_down" >
+                                                                             <select id="subjects" name="subjects" style="padding-right: 155px;"  class="drop_down" >
                                                                                  <option  value ="" selected="selected" >Subject</option>
                                                                                 <% for (int i = 0 ; i<subjects.size(); i++) {%>
                                                                                 <option value=<%=subjects.get(i).getSubject()  %> > <%= subjects.get(i).getSubject() %></option>
@@ -251,7 +251,7 @@
                                                                     <li class="page_item page-item-53 page_item_has_children">
                                                                         <div class="dropdown">
                                                                             <!--location = this.value;-->
-                                                                            <select name="department" class="department" onchange="subjects(this.value)" >
+                                                                            <select name="department" style="padding-right: 90px;" class="department" onchange="subjects(this.value)" >
                                                                                 <option value ="" selected="selected">Department</option>
 
                                                                                 <% for (int i = 0; i<db.size(); i++) {%>

@@ -9,8 +9,14 @@
     <property name="news" type="string">
       <column length="500" name="news"/>
     </property>
+    <property name="reciever" type="string">
+      <column length="200" name="reciever"/>
+    </property>
+    <property name="sender" type="string">
+      <column length="200" name="sender"/>
+    </property>
     <property name="date" type="string">
-      <column length="256" name="datestamp"/>
+      <column length="256" name="datetime"/>
     </property>
   </class>
 </hibernate-mapping>

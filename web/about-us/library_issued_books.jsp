@@ -136,7 +136,7 @@
         List<LibraryDetails> books = (List<LibraryDetails>)session.getAttribute("bookIssuedList");
     %>
  <align="center" width="780">
-            <tr><td colspan="4" width="295">Issued books of Library </td></tr>
+            <tr><td colspan="5" width="295">Issued books of Library </td></tr>
           </tr>
           <tr>
           <td>&nbsp; Student Name</FONT>
@@ -149,10 +149,10 @@
           <% } %>
           
           <tr>
-<td colspan="4" >&nbsp;    </td>
+<td colspan="5" >&nbsp;    </td>
          </tr>
 
-          <td colspan="4" >&nbsp;<!-- Note : More than One Book can not be issued to a student. --></td>
+          <td colspan="5" >&nbsp;<!-- Note : More than One Book can not be issued to a student. --></td>
           </tr>
 
 </tbody>

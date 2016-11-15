@@ -65,14 +65,17 @@ public class Checker extends HttpServlet {
             if (master.isMaster()) {
                 storeUserInformation(request);
                 if (request.getSession().isNew()) {
-
+                            
                     request.getSession().setAttribute("username", getUsername());
                     request.getSession().setAttribute(visitCountKey, visitCount);
+                     storeUserInformation(request);
                 } else {
                     visitCount = (Integer) request.getSession().getAttribute(visitCountKey);
                     visitCount = visitCount + 1;
+                     storeUserInformation(request);
                     request.getSession().setAttribute(visitCountKey, visitCount);
                 }
+                
                 // setStudentChecker((StudentChecker)request.getServletContext().getAttribute("studentChecker"));
                 //getStudentChecker().goToStudentProfile();
             } else if (master.getStudentChecker().isStudent()) {
@@ -87,6 +90,7 @@ public class Checker extends HttpServlet {
                 Criteria cr = initializer.getSession().createCriteria(TeacherSubjects.class);
                 if(cr != null )
                 {
+                     storeUserInformation(request);
                     request.getSession().setAttribute("teacherSubject", cr.list());
                     response.sendRedirect("./TeacherDataLoader");
                 }else

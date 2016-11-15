@@ -11,6 +11,7 @@ import beans.Master;
 import beans.MatricInformation;
 import beans.StudentAttendance;
 import beans.Students;
+import java.util.Date;
 
 
 // <property name="hibernate.hbm2ddl.auto">create</property>
@@ -83,7 +84,9 @@ public class Driver {
         //configure cfg xml file
         Configuration cf = new Configuration();
         cf.configure("xmlFiles/hibernate.cfg.xml");
-
+        
+        
+        
         //build session factory
         SessionFactory sf = cf.buildSessionFactory();
         //get session object

@@ -199,7 +199,23 @@
                                                         <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="10">
                                                             <tbody>
                                                             <align="center" width="780">
-                                                                <tr><td colspan="5" width="197"> <%= yearOrSemester%> Semister <%= yearOrSemester%> Year</FONT></td>     
+                                                                <tr><td colspan="5" width="197"> <%= yearOrSemester%> Semister 
+                                                                       <% 
+                                                                        if( yearOrSemester.equalsIgnoreCase("1st") || yearOrSemester.equalsIgnoreCase("2nd") )
+                                                                        {
+                                                                        out.println("1st");
+                                                                        }else if( yearOrSemester.equalsIgnoreCase("3rd") || yearOrSemester.equalsIgnoreCase("4th") )
+                                                                        {
+                                                                        out.println("2nd");
+                                                                        }else if( yearOrSemester.equalsIgnoreCase("6th") || yearOrSemester.equalsIgnoreCase("5th") )
+                                                                        {
+                                                                        out.println("3rd");
+                                                                        }else if( yearOrSemester.equalsIgnoreCase("7th") || yearOrSemester.equalsIgnoreCase("8th") )
+                                                                        {
+                                                                        out.println("4th");
+                                                                        }
+                                                                        
+                                                                        %> Year</FONT></td>     
                                                                 <tr>
                                                                     <td width="197" height="29">  <%= yearOrSemester.toUpperCase()%> SEMISTER</FONT></td>
                                                                     <td colspan="4" width="206">  <center>MARKS</center></td>

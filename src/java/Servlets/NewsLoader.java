@@ -47,7 +47,13 @@ public class NewsLoader extends HttpServlet {
         
         request.getSession().setAttribute("news",news);
         response.sendRedirect("about-us/news.jsp");
-        
+        System.out.println("News:");
+        for(News n: news){
+            System.out.println("Date:"+n.getDate());
+            System.out.println("News:"+n.getNews());
+            System.out.println("News Id:"+n.getId());
+            System.out.println("");
+        }
         
         
     }

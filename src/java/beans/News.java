@@ -13,6 +13,8 @@ public class News {
     private int id;
     private String news;
     private String date;
+    private String sender;
+    private String reciever;
 
     /**
      * @return the id
@@ -54,5 +56,33 @@ public class News {
      */
     public void setDate(String date) {
         this.date = date;
+    }
+
+    /**
+     * @return the sender
+     */
+    public String getSender() {
+        return sender;
+    }
+
+    /**
+     * @param sender the sender to set
+     */
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    /**
+     * @return the reciever
+     */
+    public String getReciever() {
+        return reciever;
+    }
+
+    /**
+     * @param reciever the reciever to set
+     */
+    public void setReciever(String reciever) {
+        this.reciever = reciever;
     }
 }

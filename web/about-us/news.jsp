@@ -183,7 +183,7 @@
 
 
                             <div id="post-136" class="post-136 page type-page status-publish has-post-thumbnail hentry">
-                                <h1 class="entry-title">Attendance</h1>
+                                <h1 class="entry-title">News</h1>
 
                                 <div class="entry-content">
                                     <div class="accordion"> 
@@ -198,24 +198,30 @@
 
                                                         <%
                                                             beans.Students personalInfo = (beans.Students) session.getAttribute("personalInfo");
-                                                            List<beans.News> newsList = (List<beans.News>) session.getAttribute("newsList");
+                                                            List<beans.News> newsList = (List<beans.News>) session.getAttribute("news");
                                                         %> 
                                                         <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="10">
                                                             <tbody>
                                                             <align="center" width="780">
-                                                                <tr><td colspan="5" width="197"><font>News From Admin</FONT></td> </tr>    
+                                                                <tr><td colspan="5" width="197"><font> News </FONT></td> </tr>    
                                                                 <tr><td>
-                                                                        <h1>Date </h1>
+                                                                        <h3>Date </h3>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h3>Sender </h3>
                                                                     </td>
                                                                 <td>
-                                                                    <h1>News</h1>
+                                                                    <h3>News</h3>
                                                                  </td>
                                                                 </tr>
                                                                 <% for(News news : newsList){ %>
                                                                 <tr><td>
                                                                         <%=news.getDate() %>
                                                                     </td>
-                                                                <td>
+                                                                    <td>
+                                                                    <%--<%=news.getNews() %>--%>
+                                                                 </td>
+                                                                    <td>
                                                                     <%=news.getNews() %>
                                                                  </td>
                                                                 </tr>     
