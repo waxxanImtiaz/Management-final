@@ -46,21 +46,36 @@
                   <label for="batch">Batch</label>
                   <input type="text" class="form-control" id="batch" placeholder="Enter batch">
                 </div>
-                  <div class="form-group">
-                  <label for="dob">Date of birth</label>
-                  <input type="text" class="form-control" id="dob" placeholder="Enter date of birth">
+                  <!-- Date -->
+              <div class="form-group">
+                <label>Date of Birth</label>
+
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                    <input type="text"  class="form-control pull-right" id="dob">
                 </div>
+                <!-- /.input group -->
+              </div>
                   
-                  <div class="form-group">
-                  <label for="department">Department</label>
-                  <input type="text" class="form-control" id="department" placeholder="Enter department">
-                </div>
                   
+                  
+                    <div class="form-group">
+                        <label>Department</label>
+                         <select class="form-control" id = "department">
+                            <option>Computer System</option>
+                            <option>Chemical Engineering</option>
+                            <option>Electronic Engineering</option>
+                            <option>Industrial Engineering</option>
+                            <option>Energy & Environement Engineering</option>
+                        </select>
+                    </div>
                   
                   <div class="form-group">
                   <label for="caste">Caste</label>
                   <input type="text" class="form-control" id="caste" placeholder="Enter caste">
-                </div>
+                    </div>
                   <div class="form-group">
                   <label for="address">Address</label>
                   <input type="text" class="form-control" id="address" placeholder="Enter address">
