@@ -1,93 +1,209 @@
-  
-    $(document).ready(function(){
-       $(".content-wrapper").load("content_pages/add_student.jsp", function(responseTxt, statusTxt, xhr){
-        });
-    $("#add_student").click(function(){
-        $(".content-wrapper").load("content_pages/add_student.jsp", function(responseTxt, statusTxt, xhr){
+
+$(document).ready(function () {
+    $(".content-wrapper").load("content_pages/add_student.jsp", function (responseTxt, statusTxt, xhr) {
+    });
+    $("#add_student").click(function () {
+        $(".content-wrapper").load("content_pages/add_student.jsp", function (responseTxt, statusTxt, xhr) {
         });
     });
-    $("#view_students").click(function(){
-        $(".content-wrapper").load("content_pages/student_list.jsp", function(responseTxt, statusTxt, xhr){
+    $("#view_students").click(function () {
+        $(".content-wrapper").load("content_pages/student_list.jsp", function (responseTxt, statusTxt, xhr) {
         });
-    });
-   
-    $("#m").click(function(){
-        $(".content-wrapper").load("content_pages/messages.jsp", function(responseTxt, statusTxt, xhr){
-        });
-    });
-    $("#inter").click(function(){
-        $(".content-wrapper").load("content_pages/intermediate.jsp", function(responseTxt, statusTxt, xhr){
-        });
-    });
-    $("#matric").click(function(){
-        $(".content-wrapper").load("content_pages/matric.jsp", function(responseTxt, statusTxt, xhr){
-        });
-    });
     });
 
+    $("#m").click(function () {
+        $(".content-wrapper").load("content_pages/messages.jsp", function (responseTxt, statusTxt, xhr) {
+        });
+    });
+    $("#inter").click(function () {
+        $(".content-wrapper").load("content_pages/intermediate.jsp", function (responseTxt, statusTxt, xhr) {
+        });
+    });
+    $("#matric").click(function () {
+        $(".content-wrapper").load("content_pages/matric.jsp", function (responseTxt, statusTxt, xhr) {
+        });
+    });
+});
 
-  $(function () {
-    //Initialize Select2 Elements
-    $(".select2").select2();
 
-    //Datemask dd/mm/yyyy
-    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-    //Datemask2 mm/dd/yyyy
-    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-    //Money Euro
-    $("[data-mask]").inputmask();
 
-    //Date range picker
-    $('#reservation').daterangepicker();
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-        {
-          ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          },
-          startDate: moment().subtract(29, 'days'),
-          endDate: moment()
-        },
-        function (start, end) {
-          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+var formFields;
+//librarian form validator
+function validateAddStudentForm() {
+    //alert("Roll Number must be filled out");
+    var formFields = [document.forms["add_student_form"]["student_name"].value,
+        document.forms["add_student_form"]["rollNumber"].value,
+        document.forms["add_student_form"]["department"].value,
+        document.forms["add_student_form"]["fatherName"].value,
+        document.forms["add_student_form"]["batch"].value,
+        document.forms["add_student_form"]["dob"].value,
+        document.forms["add_student_form"]["caste"].value,
+        document.forms["add_student_form"]["address"].value,
+        document.forms["add_student_form"]["perm_address"].value,
+        document.forms["add_student_form"]["nic"].value,
+        document.forms["add_student_form"]["gender"].value,
+        document.forms["add_student_form"]["father_contact"].value,
+        document.forms["add_student_form"]["student_contact_num"].value,
+        document.forms["add_student_form"]["email"].value,
+        document.forms["add_student_form"]["password"].value
+    ];
+
+
+//    for (var i = 0; i < formFields.length; i++) {
+//        if (formFields[i] == null || formFields[i] == "") {
+//            alert("Please Fill All Fields");
+//            return false;
+//        }
+//    }
+//
+//    mob = document.forms["add_student_form"]["student_contact_num"].value;
+//    if (!isMobileNumber(mob)) {
+//        alert("Invalid mobile number");
+//        return false;
+//    }
+//
+//    
+//    mob = document.forms["add_student_form"]["father_contact"].value;
+//    if (!isMobileNumber(mob)) {
+//        alert("Invalid mobile number");
+//        return false;
+//    }
+//    nic = document.forms["add_student_form"]["nic"].value;
+//    if (!validateNic(nic)) {
+//        alert("Please Insert 14 Digits NIC Number");
+//        return false;
+//    }
+//
+//    var email = document.forms["add_student_form"]["email"].value
+//
+//    if (!validateEmail(email)) {
+//        alert("Please Insert a valid email address");
+//        return false;
+//    }
+//
+//    var dob = document.forms["add_student_form"]["dob"].value;
+//    if (!validateDob(dob)) {
+//        alert("Please insert correct date formate mm/dd/yyyy");
+//        return false;
+//    }
+//
+
+    storeStudentData();
+    //return true;
+
+}//end of method
+
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+function validateDob(dob) {
+    var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+    if ((date_regex.test(dob)))
+    {
+        return false;
+    } else
+        return true;
+}
+
+function isMobileNumber(txtMob) {
+    var mob = /^[1-9]{1}[0-9]{10}$/;
+    if (!mob.test(txtMob)) {
+        return false;
+    }
+    return true;
+}
+
+function validateNic(nic) {
+    var n = /^[1-9]{3}[0-9]{10}$/;
+    if (!n.test(nic)) {
+        return false;
+    }
+    return true;
+}
+
+
+
+var xmlHttp = createXmlHttpRequestObject();
+
+function createXmlHttpRequestObject() {
+    var xmlHttp;
+    try {
+        xmlHttp = new XMLHttpRequest();
+    } catch (e) {
+        xmlHttp = false;
+    }
+    if (!xmlHttp)
+    {
+        alert("Cant create object! Browser not support ");
+    } else
+        return xmlHttp;
+
+}
+
+function storeStudentData(){
+     var formFields = [document.forms["add_student_form"]["student_name"].value,
+        document.forms["add_student_form"]["rollNumber"].value,
+        document.forms["add_student_form"]["department"].value,
+        document.forms["add_student_form"]["fatherName"].value,
+        document.forms["add_student_form"]["batch"].value,
+        document.forms["add_student_form"]["dob"].value,
+        document.forms["add_student_form"]["caste"].value,
+        document.forms["add_student_form"]["address"].value,
+        document.forms["add_student_form"]["perm_address"].value,
+        document.forms["add_student_form"]["nic"].value,
+        document.forms["add_student_form"]["gender"].value,
+        document.forms["add_student_form"]["father_contact"].value,
+        document.forms["add_student_form"]["student_contact_num"].value,
+        document.forms["add_student_form"]["email"].value,
+        document.forms["add_student_form"]["password"].value];
+    
+//     for (var i = 0; i < formFields.length; i++) {
+//        //if (formFields[i] == null || formFields[i] == "") {
+//            alert(formFields[i]);
+//           // return false;
+//        //}
+//    }
+    
+     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+        
+        xmlHttp.open("GET", "/final_year_project/InsertStudentServlet?student_name="+formFields[0]+
+                "&rollNumber="+formFields[1]+"&department="+formFields[2]
+        +"&fatherName="+formFields[3]+"&batch="+formFields[4]+"&dob="+formFields[5]
+        +"&caste="+formFields[6]+"&address="+formFields[7]+"&perm_address="+formFields[8]
+        +"&nic="+formFields[9]+"&gender="+formFields[10]+"&father_contact="+formFields[11]
+        +"&student_contact_num="+formFields[12]+"&email="+formFields[13]+"&password="+formFields[14]
+        , true);
+        xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
+        xmlHttp.send(null);
+    } else{
+        setTimeout('storeStudentData()', 1000);
+        
+    }
+    
+}
+
+function handleServerResponseOfIssuanceForm() {
+    if (xmlHttp.readyState == 4) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+            document.getElementById("formData").innerHTML = '<span style="color: green">'
+                    + message + '</span>';
+//             if(message){
+                 alert(message);
+////                 return true;
+//             }else{
+//                 alert('Data not inserted'); 
+//             }
+             //}       
+          //  setTimeout('storeLibraryIssuanceFormData()', 1000);
+            //}
+        } catch (e) {
+            alert(e.toString());
         }
-    );
-
-    //Date picker
-    $('#dob').datepicker({
-      autoclose: true
-    });
-
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass: 'iradio_minimal-blue'
-    });
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass: 'iradio_minimal-red'
-    });
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass: 'iradio_flat-green'
-    });
-
-    //Colorpicker
-    $(".my-colorpicker1").colorpicker();
-    //color picker with addon
-    $(".my-colorpicker2").colorpicker();
-
-    //Timepicker
-    $(".timepicker").timepicker({
-      showInputs: false
-    });
-  });
+    }
+}

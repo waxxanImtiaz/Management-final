@@ -1,5 +1,5 @@
 <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header" >
       <h1>
         Add New Student
         
@@ -24,15 +24,17 @@
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Please Fill Following Fields</h3>
+              <h3 class="box-title" id = "formData"></h3>
               
             </div>
+              <!--action="${pageContext.request.contextPath}/InsertStudentServlet"-->
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="${pageContext.request.contextPath}/InsertStudentServlet">
+            <form role="form" name="add_student_form" >
               <div class="box-body">
                   <div class="form-group">
-                  <label for="id">Roll Number</label>
-                  <input type="text" class="form-control" id="id" placeholder="Enter roll number">
+                  <label for="rollNumber">Roll Number</label>
+                  <input type="text" class="form-control" id="rollNumber" placeholder="Enter roll number">
               </div>
                   <div class="form-group">
                   <label for="student_name">Name</label>
@@ -116,7 +118,7 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" onclick="return validateAddStudentForm()" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>

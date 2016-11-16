@@ -151,7 +151,7 @@
                                                     <input type="text2" id="bookIssueDate" name="issue date" value="" size="35" ><br>
                                                     Date of Returning:
                                                     <input type="text2" id="bookReturnDate" name="Retuern date" value="" size="35" ><br>
-                                                    <input type="submit" value="submit" onclick="validateLibrarianForm()">
+                                                    <input type="submit" value="submit" onclick="return validateLibrarianForm()">
                                                 </form>
                                             </div>
                                         </div> </div>

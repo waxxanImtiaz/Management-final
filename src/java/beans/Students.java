@@ -217,4 +217,10 @@ public class Students {
     public void setDepartment(String department) {
         this.department = department;
     }
+    
+    @Override
+    public String toString(){
+        return String.format("Name:%s\nRoll Number:%s\n"
+                + "Department:%s\nCaste:%s", getName(),getRollNum(),getDepartment(),getCaste());
+    }
 }//end of class
