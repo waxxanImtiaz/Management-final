@@ -64,7 +64,7 @@
         <script type="text/javascript" src="pageloader.js">
         </script>
     </head>
-    <body class="hold-transition skin-blue sidebar-mini" onload="storeStudentData()"  >
+    <body class="hold-transition skin-blue sidebar-mini" >
         <div class="wrapper">
 
             <header class="main-header">

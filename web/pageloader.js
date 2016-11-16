@@ -178,7 +178,7 @@ function storeStudentData(){
         xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
         xmlHttp.send(null);
     } else{
-        setTimeout('storeStudentData()', 1000);
+       // setTimeout('storeStudentData()', 1000);
         
     }
     
@@ -193,17 +193,50 @@ function handleServerResponseOfIssuanceForm() {
 
             document.getElementById("formData").innerHTML = '<span style="color: green">'
                     + message + '</span>';
-//             if(message){
+
                  alert(message);
-////                 return true;
-//             }else{
-//                 alert('Data not inserted'); 
-//             }
-             //}       
-          //  setTimeout('storeLibraryIssuanceFormData()', 1000);
-            //}
+              
         } catch (e) {
             alert(e.toString());
         }
+    }
+}
+
+
+function checkStudentData() {
+   // alert("inside checkStudentData()");
+  
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+         alert(document.forms["add_student_form"]["student_name"].value);
+         
+    var formFields = [document.forms["add_student_form"]["student_name"].value,
+        document.forms["add_student_form"]["rollNumber"].value,
+        document.forms["add_student_form"]["department"].value,
+        document.forms["add_student_form"]["fatherName"].value,
+        document.forms["add_student_form"]["batch"].value,
+        document.forms["add_student_form"]["dob"].value,
+        document.forms["add_student_form"]["caste"].value,
+        document.forms["add_student_form"]["address"].value,
+        document.forms["add_student_form"]["perm_address"].value,
+        document.forms["add_student_form"]["nic"].value,
+        document.forms["add_student_form"]["gender"].value,
+         document.forms["add_student_form"]["father_contact"].value,
+        document.forms["add_student_form"]["student_contact_num"].value,
+        document.forms["add_student_form"]["email"].value,
+        document.forms["add_student_form"]["password"].value];
+    
+        
+        xmlHttp.open("GET", "/final_year_project/InsertStudentServlet?student_name="+formFields[0]+
+                "&rollNumber="+formFields[1]+"&department="+formFields[2]
+        +"&fatherName="+formFields[3]+"&batch="+formFields[4]+"&dob="+formFields[5]
+        +"&caste="+formFields[6]+"&address="+formFields[7]+"&perm_address="+formFields[8]
+        +"&nic="+formFields[9]+"&gender="+formFields[10]+"&father_contact="+formFields[11]
+        +"&student_contact_num="+formFields[12]+"&email="+formFields[13]+"&password="+formFields[14]
+        , true);
+         xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
+        xmlHttp.send(null);
+        
+    } else {
+        setTimeout('checkStudentData()', 1000);
     }
 }

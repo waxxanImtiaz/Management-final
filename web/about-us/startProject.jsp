@@ -69,3 +69,19 @@
     
   </body>
 </html>
+
+<!--student_name= document.forms["add_student_form"]["student_name"].value,
+        rollNumber=document.forms["add_student_form"]["rollNumber"].value,
+        department = document.forms["add_student_form"]["department"].value,
+      fatherName=  document.forms["add_student_form"]["fatherName"].value,
+        batch = document.forms["add_student_form"]["batch"].value,
+      dob =  document.forms["add_student_form"]["dob"].value,
+      caste =  document.forms["add_student_form"]["caste"].value,
+      address =  document.forms["add_student_form"]["address"].value,
+      pern_address =  document.forms["add_student_form"]["perm_address"].value,
+      nic =   document.forms["add_student_form"]["nic"].value,
+      gender =  document.forms["add_student_form"]["gender"].value,
+      father_contact =   document.forms["add_student_form"]["father_contact"].value,
+       student_contact_num =  document.forms["add_student_form"]["student_contact_num"].value,
+       email =  document.forms["add_student_form"]["email"].value,
+      password =  document.forms["add_student_form"]["password"].value;-->

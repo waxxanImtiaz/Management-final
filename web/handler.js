@@ -84,6 +84,7 @@ function handleServerResponse() {
 
 
 function checkBookData() {
+    
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
         rollNumber = encodeURIComponent(document.getElementById("rollNumber").value);
         bookAuthor = encodeURIComponent(document.getElementById("bookAuthor").value);

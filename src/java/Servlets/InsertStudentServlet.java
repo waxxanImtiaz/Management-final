@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import beans.*;
+import org.hibernate.Criteria;
 
 /**
  *
@@ -22,7 +23,7 @@ import beans.*;
 public class InsertStudentServlet extends HttpServlet {
 
     private PrintWriter printWriter;
-
+    private  Session session;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,19 +34,18 @@ public class InsertStudentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Session session = (Session) request.getServletContext().getAttribute("hibernateSession");
+        session = (Session) request.getServletContext().getAttribute("hibernateSession");
         printWriter = response.getWriter();
 
-        if (session != null) {
-            System.out.println("session is not null");
-
-        } else {
-            return;
-        }
+        if (session == null) return; 
+        
 
         try {
             //printWriter.println("true");
             String rollNumber = request.getParameter("rollNumber");
+            if(!isRollNumberOk(rollNumber )){
+                return;
+            }
             String name = request.getParameter("student_name");
             String batch = request.getParameter("batch");
             String fatherName = request.getParameter("fatherName");
@@ -79,23 +79,40 @@ public class InsertStudentServlet extends HttpServlet {
 
             System.out.println(student);
             
-            printWriter.println("true");
-            System.out.println("rollNumber=" + rollNumber);
-            System.out.println("Data got successfully ");
+//            printWriter.println("true");
+//            System.out.println("rollNumber=" + rollNumber);
+//            System.out.println("Data got successfully ");
         } catch (NullPointerException e) {
             System.out.println("InsertStudentServlet: null value is thrown");
-            printWriter.println("false");
+            printWriter.println("NPE exception");
         }
     }
 
+    
     public boolean isRollNumberOk( String rollNumber ){
         if(rollNumber != null && !rollNumber.isEmpty()){
-            printWriter.println("Roll number is correct");
-            return true;
+//            printWriter.println("Roll number is correct");
+       
+         printWriter.println("Student with roll number "+rollNumber+" already exists");
+//            Students st  = (Students)session.get(Students.class, rollNumber);
+            Criteria cr = session.createCriteria(Students.class);
+            
+            
+            //Students st = (Students)cr.list().get(0);
+         
+            printWriter.println("lenght="+cr.list().size());
+       
+            
+           // printWriter.println("Student = "+st.getName()+" already exists");
+//            if(st != null){
+//                printWriter.println("Student with roll number "+rollNumber+" already exists");
+//                return true;
+//            }
+//            printWriter.println("Student with roll number "+rollNumber+" already exists");
         }else{
             printWriter.println("Roll number is invalid");
             return false;
-        }
-        
+        } 
+        return false;
     }
 }
