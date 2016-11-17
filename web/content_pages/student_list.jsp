@@ -30,7 +30,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><!-- Hover Data Table --></h3>
+                    <h3 class="box-title" id="formData" ><!-- Hover Data Table --></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body" >
@@ -52,7 +52,7 @@
                         </thead>
                         <tbody>
                             <% for (Students st : students) {%>
-                            <tr>
+                            <tr id = "<%=st.getRollNum()%>">
                                 <td><%=st.getName()%></td>
                                 <td><%=st.getFatherName()%>
                                 </td>
@@ -77,7 +77,7 @@
                                         <ul class="dropdown-menu">
                                             <!--<li><a href="${pageContext.request.contextPath}/StudentEditor?rollNumber=<%=st.getRollNum()%>">Edit</a></li>-->
                                             <li><a href="#" onclick="callEditor('<%=st.getRollNum()%>');">Edit</a></li>
-                                            <li><a href="#">Delete</a></li>
+                                            <li><a href="#" onclick="deleteStudent('<%=st.getRollNum()%>');">Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>

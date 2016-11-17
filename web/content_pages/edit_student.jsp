@@ -74,7 +74,7 @@
                   
                     <div class="form-group">
                         <label>Department</label>
-                         <select class="form-control" id = "department">
+                         <select class="form-control" id = "department" value=" <%= student.getDepartment() %>">
                             <option>Computer System</option>
                             <option>Chemical Engineering</option>
                             <option>Electronic Engineering</option>
@@ -85,41 +85,41 @@
                   
                   <div class="form-group">
                   <label for="caste">Caste</label>
-                  <input type="text" class="form-control" id="caste" placeholder="Enter caste">
+                  <input type="text" class="form-control" id="caste" value=" <%= student.getCaste() %>" placeholder="Enter caste">
                     </div>
                   <div class="form-group">
                   <label for="address">Address</label>
-                  <input type="text" class="form-control" id="address" placeholder="Enter address">
+                  <input type="text" class="form-control" id="address" value=" <%= student.getTempAdd() %>"  placeholder="Enter address">
                 </div>
                   
                   <div class="form-group">
                   <label for="perm_address">Permanent Address</label>
-                  <input type="text" class="form-control" id="perm_address" placeholder="Enter permanent address">
+                  <input type="text" class="form-control" id="perm_address" value=" <%= student.getPermAdd() %>" placeholder="Enter permanent address">
                 </div>
                   <div class="form-group">
                   <label for="nic">NIC #</label>
-                  <input type="text" class="form-control" id="nic" placeholder="Enter nic #">
+                  <input type="text" class="form-control" id="nic" value=" <%= student.getCnic() %>" placeholder="Enter nic #">
                 </div>
                   <div class="form-group">
                   <label for="gender">Gender</label>
-                  <input type="text" class="form-control" id="gender" placeholder="Enter gender">
+                  <input type="text" class="form-control" id="gender" value=" <%= student.getGender() %>" placeholder="Enter gender">
                 </div>
                   <div class="form-group">
                   <label for="father_contact">Father Contact #</label>
-                  <input type="text" class="form-control" id="father_contact" placeholder="Enter father contact #">
+                  <input type="text" class="form-control" id="father_contact" value=" <%= student.getFtContactNum() %>" placeholder="Enter father contact #">
                 </div>
                   <div class="form-group">
                   <label for="student_contact_num">Student Contact #</label>
-                  <input type="text" class="form-control" id="student_contact_num" placeholder="Enter student contact #">
+                  <input type="text" class="form-control" id="student_contact_num" value=" <%= student.getStContactNum() %>" placeholder="Enter student contact #">
                 </div>
                   
                 <div class="form-group">
                   <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter email">
+                  <input type="email" class="form-control" value=" <%= student.getStEmail() %>" id="email" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" placeholder="Password">
+                  <input type="password" class="form-control" id="password" value=" <%= student.getPassword() %>" placeholder="Password">
                 </div>
              
                 

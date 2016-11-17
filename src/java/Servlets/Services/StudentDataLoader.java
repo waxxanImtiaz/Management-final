@@ -59,6 +59,7 @@ public class StudentDataLoader implements Callable {
             student.setStContactNum(student_contact_num);
             student.setTempAdd(address);
             student.setCnic(nic);
+            student.setDob(dob);
             
             return student;
     }

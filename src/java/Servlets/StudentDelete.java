@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets.UpdaterServlets;
+package Servlets;
 
 import beans.Students;
 import java.io.IOException;
@@ -13,17 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
 import org.hibernate.Transaction;
 
 /**
  *
  * @author waxxan
  */
-public class UpdateStudentDataServlet extends HttpServlet {
+public class StudentDelete extends HttpServlet {
 
     private Students student;
     private Session session;
@@ -35,30 +31,37 @@ public class UpdateStudentDataServlet extends HttpServlet {
         doPost(request, response);
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        student =(Students) request.getSession().getAttribute("student");
+        
+        String rollNumber = request.getParameter("rollNumber");
+      //  student =(Students) request.getSession().getAttribute("student");
         
         out = response.getWriter();
         
          session = (Session) request.getServletContext().getAttribute("hibernateSession");
         
+         student = (Students)session.get(Students.class, rollNumber);
         Transaction tr = session.beginTransaction();
         
-        session.saveOrUpdate(student);
+        session.delete(student);
         
         tr.commit();
-        out.print("Data updated successfully");
-        
-        
-        
+        out.print("Data deleted successfully");
+        System.out.println("Data deleted successfully");
+       
     }
 
-    
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
-        return "UpdateStudentDataServlet ";
+        return "StudentDelete";
     }// </editor-fold>
 
 }

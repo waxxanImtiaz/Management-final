@@ -94,6 +94,8 @@ function validateAddStudentForm() {
 
 }//end of method
 
+
+
 function validateEmail(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
@@ -194,7 +196,7 @@ function handleServerResponseOfIssuanceForm() {
             document.getElementById("formData").innerHTML = '<span style="color: green">'
                     + message + '</span>';
 
-            alert("Data Stored Successfully");
+           // alert("Data Stored Successfully");
                   
         } catch (e) {
             alert("exception=" + e.toString());
@@ -282,7 +284,6 @@ function checkStudentDataEditPage() {
 
 //librarian form validator
 function validateEditStudentForm() {
-    //alert("Roll Number must be filled out");
     var formFields = [document.forms["add_student_form"]["student_name"].value,
         document.forms["add_student_form"]["rollNumber"].value,
         document.forms["add_student_form"]["department"].value,
@@ -308,43 +309,50 @@ function validateEditStudentForm() {
         }
     }
 
-    mob = document.forms["add_student_form"]["student_contact_num"].value;
-    if (!isMobileNumber(mob)) {
-        alert("Invalid mobile number");
-        return false;
-    }
-
-
-    mob = document.forms["add_student_form"]["father_contact"].value;
-    if (!isMobileNumber(mob)) {
-        alert("Invalid mobile number");
-        return false;
-    }
-    nic = document.forms["add_student_form"]["nic"].value;
-    if (!validateNic(nic)) {
-        alert("Please Insert 14 Digits NIC Number");
-        return false;
-    }
-
-    var email = document.forms["add_student_form"]["email"].value
-
-    if (!validateEmail(email)) {
-        alert("Please Insert a valid email address");
-        return false;
-    }
-
-    var dob = document.forms["add_student_form"]["dob"].value;
-    if (!validateDob(dob)) {
-        alert("Please insert correct date formate mm/dd/yyyy");
-        return false;
-    }
-
+//    mob = document.forms["add_student_form"]["student_contact_num"].value;
+//    if (!validateMobile(mob)) {
+//        alert("Mobile number is invalid");
+//        return false;
+//    }
+//
+//
+//    mob = document.forms["add_student_form"]["father_contact"].value;
+//    if (!validateMobile(mob)) {
+//        alert("Mobile number is invalid");
+//        return false;
+//    }
+//    nic = document.forms["add_student_form"]["nic"].value;
+//    if (!validateNic(nic)) {
+//        alert("Please Insert 14 Digits NIC Number");
+//        return false;
+//    }
+//
+//    var email = document.forms["add_student_form"]["email"].value
+//
+//    if (!validateEmail(email)) {
+//        alert("Please Insert a valid email address");
+//        return false;
+//    }
+//
+//    var dob = document.forms["add_student_form"]["dob"].value;
+//    if (!validateDob(dob)) {
+//        alert("Please insert correct date formate mm/dd/yyyy");
+//        return false;
+//    }
 
     updateStudentData()
-    //return true;
+    return false;
 
 }//end of method
 
+function validateMobile(txtMob) {
+    var mob = /^[0-9]{1}[0-9]{10}$/;
+    if (mob.test(txtMob)) {
+        alert(txtMob);
+        return false;
+    }
+    return true;
+}
 
 function updateStudentData() {
     var formFields = [document.forms["add_student_form"]["student_name"].value,
@@ -386,6 +394,41 @@ function updateStudentData() {
 
     }
 
+}
+var id;
+function deleteStudent(rollNumber) {
+    //alert("data Loaded");
+     id = rollNumber;
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/StudentDelete?rollNumber=" + rollNumber
+                , true);
+        xmlHttp.onreadystatechange = studentDelete;
+        xmlHttp.send(null);
+    }
+}
+
+function studentDelete(){
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+            document.getElementById("formData").innerHTML = '<span style="color: green">'
+                    + message + '</span>';
+
+            if (message) {
+                 $('#'+id).hide();
+                   
+            }
+
+
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
+    
 }
 
 

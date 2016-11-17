@@ -76,6 +76,10 @@
         <servlet-name>StudentEditor</servlet-name>
         <servlet-class>Servlets.StudentEditor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StudentDelete</servlet-name>
+        <servlet-class>Servlets.StudentDelete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -147,6 +151,10 @@
     <servlet-mapping>
         <servlet-name>StudentEditor</servlet-name>
         <url-pattern>/StudentEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentDelete</servlet-name>
+        <url-pattern>/StudentDelete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
