@@ -7,10 +7,11 @@ $(document).ready(function () {
         });
     });
     $("#view_students").click(function () {
-        $(".content-wrapper").load("content_pages/student_list.jsp", function (responseTxt, statusTxt, xhr) {
+        $(".content-wrapper").load("/final_year_project/AllStudentLoader", function (responseTxt, statusTxt, xhr) {
         });
     });
 
+///student_list.jsp
     $("#m").click(function () {
         $(".content-wrapper").load("content_pages/messages.jsp", function (responseTxt, statusTxt, xhr) {
         });
@@ -50,44 +51,44 @@ function validateAddStudentForm() {
     ];
 
 
-//    for (var i = 0; i < formFields.length; i++) {
-//        if (formFields[i] == null || formFields[i] == "") {
-//            alert("Please Fill All Fields");
-//            return false;
-//        }
-//    }
-//
-//    mob = document.forms["add_student_form"]["student_contact_num"].value;
-//    if (!isMobileNumber(mob)) {
-//        alert("Invalid mobile number");
-//        return false;
-//    }
-//
-//    
-//    mob = document.forms["add_student_form"]["father_contact"].value;
-//    if (!isMobileNumber(mob)) {
-//        alert("Invalid mobile number");
-//        return false;
-//    }
-//    nic = document.forms["add_student_form"]["nic"].value;
-//    if (!validateNic(nic)) {
-//        alert("Please Insert 14 Digits NIC Number");
-//        return false;
-//    }
-//
-//    var email = document.forms["add_student_form"]["email"].value
-//
-//    if (!validateEmail(email)) {
-//        alert("Please Insert a valid email address");
-//        return false;
-//    }
-//
-//    var dob = document.forms["add_student_form"]["dob"].value;
-//    if (!validateDob(dob)) {
-//        alert("Please insert correct date formate mm/dd/yyyy");
-//        return false;
-//    }
-//
+    for (var i = 0; i < formFields.length; i++) {
+        if (formFields[i] == null || formFields[i] == "") {
+            alert("Please Fill All Fields");
+            return false;
+        }
+    }
+
+    mob = document.forms["add_student_form"]["student_contact_num"].value;
+    if (!isMobileNumber(mob)) {
+        alert("Invalid mobile number");
+        return false;
+    }
+
+    
+    mob = document.forms["add_student_form"]["father_contact"].value;
+    if (!isMobileNumber(mob)) {
+        alert("Invalid mobile number");
+        return false;
+    }
+    nic = document.forms["add_student_form"]["nic"].value;
+    if (!validateNic(nic)) {
+        alert("Please Insert 14 Digits NIC Number");
+        return false;
+    }
+
+    var email = document.forms["add_student_form"]["email"].value
+
+    if (!validateEmail(email)) {
+        alert("Please Insert a valid email address");
+        return false;
+    }
+
+    var dob = document.forms["add_student_form"]["dob"].value;
+    if (!validateDob(dob)) {
+        alert("Please insert correct date formate mm/dd/yyyy");
+        return false;
+    }
+
 
     storeStudentData();
     //return true;
@@ -108,7 +109,7 @@ function validateDob(dob) {
 }
 
 function isMobileNumber(txtMob) {
-    var mob = /^[1-9]{1}[0-9]{10}$/;
+    var mob = /^[0-9]{1}[0-9]{10}$/;
     if (!mob.test(txtMob)) {
         return false;
     }
@@ -185,7 +186,7 @@ function storeStudentData(){
 }
 
 function handleServerResponseOfIssuanceForm() {
-    if (xmlHttp.readyState == 4) {
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0 ) {
 
         try {
             xmlResponse = xmlHttp.responseText;
@@ -194,10 +195,10 @@ function handleServerResponseOfIssuanceForm() {
             document.getElementById("formData").innerHTML = '<span style="color: green">'
                     + message + '</span>';
 
-                 alert(message);
+                 //alert(message);
               
         } catch (e) {
-            alert(e.toString());
+            alert("exception="+e.toString());
         }
     }
 }
@@ -207,7 +208,7 @@ function checkStudentData() {
    // alert("inside checkStudentData()");
   
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
-         alert(document.forms["add_student_form"]["student_name"].value);
+         //alert(document.forms["add_student_form"]["student_name"].value);
          
     var formFields = [document.forms["add_student_form"]["student_name"].value,
         document.forms["add_student_form"]["rollNumber"].value,

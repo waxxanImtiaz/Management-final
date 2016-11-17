@@ -4,12 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/Fyp%20final/final%20year%20project/web/about-us/startProject.jsp</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/web/handler.js</file>
             <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/InsertStudentServlet.java</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/beans/Students.java</file>
             <file>file:/F:/Fyp%20final/final%20year%20project/web/pageloader.js</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/Services/StoreStudentData.java</file>
             <file>file:/F:/Fyp%20final/final%20year%20project/web/index.jsp</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/Services/StudentDataChecker.java</file>
             <file>file:/F:/Fyp%20final/final%20year%20project/web/content_pages/add_student.jsp</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/Services/StudentDataLoader.java</file>
         </group>
     </open-files>
 </project-private>

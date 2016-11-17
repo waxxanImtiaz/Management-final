@@ -5,6 +5,9 @@
  */
 package Servlets;
 
+import Servlets.Services.StoreStudentData;
+import Servlets.Services.StudentDataChecker;
+import Servlets.Services.StudentDataLoader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletContext;
@@ -14,7 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import beans.*;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 import org.hibernate.Criteria;
+import org.hibernate.NonUniqueObjectException;
 
 /**
  *
@@ -23,7 +31,10 @@ import org.hibernate.Criteria;
 public class InsertStudentServlet extends HttpServlet {
 
     private PrintWriter printWriter;
-    private  Session session;
+    private Session session;
+    private Students student;
+    private ExecutorService executorService;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,82 +48,60 @@ public class InsertStudentServlet extends HttpServlet {
         session = (Session) request.getServletContext().getAttribute("hibernateSession");
         printWriter = response.getWriter();
 
-        if (session == null) return; 
-        
+       
 
+       
         try {
-            //printWriter.println("true");
-            String rollNumber = request.getParameter("rollNumber");
-            if(!isRollNumberOk(rollNumber )){
-                return;
+
+             if (session == null) {
+                  throw new NullPointerException("Hibernate Session is null");
+              }
+             
+             
+            executorService = Executors.newFixedThreadPool(3);
+
+            //Initialize student data
+            StudentDataLoader loader = new StudentDataLoader(new Students(), request);
+            Future<Students> studentFuture = executorService.submit(loader);
+            
+           
+            student = studentFuture.get();
+            
+            
+            //Check data..
+            StudentDataChecker studentChecker = new StudentDataChecker(student, session);
+            Future<Boolean> b = executorService.submit(studentChecker);
+
+            
+           
+            Boolean result = b.get();
+            if (result) {
+                printWriter.println("Student with " + student.getRollNum() + " already exists");
+                System.out.println("Student with " + student.getRollNum() + " already exists");
+                return ;
             }
-            String name = request.getParameter("student_name");
-            String batch = request.getParameter("batch");
-            String fatherName = request.getParameter("fatherName");
-            String caste = request.getParameter("caste");
-            String dob = request.getParameter("dob");
-            String department = request.getParameter("department");
-            String perm_address = request.getParameter("perm_address");
-            String gender = request.getParameter("gender");
-            String father_contact = request.getParameter("father_contact");
-            String student_contact_num = request.getParameter("student_contact_num");
-            String email = request.getParameter("email");
-            String address = request.getParameter("address");
-            String password = request.getParameter("password");
-            String nic = request.getParameter("nic");
 
-            Students student = new Students();
+            //Store student data
+             //Check data..
+            StoreStudentData store = new StoreStudentData(student, session);
+            Future<Boolean> st = executorService.submit(store);
             
-            student.setName(name);
-            student.setCaste(caste);
-            student.setDepartment(department);
-            student.setPermAdd(perm_address);
-            student.setBatch(batch);
-            student.setFatherName(fatherName);
-            student.setFtContactNum(father_contact);
-            student.setPassword(password);
-            student.setStEmail(email);
-            student.setRollNum(rollNumber);
-            student.setStContactNum(student_contact_num);
-            student.setTempAdd(address);
-            student.setCnic(nic);
-
-            System.out.println(student);
+            result = st.get();
             
-//            printWriter.println("true");
-//            System.out.println("rollNumber=" + rollNumber);
-//            System.out.println("Data got successfully ");
+            if(result){
+                printWriter.println("Data Stored Successfully");
+            }
+            
+            executorService.shutdown();
+            
         } catch (NullPointerException e) {
-            System.out.println("InsertStudentServlet: null value is thrown");
+            System.err.println("InsertStudentServlet: null value is thrown="+e.getMessage());
             printWriter.println("NPE exception");
+        }catch(NonUniqueObjectException e){
+             System.err.println("Duplicate Data in table:"+e.getMessage());
+        }catch(Exception e){
+             System.err.println("Exceptoin in InsertStudentServlet:="+e.getMessage());
         }
     }
 
-    
-    public boolean isRollNumberOk( String rollNumber ){
-        if(rollNumber != null && !rollNumber.isEmpty()){
-//            printWriter.println("Roll number is correct");
-       
-         printWriter.println("Student with roll number "+rollNumber+" already exists");
-//            Students st  = (Students)session.get(Students.class, rollNumber);
-            Criteria cr = session.createCriteria(Students.class);
-            
-            
-            //Students st = (Students)cr.list().get(0);
-         
-            printWriter.println("lenght="+cr.list().size());
-       
-            
-           // printWriter.println("Student = "+st.getName()+" already exists");
-//            if(st != null){
-//                printWriter.println("Student with roll number "+rollNumber+" already exists");
-//                return true;
-//            }
-//            printWriter.println("Student with roll number "+rollNumber+" already exists");
-        }else{
-            printWriter.println("Roll number is invalid");
-            return false;
-        } 
-        return false;
-    }
 }

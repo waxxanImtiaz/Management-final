@@ -824,7 +824,8 @@
                     "searching": false,
                     "ordering": true,
                     "info": true,
-                    "autoWidth": false
+                    "autoWidth": false,
+                    "scrollX": true
                 });
 
                 //Initialize Select2 Elements

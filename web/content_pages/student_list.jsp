@@ -1,15 +1,25 @@
 
+<%@page import="java.util.*" %>
+<%@page import="beans.*" %>
+
+<%
+    List<Students> students = (List<Students>)session.getAttribute("allStudents");
+    session.removeAttribute("allStudents");
+%>
+
+
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Tables
-        <small>advanced tables</small>
+        Total Students 
+        <small>All Departments</small>
       </h1>
-      <ol class="breadcrumb">
+<!--      <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
         <li class="active">Data tables</li>
-      </ol>
+      </ol>-->
     </section>
 
     <!-- Main content -->
@@ -18,7 +28,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Hover Data Table</h3>
+              <h3 class="box-title"><!-- Hover Data Table --></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body" >
@@ -29,24 +39,33 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th></th>
+                  <th>Name</th>
+                  <th>Father Name</th>
+                  <th>Roll Number</th>
+                  <th>Caste</th>
+                  <th>Department</th>
+                  <th>Permanent Address</th>
+                  <th>Batch</th>
                 </tr>
                 </thead>
                 <tbody>
+                    <% for(Students st : students ){ %>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
+                  <td><%=st.getName() %></td>
+                  <td><%=st.getFatherName() %>
                   </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X
+                  <td><%=st.getRollNum() %></td>
+                  <td> <%=st.getCaste() %></td>
+                  <td><%=st.getDepartment() %>
                   </td>
+                 
+                  
+                  <td><%=st.getPermAdd() %>
+                  </td>
+                  
+                  <td><%=st.getBatch() %>
+                  </td>
+                  
                   
                   <td>
                       <div class="btn-group">
@@ -60,53 +79,9 @@
                       </div>
                   </td>
                   
+                  
                 </tr>
-                
-                
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                  <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Edit</a></li>
-                          <li><a href="#">Delete</a></li>
-                          <li><a href="#">Show</a></li>
-                        </ul>
-                      </div>
-                  </td>
-                </tr>
-                
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6
-                  </td>
-                  <td>Win 98+</td>
-                  <td>6</td>
-                  <td>A</td>
-                  <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Edit</a></li>
-                          <li><a href="#">Delete</a></li>
-                        </ul>
-                      </div>
-                  </td>
-                </tr>
-                
-                </tfoot>
+                <% } %>
               </table>
             </div>
             <!-- /.box-body -->

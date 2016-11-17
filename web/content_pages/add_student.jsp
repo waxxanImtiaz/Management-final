@@ -1,5 +1,5 @@
 <!-- Content Header (Page header) -->
-    <section class="content-header"  >
+    <section class="content-header" onload="checkStudentData()" >
       <h1>
         Add New Student
         
@@ -23,7 +23,7 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Please Fill Following Fields</h3>
+              <h3 class="box-title">Please Fill Following Fields</h3><br />
               <h3 class="box-title" id = "formData"></h3>
               
             </div>

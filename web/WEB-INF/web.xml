@@ -64,6 +64,10 @@
         <servlet-name>InsertStudentServlet</servlet-name>
         <servlet-class>Servlets.InsertStudentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllStudentLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.AllStudentLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -124,13 +128,17 @@
         <servlet-name>InsertStudentServlet</servlet-name>
         <url-pattern>/InsertStudentServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllStudentLoader</servlet-name>
+        <url-pattern>/AllStudentLoader</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-                <!--<welcome-file>startProject.jsp</welcome-file>-->
+        <!--<welcome-file>startProject.jsp</welcome-file>-->
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
