@@ -18,6 +18,7 @@ public class Students {
     private String department;
     private String gender;
     private String cnic;
+    private String dob;
     private String studentPassword;
     /**
      * @return the rollNum
@@ -222,5 +223,19 @@ public class Students {
     public String toString(){
         return String.format("Name:%s\nRoll Number:%s\n"
                 + "Department:%s\nCaste:%s", getName(),getRollNum(),getDepartment(),getCaste());
+    }
+
+    /**
+     * @return the dob
+     */
+    public String getDob() {
+        return dob;
+    }
+
+    /**
+     * @param dob the dob to set
+     */
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 }//end of class

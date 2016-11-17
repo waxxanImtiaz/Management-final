@@ -5,22 +5,50 @@
  */
 package beans;
 
-import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+//import org.hibernate.annotations.GenericGenerator;
 
 
+@Entity  
+@Table(name = "LoginInformation") 
 public class LoginInformation {
     
+    @Id 
+    @GeneratedValue(strategy=GenerationType.AUTO)  
     private int id;
+    
+    @Column(name="username")
     private String username;
+    
+    @Column(name="PASSWORD")
     private String accept;
+    
+    @Column(name="PASSWORD")
     private String acceptLanguage;
+    
+    @Column(name="USERAGENT")
     private String userAgent;
+    
+    @Column(name="HOST")
     private String host;
+    
+    @Column(name="ACCEPTENCODING")
     private String acceptEncoding;
+ 
+    @Column(name="CONNECTION")
     private String connection;
+    
+    @Column(name="CACHECONTROL")
     private String cacheControl;
+    @Column(name="COOKIE")
     private String cookie;
+    
+     @Column(name="PASSWORD")
     private String password;
+
+    @Column(name="date_time")
+    private String date;
     /**
      * @return the id
      */
@@ -173,5 +201,19 @@ public class LoginInformation {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the date
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(String date) {
+        this.date = date;
     }
 }

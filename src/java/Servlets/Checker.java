@@ -136,8 +136,13 @@ public class Checker extends HttpServlet {
 
         }//end of while loop
 
+        Calendar cal = Calendar.getInstance();
+        
+        login.setDate(cal.getTime().toString());  
         login.setUsername(this.getUsername());
         login.setPassword(this.getPassword());
+        
+        
         
         Session s = initializer.getSessionFactory().openSession();
         try {

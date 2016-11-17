@@ -34,11 +34,14 @@ public class StudentEditor extends HttpServlet {
         String rollNumber = request.getParameter("rollNumber");
         
         List<Students> students = (List<Students>)request.getSession().getAttribute("allStudents");
+        System.out.println("Inside studentEditor");
+       
         
         for(Students st : students){
             if(st.getRollNum().equalsIgnoreCase(rollNumber)){
                 request.getSession().setAttribute("student",st);
-                response.sendRedirect("content_pages/edit_student.jsp");
+                response.getWriter().println("true");
+                //response.sendRedirect("content_pages/edit_student.jsp");
                 return;
             }
         }

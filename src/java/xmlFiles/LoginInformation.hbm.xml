@@ -36,6 +36,9 @@
       <property name="cookie" type="string">
       <column length="256" name="cookie"/>
     </property>
+     <property name="date" type="string">
+      <column length="256" name="date_time"/>
+    </property>
   </class>
 </hibernate-mapping>
 

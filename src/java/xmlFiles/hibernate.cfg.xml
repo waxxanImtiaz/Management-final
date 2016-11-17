@@ -7,6 +7,7 @@
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
     <property name="hibernate.connection.username">system</property>
     <property name="hibernate.connection.password">12345</property>
+    <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
     <property name="hibernate.transaction.flush_before_completion">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
@@ -23,6 +24,7 @@
     <mapping resource="xmlFiles/librarian.hbm.xml"/>
     <mapping resource="xmlFiles/LibraryDetails.hbm.xml"/>
     <mapping resource="xmlFiles/student_attendance.hbm.xml"/>
+    <!--<mapping class="beans.LoginInformation"/>--> 
     <mapping resource="xmlFiles/LoginInformation.hbm.xml"/>
     <mapping resource="xmlFiles/subjects.hbm.xml"/>
     <mapping resource="xmlFiles/matric_information.hbm.xml"/>

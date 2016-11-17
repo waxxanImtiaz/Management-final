@@ -63,7 +63,7 @@ function validateAddStudentForm() {
         return false;
     }
 
-    
+
     mob = document.forms["add_student_form"]["father_contact"].value;
     if (!isMobileNumber(mob)) {
         alert("Invalid mobile number");
@@ -90,7 +90,7 @@ function validateAddStudentForm() {
 
 
     storeStudentData();
-    //return true;
+    return false;
 
 }//end of method
 
@@ -99,7 +99,7 @@ function validateEmail(email) {
     return re.test(email);
 }
 function validateDob(dob) {
-    var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+    var date_regex = /^(0[0-9]|2[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
     if ((date_regex.test(dob)))
     {
         return false;
@@ -142,8 +142,8 @@ function createXmlHttpRequestObject() {
 
 }
 
-function storeStudentData(){
-     var formFields = [document.forms["add_student_form"]["student_name"].value,
+function storeStudentData() {
+    var formFields = [document.forms["add_student_form"]["student_name"].value,
         document.forms["add_student_form"]["rollNumber"].value,
         document.forms["add_student_form"]["department"].value,
         document.forms["add_student_form"]["fatherName"].value,
@@ -158,34 +158,34 @@ function storeStudentData(){
         document.forms["add_student_form"]["student_contact_num"].value,
         document.forms["add_student_form"]["email"].value,
         document.forms["add_student_form"]["password"].value];
-    
+
 //     for (var i = 0; i < formFields.length; i++) {
 //        //if (formFields[i] == null || formFields[i] == "") {
 //            alert(formFields[i]);
 //           // return false;
 //        //}
 //    }
-    
-     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
-        
-        xmlHttp.open("GET", "/final_year_project/InsertStudentServlet?student_name="+formFields[0]+
-                "&rollNumber="+formFields[1]+"&department="+formFields[2]
-        +"&fatherName="+formFields[3]+"&batch="+formFields[4]+"&dob="+formFields[5]
-        +"&caste="+formFields[6]+"&address="+formFields[7]+"&perm_address="+formFields[8]
-        +"&nic="+formFields[9]+"&gender="+formFields[10]+"&father_contact="+formFields[11]
-        +"&student_contact_num="+formFields[12]+"&email="+formFields[13]+"&password="+formFields[14]
-        , true);
+
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/InsertStudentServlet?student_name=" + formFields[0] +
+                "&rollNumber=" + formFields[1] + "&department=" + formFields[2]
+                + "&fatherName=" + formFields[3] + "&batch=" + formFields[4] + "&dob=" + formFields[5]
+                + "&caste=" + formFields[6] + "&address=" + formFields[7] + "&perm_address=" + formFields[8]
+                + "&nic=" + formFields[9] + "&gender=" + formFields[10] + "&father_contact=" + formFields[11]
+                + "&student_contact_num=" + formFields[12] + "&email=" + formFields[13] + "&password=" + formFields[14]
+                , true);
         xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
         xmlHttp.send(null);
-    } else{
-       // setTimeout('storeStudentData()', 1000);
-        
+    } else {
+        // setTimeout('storeStudentData()', 1000);
+
     }
-    
+      return false;  
 }
 
 function handleServerResponseOfIssuanceForm() {
-    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0 ) {
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
 
         try {
             xmlResponse = xmlHttp.responseText;
@@ -194,86 +194,86 @@ function handleServerResponseOfIssuanceForm() {
             document.getElementById("formData").innerHTML = '<span style="color: green">'
                     + message + '</span>';
 
-                 //alert(message);
-              
+            alert("Data Stored Successfully");
+                  
         } catch (e) {
-            alert("exception="+e.toString());
+            alert("exception=" + e.toString());
         }
     }
 }
 
 
 function checkStudentData() {
-   // alert("inside checkStudentData()");
-  
+    // alert("inside checkStudentData()");
+
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
-         //alert(document.forms["add_student_form"]["student_name"].value);
-         
-    var formFields = [document.forms["add_student_form"]["student_name"].value,
-        document.forms["add_student_form"]["rollNumber"].value,
-        document.forms["add_student_form"]["department"].value,
-        document.forms["add_student_form"]["fatherName"].value,
-        document.forms["add_student_form"]["batch"].value,
-        document.forms["add_student_form"]["dob"].value,
-        document.forms["add_student_form"]["caste"].value,
-        document.forms["add_student_form"]["address"].value,
-        document.forms["add_student_form"]["perm_address"].value,
-        document.forms["add_student_form"]["nic"].value,
-        document.forms["add_student_form"]["gender"].value,
-         document.forms["add_student_form"]["father_contact"].value,
-        document.forms["add_student_form"]["student_contact_num"].value,
-        document.forms["add_student_form"]["email"].value,
-        document.forms["add_student_form"]["password"].value];
-    
-        
-        xmlHttp.open("GET", "/final_year_project/InsertStudentServlet?student_name="+formFields[0]+
-                "&rollNumber="+formFields[1]+"&department="+formFields[2]
-        +"&fatherName="+formFields[3]+"&batch="+formFields[4]+"&dob="+formFields[5]
-        +"&caste="+formFields[6]+"&address="+formFields[7]+"&perm_address="+formFields[8]
-        +"&nic="+formFields[9]+"&gender="+formFields[10]+"&father_contact="+formFields[11]
-        +"&student_contact_num="+formFields[12]+"&email="+formFields[13]+"&password="+formFields[14]
-        , true);
-         xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
+        //alert(document.forms["add_student_form"]["student_name"].value);
+
+        var formFields = [document.forms["add_student_form"]["student_name"].value,
+            document.forms["add_student_form"]["rollNumber"].value,
+            document.forms["add_student_form"]["department"].value,
+            document.forms["add_student_form"]["fatherName"].value,
+            document.forms["add_student_form"]["batch"].value,
+            document.forms["add_student_form"]["dob"].value,
+            document.forms["add_student_form"]["caste"].value,
+            document.forms["add_student_form"]["address"].value,
+            document.forms["add_student_form"]["perm_address"].value,
+            document.forms["add_student_form"]["nic"].value,
+            document.forms["add_student_form"]["gender"].value,
+            document.forms["add_student_form"]["father_contact"].value,
+            document.forms["add_student_form"]["student_contact_num"].value,
+            document.forms["add_student_form"]["email"].value,
+            document.forms["add_student_form"]["password"].value];
+
+
+        xmlHttp.open("GET", "/final_year_project/InsertStudentServlet?student_name=" + formFields[0] +
+                "&rollNumber=" + formFields[1] + "&department=" + formFields[2]
+                + "&fatherName=" + formFields[3] + "&batch=" + formFields[4] + "&dob=" + formFields[5]
+                + "&caste=" + formFields[6] + "&address=" + formFields[7] + "&perm_address=" + formFields[8]
+                + "&nic=" + formFields[9] + "&gender=" + formFields[10] + "&father_contact=" + formFields[11]
+                + "&student_contact_num=" + formFields[12] + "&email=" + formFields[13] + "&password=" + formFields[14]
+                , true);
+        xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
         xmlHttp.send(null);
-        
+
     } else {
         setTimeout('checkStudentData()', 1000);
     }
 }
 
 
-function checkStudentDataEditPage(){
-    
+function checkStudentDataEditPage() {
+
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
-         //alert(document.forms["add_student_form"]["student_name"].value);
-         
-    var formFields = [document.forms["add_student_form"]["student_name"].value,
-        document.forms["add_student_form"]["rollNumber"].value,
-        document.forms["add_student_form"]["department"].value,
-        document.forms["add_student_form"]["fatherName"].value,
-        document.forms["add_student_form"]["batch"].value,
-        document.forms["add_student_form"]["dob"].value,
-        document.forms["add_student_form"]["caste"].value,
-        document.forms["add_student_form"]["address"].value,
-        document.forms["add_student_form"]["perm_address"].value,
-        document.forms["add_student_form"]["nic"].value,
-        document.forms["add_student_form"]["gender"].value,
-         document.forms["add_student_form"]["father_contact"].value,
-        document.forms["add_student_form"]["student_contact_num"].value,
-        document.forms["add_student_form"]["email"].value,
-        document.forms["add_student_form"]["password"].value];
-    
-        
-        xmlHttp.open("GET", "/final_year_project/UpdateStudentDataServlet?student_name="+formFields[0]+
-                "&rollNumber="+formFields[1]+"&department="+formFields[2]
-        +"&fatherName="+formFields[3]+"&batch="+formFields[4]+"&dob="+formFields[5]
-        +"&caste="+formFields[6]+"&address="+formFields[7]+"&perm_address="+formFields[8]
-        +"&nic="+formFields[9]+"&gender="+formFields[10]+"&father_contact="+formFields[11]
-        +"&student_contact_num="+formFields[12]+"&email="+formFields[13]+"&password="+formFields[14]
-        , true);
-         xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
+        //alert(document.forms["add_student_form"]["student_name"].value);
+
+        var formFields = [document.forms["add_student_form"]["student_name"].value,
+            document.forms["add_student_form"]["rollNumber"].value,
+            document.forms["add_student_form"]["department"].value,
+            document.forms["add_student_form"]["fatherName"].value,
+            document.forms["add_student_form"]["batch"].value,
+            document.forms["add_student_form"]["dob"].value,
+            document.forms["add_student_form"]["caste"].value,
+            document.forms["add_student_form"]["address"].value,
+            document.forms["add_student_form"]["perm_address"].value,
+            document.forms["add_student_form"]["nic"].value,
+            document.forms["add_student_form"]["gender"].value,
+            document.forms["add_student_form"]["father_contact"].value,
+            document.forms["add_student_form"]["student_contact_num"].value,
+            document.forms["add_student_form"]["email"].value,
+            document.forms["add_student_form"]["password"].value];
+
+
+        xmlHttp.open("GET", "/final_year_project/UpdateStudentDataServlet?student_name=" + formFields[0] +
+                "&rollNumber=" + formFields[1] + "&department=" + formFields[2]
+                + "&fatherName=" + formFields[3] + "&batch=" + formFields[4] + "&dob=" + formFields[5]
+                + "&caste=" + formFields[6] + "&address=" + formFields[7] + "&perm_address=" + formFields[8]
+                + "&nic=" + formFields[9] + "&gender=" + formFields[10] + "&father_contact=" + formFields[11]
+                + "&student_contact_num=" + formFields[12] + "&email=" + formFields[13] + "&password=" + formFields[14]
+                , true);
+        xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
         xmlHttp.send(null);
-        
+
     } else {
         setTimeout('checkStudentDataEditPage()', 1000);
     }
@@ -314,7 +314,7 @@ function validateEditStudentForm() {
         return false;
     }
 
-    
+
     mob = document.forms["add_student_form"]["father_contact"].value;
     if (!isMobileNumber(mob)) {
         alert("Invalid mobile number");
@@ -346,8 +346,8 @@ function validateEditStudentForm() {
 }//end of method
 
 
-function updateStudentData(){
-     var formFields = [document.forms["add_student_form"]["student_name"].value,
+function updateStudentData() {
+    var formFields = [document.forms["add_student_form"]["student_name"].value,
         document.forms["add_student_form"]["rollNumber"].value,
         document.forms["add_student_form"]["department"].value,
         document.forms["add_student_form"]["fatherName"].value,
@@ -362,28 +362,62 @@ function updateStudentData(){
         document.forms["add_student_form"]["student_contact_num"].value,
         document.forms["add_student_form"]["email"].value,
         document.forms["add_student_form"]["password"].value];
-    
+
 //     for (var i = 0; i < formFields.length; i++) {
 //        //if (formFields[i] == null || formFields[i] == "") {
 //            alert(formFields[i]);
 //           // return false;
 //        //}
 //    }
-    
-     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
-        
-        xmlHttp.open("GET", "/final_year_project/UpdateStudentDataServlet?student_name="+formFields[0]+
-                "&rollNumber="+formFields[1]+"&department="+formFields[2]
-        +"&fatherName="+formFields[3]+"&batch="+formFields[4]+"&dob="+formFields[5]
-        +"&caste="+formFields[6]+"&address="+formFields[7]+"&perm_address="+formFields[8]
-        +"&nic="+formFields[9]+"&gender="+formFields[10]+"&father_contact="+formFields[11]
-        +"&student_contact_num="+formFields[12]+"&email="+formFields[13]+"&password="+formFields[14]
-        , true);
+
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/UpdateStudentDataServlet?student_name=" + formFields[0] +
+                "&rollNumber=" + formFields[1] + "&department=" + formFields[2]
+                + "&fatherName=" + formFields[3] + "&batch=" + formFields[4] + "&dob=" + formFields[5]
+                + "&caste=" + formFields[6] + "&address=" + formFields[7] + "&perm_address=" + formFields[8]
+                + "&nic=" + formFields[9] + "&gender=" + formFields[10] + "&father_contact=" + formFields[11]
+                + "&student_contact_num=" + formFields[12] + "&email=" + formFields[13] + "&password=" + formFields[14]
+                , true);
         xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
         xmlHttp.send(null);
-    } else{
-       // setTimeout('storeStudentData()', 1000);
-        
+    } else {
+        // setTimeout('storeStudentData()', 1000);
+
     }
-    
+
+}
+
+
+function callEditor(rollNumber) {
+    //alert("data Loaded");
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/StudentEditor?rollNumber=" + rollNumber
+                , true);
+        xmlHttp.onreadystatechange = editorLoader;
+        xmlHttp.send(null);
+    }
+}
+
+function editorLoader() {
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+//            document.getElementById("formData").innerHTML = '<span style="color: green">'
+//                    + message + '</span>';
+
+            if (message) {
+                $(".content-wrapper").load("content_pages/edit_student.jsp", function (responseTxt, statusTxt, xhr) {
+                });
+            }
+
+
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
 }

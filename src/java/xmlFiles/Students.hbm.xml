@@ -27,6 +27,9 @@
     <property name="stContactNum" type="string">
       <column length="38" name="stPhoneNum"/>
     </property>
+    <property name="dob" type="string">
+      <column length="38" name="dob"/>
+    </property>
     <property name="ftContactNum" type="string">
       <column length="38" name="ftPhoneNum"/>
     </property>

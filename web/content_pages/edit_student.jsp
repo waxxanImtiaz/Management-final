@@ -1,8 +1,17 @@
+
+<%@page import="java.util.*" %>
+<%@page import="beans.*" %>
+
+<%
+    Students student = (Students)session.getAttribute("student");
+
+%>
+
 <!-- Content Header (Page header) -->
     <section class="content-header" onload="checkStudentDataEditPage()" >
       <h1>
-        Add New Student
-        
+        Update Student Data
+       
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
@@ -34,19 +43,19 @@
               <div class="box-body">
                   <div class="form-group">
                   <label for="rollNumber">Roll Number</label>
-                  <input type="text" class="form-control" id="rollNumber" placeholder="Enter roll number" disabled>
+                  <input type="text" class="form-control" value=" <%= student.getRollNum() %>" id="rollNumber" placeholder="Enter roll number" disabled>
               </div>
                   <div class="form-group">
                   <label for="student_name">Name</label>
-                  <input type="text" class="form-control" id="student_name" placeholder="Enter name">
+                  <input type="text" class="form-control" value=" <%= student.getName() %>" id="student_name" placeholder="Enter name">
                 </div>
                   <div class="form-group">
                   <label for="fatherName">Father Name</label>
-                  <input type="text" class="form-control" id="fatherName" placeholder="Enter father name">
+                  <input type="text" class="form-control" value=" <%= student.getFatherName() %>" id="fatherName" placeholder="Enter father name">
                 </div>
                   <div class="form-group">
                   <label for="batch">Batch</label>
-                  <input type="text" class="form-control" id="batch" placeholder="Enter batch">
+                  <input type="text" class="form-control" value=" <%= student.getBatch() %>" id="batch" placeholder="Enter batch">
                 </div>
                   <!-- Date -->
               <div class="form-group">
@@ -56,7 +65,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                    <input type="text"  class="form-control pull-right" id="dob">
+                    <input type="text" value=" <%= student.getRollNum() %>"  class="form-control pull-right" id="dob">
                 </div>
                 <!-- /.input group -->
               </div>
