@@ -4,7 +4,7 @@
 
 <%
     List<Students> students = (List<Students>)session.getAttribute("allStudents");
-    session.removeAttribute("allStudents");
+   
 %>
 
 
@@ -73,13 +73,11 @@
                           <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Edit</a></li>
+                            <li><a href="${pageContext.request.contextPath}/StudentEditor?rollNumber=<%=st.getRollNum()%>">Edit</a></li>
                           <li><a href="#">Delete</a></li>
                         </ul>
                       </div>
                   </td>
-                  
-                  
                 </tr>
                 <% } %>
               </table>

@@ -68,6 +68,14 @@
         <servlet-name>AllStudentLoader</servlet-name>
         <servlet-class>Servlets.LoaderServlets.AllStudentLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateStudentDataServlet</servlet-name>
+        <servlet-class>Servlets.UpdaterServlets.UpdateStudentDataServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentEditor</servlet-name>
+        <servlet-class>Servlets.StudentEditor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -131,6 +139,14 @@
     <servlet-mapping>
         <servlet-name>AllStudentLoader</servlet-name>
         <url-pattern>/AllStudentLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateStudentDataServlet</servlet-name>
+        <url-pattern>/UpdateStudentDataServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentEditor</servlet-name>
+        <url-pattern>/StudentEditor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

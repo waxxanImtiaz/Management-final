@@ -29,7 +29,6 @@ $(document).ready(function () {
 
 
 
-var formFields;
 //librarian form validator
 function validateAddStudentForm() {
     //alert("Roll Number must be filled out");
@@ -240,4 +239,151 @@ function checkStudentData() {
     } else {
         setTimeout('checkStudentData()', 1000);
     }
+}
+
+
+function checkStudentDataEditPage(){
+    
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+         //alert(document.forms["add_student_form"]["student_name"].value);
+         
+    var formFields = [document.forms["add_student_form"]["student_name"].value,
+        document.forms["add_student_form"]["rollNumber"].value,
+        document.forms["add_student_form"]["department"].value,
+        document.forms["add_student_form"]["fatherName"].value,
+        document.forms["add_student_form"]["batch"].value,
+        document.forms["add_student_form"]["dob"].value,
+        document.forms["add_student_form"]["caste"].value,
+        document.forms["add_student_form"]["address"].value,
+        document.forms["add_student_form"]["perm_address"].value,
+        document.forms["add_student_form"]["nic"].value,
+        document.forms["add_student_form"]["gender"].value,
+         document.forms["add_student_form"]["father_contact"].value,
+        document.forms["add_student_form"]["student_contact_num"].value,
+        document.forms["add_student_form"]["email"].value,
+        document.forms["add_student_form"]["password"].value];
+    
+        
+        xmlHttp.open("GET", "/final_year_project/UpdateStudentDataServlet?student_name="+formFields[0]+
+                "&rollNumber="+formFields[1]+"&department="+formFields[2]
+        +"&fatherName="+formFields[3]+"&batch="+formFields[4]+"&dob="+formFields[5]
+        +"&caste="+formFields[6]+"&address="+formFields[7]+"&perm_address="+formFields[8]
+        +"&nic="+formFields[9]+"&gender="+formFields[10]+"&father_contact="+formFields[11]
+        +"&student_contact_num="+formFields[12]+"&email="+formFields[13]+"&password="+formFields[14]
+        , true);
+         xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
+        xmlHttp.send(null);
+        
+    } else {
+        setTimeout('checkStudentDataEditPage()', 1000);
+    }
+}
+
+
+//librarian form validator
+function validateEditStudentForm() {
+    //alert("Roll Number must be filled out");
+    var formFields = [document.forms["add_student_form"]["student_name"].value,
+        document.forms["add_student_form"]["rollNumber"].value,
+        document.forms["add_student_form"]["department"].value,
+        document.forms["add_student_form"]["fatherName"].value,
+        document.forms["add_student_form"]["batch"].value,
+        document.forms["add_student_form"]["dob"].value,
+        document.forms["add_student_form"]["caste"].value,
+        document.forms["add_student_form"]["address"].value,
+        document.forms["add_student_form"]["perm_address"].value,
+        document.forms["add_student_form"]["nic"].value,
+        document.forms["add_student_form"]["gender"].value,
+        document.forms["add_student_form"]["father_contact"].value,
+        document.forms["add_student_form"]["student_contact_num"].value,
+        document.forms["add_student_form"]["email"].value,
+        document.forms["add_student_form"]["password"].value
+    ];
+
+
+    for (var i = 0; i < formFields.length; i++) {
+        if (formFields[i] == null || formFields[i] == "") {
+            alert("Please Fill All Fields");
+            return false;
+        }
+    }
+
+    mob = document.forms["add_student_form"]["student_contact_num"].value;
+    if (!isMobileNumber(mob)) {
+        alert("Invalid mobile number");
+        return false;
+    }
+
+    
+    mob = document.forms["add_student_form"]["father_contact"].value;
+    if (!isMobileNumber(mob)) {
+        alert("Invalid mobile number");
+        return false;
+    }
+    nic = document.forms["add_student_form"]["nic"].value;
+    if (!validateNic(nic)) {
+        alert("Please Insert 14 Digits NIC Number");
+        return false;
+    }
+
+    var email = document.forms["add_student_form"]["email"].value
+
+    if (!validateEmail(email)) {
+        alert("Please Insert a valid email address");
+        return false;
+    }
+
+    var dob = document.forms["add_student_form"]["dob"].value;
+    if (!validateDob(dob)) {
+        alert("Please insert correct date formate mm/dd/yyyy");
+        return false;
+    }
+
+
+    updateStudentData()
+    //return true;
+
+}//end of method
+
+
+function updateStudentData(){
+     var formFields = [document.forms["add_student_form"]["student_name"].value,
+        document.forms["add_student_form"]["rollNumber"].value,
+        document.forms["add_student_form"]["department"].value,
+        document.forms["add_student_form"]["fatherName"].value,
+        document.forms["add_student_form"]["batch"].value,
+        document.forms["add_student_form"]["dob"].value,
+        document.forms["add_student_form"]["caste"].value,
+        document.forms["add_student_form"]["address"].value,
+        document.forms["add_student_form"]["perm_address"].value,
+        document.forms["add_student_form"]["nic"].value,
+        document.forms["add_student_form"]["gender"].value,
+        document.forms["add_student_form"]["father_contact"].value,
+        document.forms["add_student_form"]["student_contact_num"].value,
+        document.forms["add_student_form"]["email"].value,
+        document.forms["add_student_form"]["password"].value];
+    
+//     for (var i = 0; i < formFields.length; i++) {
+//        //if (formFields[i] == null || formFields[i] == "") {
+//            alert(formFields[i]);
+//           // return false;
+//        //}
+//    }
+    
+     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+        
+        xmlHttp.open("GET", "/final_year_project/UpdateStudentDataServlet?student_name="+formFields[0]+
+                "&rollNumber="+formFields[1]+"&department="+formFields[2]
+        +"&fatherName="+formFields[3]+"&batch="+formFields[4]+"&dob="+formFields[5]
+        +"&caste="+formFields[6]+"&address="+formFields[7]+"&perm_address="+formFields[8]
+        +"&nic="+formFields[9]+"&gender="+formFields[10]+"&father_contact="+formFields[11]
+        +"&student_contact_num="+formFields[12]+"&email="+formFields[13]+"&password="+formFields[14]
+        , true);
+        xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
+        xmlHttp.send(null);
+    } else{
+       // setTimeout('storeStudentData()', 1000);
+        
+    }
+    
 }

@@ -23,7 +23,7 @@ public class AllStudentLoader extends HttpServlet {
 
     private Students student;
     private Session session;
-     private ExecutorService executorService;
+    private ExecutorService executorService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,18 +40,18 @@ public class AllStudentLoader extends HttpServlet {
             if (session == null) {
                 throw new NullPointerException("Hibernate Session is null");
             }
-             executorService = Executors.newFixedThreadPool(1);
-             
-             AllStudentDataLoaderService loader = new AllStudentDataLoaderService(session);
-             
-             Future future = executorService.submit(loader);
-             
-             List<Students> students = (List<Students>)future.get();
-             
-             request.getSession().setAttribute("allStudents", students);
-             
-             response.sendRedirect("content_pages/student_list.jsp");
-             System.out.println("data got");
+            executorService = Executors.newFixedThreadPool(1);
+
+            AllStudentDataLoaderService loader = new AllStudentDataLoaderService(session);
+
+            Future future = executorService.submit(loader);
+
+            List<Students> students = (List<Students>) future.get();
+
+            request.getSession().setAttribute("allStudents", students);
+
+            response.sendRedirect("content_pages/student_list.jsp");
+            System.out.println("data got");
         } catch (NullPointerException e) {
             System.err.println("AllStudentLoader: null value is thrown=" + e.getMessage());
         } catch (Exception e) {
