@@ -63,6 +63,8 @@
 
         <script type="text/javascript" src="pageloader.js">
         </script>
+        <script type="text/javascript" src="subjects.js">
+        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini" >
         <div class="wrapper">
@@ -357,11 +359,24 @@
                             <ul class="treeview-menu">
                                 <li  ><a id="add_student" href="#"><i  class="add_student fa fa-circle-o"></i> Add Student</a></li>
                                 <li><a id="view_students" href="#"><i class="fa fa-circle-o"></i> View Students</a></li>
-                                <li><a id="matric" href="#"><i class="fa fa-circle-o"></i> Add Matric Education</a></li>
-                                <li><a id="inter" href="#"><i class="fa fa-circle-o"></i> Add Inter Education</a></li>
+<!--                                <li><a id="matric" href="#"><i class="fa fa-circle-o"></i> Add Matric Education</a></li>
+                                <li><a id="inter" href="#"><i class="fa fa-circle-o"></i> Add Inter Education</a></li>-->
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-files-o"></i>
+                                <span>Department Subjects</span>
+                                <span class="pull-right-container">
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a id="matric" href="#"><i class="fa fa-circle-o"></i> Add Subject</a></li>
+                                <li><a id="inter" href="#"><i class="fa fa-circle-o"></i> View Subject</a></li>
                             </ul>
                         </li>
 
+                        
 
                         <li class="treeview">
                             <a href="#">

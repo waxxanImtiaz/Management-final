@@ -17,11 +17,11 @@ $(document).ready(function () {
         });
     });
     $("#inter").click(function () {
-        $(".content-wrapper").load("content_pages/intermediate.jsp", function (responseTxt, statusTxt, xhr) {
+        $(".content-wrapper").load("content_pages/view_subject.jsp", function (responseTxt, statusTxt, xhr) {
         });
     });
     $("#matric").click(function () {
-        $(".content-wrapper").load("content_pages/matric.jsp", function (responseTxt, statusTxt, xhr) {
+        $(".content-wrapper").load("content_pages/add_subject.jsp", function (responseTxt, statusTxt, xhr) {
         });
     });
 });

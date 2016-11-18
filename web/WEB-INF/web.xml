@@ -80,6 +80,10 @@
         <servlet-name>StudentDelete</servlet-name>
         <servlet-class>Servlets.StudentDelete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertSubjectData</servlet-name>
+        <servlet-class>Servlets.InsertSubjectData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -155,6 +159,10 @@
     <servlet-mapping>
         <servlet-name>StudentDelete</servlet-name>
         <url-pattern>/StudentDelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertSubjectData</servlet-name>
+        <url-pattern>/InsertSubjectData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
