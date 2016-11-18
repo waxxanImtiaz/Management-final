@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -23,9 +24,11 @@ import org.hibernate.Session;
  */
 public class StudentEditor extends HttpServlet {
 
-   private Intermediate inter;
-   private MatricInformation matric;
+    private Intermediate inter;
+    private MatricInformation matric;
     private Session session;
+    private SessionFactory sf;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,30 +38,32 @@ public class StudentEditor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String rollNumber = request.getParameter("rollNumber");
-        session = (Session) request.getServletContext().getAttribute("hibernateSession");
-        
-        List<Students> students = (List<Students>)request.getSession().getAttribute("allStudents");
+//        session = (Session) request.getServletContext().getAttribute("hibernateSession");
+        sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
+        session = sf.openSession();
+
+        List<Students> students = (List<Students>) request.getSession().getAttribute("allStudents");
         System.out.println("Inside studentEditor");
+
+        matric = (MatricInformation) session.get(MatricInformation.class, rollNumber);
+        inter = (Intermediate) session.get(Intermediate.class, rollNumber);
        
-        matric = (MatricInformation)session.get(MatricInformation.class, rollNumber);
-        inter = (Intermediate)session.get(Intermediate.class, rollNumber);
-       
-        
-        for(Students st : students){
-            if(st.getRollNum().equalsIgnoreCase(rollNumber)){
-                request.getSession().setAttribute("student",st);
-                request.getSession().setAttribute("inter",inter);
-                request.getSession().setAttribute("matric",matric);
-                
+
+        for (Students st : students) {
+            if (st.getRollNum().equalsIgnoreCase(rollNumber)) {
+                request.getSession().setAttribute("student", st);
+                request.getSession().setAttribute("inter", inter);
+                request.getSession().setAttribute("matric", matric);
+
                 response.getWriter().println("true");
                 System.out.println("editor is ok");
                 //response.sendRedirect("content_pages/edit_student.jsp");
                 return;
             }
         }
-        
+
     }
 
     /**

@@ -36,6 +36,8 @@ public class MatricEduDataLoader implements Callable {
             String district = request.getParameter("matricDistrict");
             String board = request.getParameter("matricBoard");
 
+            
+            
            matric.setBoard(board);
            matric.setSchoolName(collageName);
            matric.setDistrict(district);

@@ -25,6 +25,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import org.hibernate.Criteria;
 import org.hibernate.NonUniqueObjectException;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -34,6 +35,7 @@ public class InsertStudentServlet extends HttpServlet {
 
     private PrintWriter printWriter;
     private Session session;
+    private SessionFactory sf;
     private Students student;
     private ExecutorService executorService;
     private Intermediate inter;
@@ -49,14 +51,15 @@ public class InsertStudentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        session = (Session) request.getServletContext().getAttribute("hibernateSession");
+//        session = (Session) request.getServletContext().getAttribute("hibernateSession");
+        sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
         printWriter = response.getWriter();
 
        
 
        
         try {
-
+             session = sf.openSession();
              if (session == null) {
                   throw new NullPointerException("Hibernate Session is null");
               }
@@ -109,6 +112,8 @@ public class InsertStudentServlet extends HttpServlet {
             }
             
             executorService.shutdown();
+            session.close();
+            
             
         } catch (NullPointerException e) {
             System.err.println("InsertStudentServlet: null value is thrown="+e.getMessage());

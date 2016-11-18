@@ -1,6 +1,7 @@
 <!-- Content Header (Page header) -->
-<section class="content-header" onload="checkStudentData()" >
-    <h1>
+<section class="content-header">
+    <h1> 
+        <!--onload="checkStudentData()"--> 
         Add New Student
 
         <small>Control panel</small>

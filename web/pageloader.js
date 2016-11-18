@@ -197,7 +197,7 @@ function storeStudentData() {
                 +"&interCollageName="+formFields[15]+"&interGrade="+formFields[16]+"&interPassingYear="+formFields[17]
                 +"&interTotalMarks="+formFields[18]+"&interDistrict="+formFields[19]+"&interBoard="+formFields[20]
                 +"&interObtainedMarks="+formFields[21]
-                +"&matricCollageName="+formFields[22]+"&matricGrade="+formFields[23]+"&matricPassingYear="+formFields[24]
+                 +"&matricCollageName="+formFields[22]+"&matricGrade="+formFields[23]+"&matricPassingYear="+formFields[24]
                 +"&matricTotalMarks="+formFields[25]+"&matricDistrict="+formFields[26]+"&matricBoard="+formFields[27]
                 +"&matricObtainedMarks="+formFields[28]
             ,

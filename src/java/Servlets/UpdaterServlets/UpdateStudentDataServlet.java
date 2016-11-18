@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
@@ -33,6 +34,7 @@ public class UpdateStudentDataServlet extends HttpServlet {
     private Students student;
     private Session session;
     private PrintWriter out;
+    private SessionFactory sf;
     private ExecutorService executorService;
     private Intermediate inter;
     private MatricInformation matric;
@@ -50,9 +52,11 @@ public class UpdateStudentDataServlet extends HttpServlet {
 
         out = response.getWriter();
 
-        session = (Session) request.getServletContext().getAttribute("hibernateSession");
+//        session = (Session) request.getServletContext().getAttribute("hibernateSession");
+          sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
 
         try {
+            session = sf.openSession();
             executorService = Executors.newFixedThreadPool(3);
 
             //Initialize student data
@@ -69,12 +73,26 @@ public class UpdateStudentDataServlet extends HttpServlet {
 
             Transaction tr = session.beginTransaction();
 
-            System.out.println("student data");
+            System.out.println("UpdateStudentDataServlet");
+            
+            System.out.println("Student data in UpdateStudentDataServlet");
             System.out.println(student);
-            session.saveOrUpdate(student);
+//            session.update(student);
+            session.delete(student);
 
             tr.commit();
-            out.print("Data updated successfully");
+            
+            
+            tr = session.beginTransaction();
+            
+            session.save(student);
+            
+            tr.commit();
+            out.print("Data updated successfully by UpdateStudentDataServlet");
+            
+            
+            
+            session.close();
 
         } catch (Exception e) {
             out.println(e);
