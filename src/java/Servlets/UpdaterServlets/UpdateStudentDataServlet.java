@@ -48,12 +48,12 @@ public class UpdateStudentDataServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // student = (Students) request.getSession().getAttribute("student");
+        // student = (Students) request.getSession().getAttribute("student");
 
         out = response.getWriter();
 
 //        session = (Session) request.getServletContext().getAttribute("hibernateSession");
-          sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
+        sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
 
         try {
             session = sf.openSession();
@@ -71,31 +71,68 @@ public class UpdateStudentDataServlet extends HttpServlet {
 
             student = studentFuture.get();
 
+            inter = interFuture.get();
+            matric = matricFuture.get();
+            
+            inter.setUniRollNum(student.getRollNum());
+            matric.setUniRollNum(student.getRollNum());
+            
             Transaction tr = session.beginTransaction();
 
             System.out.println("UpdateStudentDataServlet");
-            
-            System.out.println("Student data in UpdateStudentDataServlet");
-            System.out.println(student);
-//            session.update(student);
-            session.delete(student);
 
+            System.out.println("Student data in UpdateStudentDataServlet");
+            
+            //DELETE STUDENT
+            session.delete(student);
             tr.commit();
+            session.close();
             
-            
+             System.out.println("after delete student");
+
+             
+            session = sf.openSession();
             tr = session.beginTransaction();
             
-            session.save(student);
-            
+            session.delete(inter);
             tr.commit();
-            out.print("Data updated successfully by UpdateStudentDataServlet");
-            
-            
-            
             session.close();
 
+            session = sf.openSession();
+            tr = session.beginTransaction();
+            session.delete(matric);
+            tr.commit();
+            session.close();
+
+            System.out.println(student);
+
+            //SAVE STUDENT PERSONAL INFO
+            session = sf.openSession();
+            tr = session.beginTransaction();
+            session.save(student);
+            tr.commit();
+            session.close();
+
+            session = sf.openSession();
+            tr = session.beginTransaction();
+            session.save(inter);
+            tr.commit();
+            session.close();
+
+            session = sf.openSession();
+            tr = session.beginTransaction();
+            session.save(matric);
+            tr.commit();
+            session.close();
+
+
+            out.print("Data updated successfully");
+            System.out.println("Data updated successfully by UpdateStudentDataServlet");
+
         } catch (Exception e) {
+            e.printStackTrace();
             out.println(e);
+            
         }
     }
 

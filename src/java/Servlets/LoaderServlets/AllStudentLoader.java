@@ -18,11 +18,13 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+import org.hibernate.SessionFactory;
 
 public class AllStudentLoader extends HttpServlet {
 
     private Students student;
     private Session session;
+    private SessionFactory sf;
     private ExecutorService executorService;
 
     @Override
@@ -34,9 +36,11 @@ public class AllStudentLoader extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        session = (Session) request.getServletContext().getAttribute("hibernateSession");
+//        session = (Session) request.getServletContext().getAttribute("hibernateSession");
+        sf= (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
         try {
 
+            session = sf.openSession();
             if (session == null) {
                 throw new NullPointerException("Hibernate Session is null");
             }

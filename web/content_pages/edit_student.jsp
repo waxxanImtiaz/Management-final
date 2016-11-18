@@ -45,19 +45,19 @@
               <div class="box-body">
                   <div class="form-group">
                   <label for="rollNumber">Roll Number</label>
-                  <input type="text" class="form-control" value=" <%= student.getRollNum() %>" id="rollNumber" placeholder="Enter roll number" disabled>
+                  <input type="text" class="form-control" value="<%=student.getRollNum() %>" id="rollNumber" placeholder="Enter roll number" disabled>
               </div>
                   <div class="form-group">
                   <label for="student_name">Name</label>
-                  <input type="text" class="form-control" value=" <%= student.getName() %>" id="student_name" placeholder="Enter name">
+                  <input type="text" class="form-control" value="<%=student.getName() %>" id="student_name" placeholder="Enter name">
                 </div>
                   <div class="form-group">
                   <label for="fatherName">Father Name</label>
-                  <input type="text" class="form-control" value=" <%= student.getFatherName() %>" id="fatherName" placeholder="Enter father name">
+                  <input type="text" class="form-control" value="<%=student.getFatherName() %>" id="fatherName" placeholder="Enter father name">
                 </div>
                   <div class="form-group">
                   <label for="batch">Batch</label>
-                  <input type="text" class="form-control" value=" <%= student.getBatch() %>" id="batch" placeholder="Enter batch">
+                  <input type="text" class="form-control" value="<%=student.getBatch() %>" id="batch" placeholder="Enter batch">
                 </div>
                   <!-- Date -->
               <div class="form-group">
@@ -67,7 +67,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                    <input type="text" value=" <%= student.getRollNum() %>"  class="form-control pull-right" id="dob">
+                    <input type="text" value="<%=student.getDob() %>"  class="form-control pull-right" id="dob">
                 </div>
                 <!-- /.input group -->
               </div>
@@ -76,7 +76,7 @@
                   
                     <div class="form-group">
                         <label>Department</label>
-                         <select class="form-control" id = "department" value=" <%= student.getDepartment() %>">
+                         <select class="form-control" id = "department" value="<%=student.getDepartment() %>">
                             <option>Computer System</option>
                             <option>Chemical Engineering</option>
                             <option>Electronic Engineering</option>
@@ -87,41 +87,41 @@
                   
                   <div class="form-group">
                   <label for="caste">Caste</label>
-                  <input type="text" class="form-control" id="caste" value=" <%= student.getCaste() %>" placeholder="Enter caste">
+                  <input type="text" class="form-control" id="caste" value="<%= student.getCaste() %>" placeholder="Enter caste">
                     </div>
                   <div class="form-group">
                   <label for="address">Address</label>
-                  <input type="text" class="form-control" id="address" value=" <%= student.getTempAdd() %>"  placeholder="Enter address">
+                  <input type="text" class="form-control" id="address" value="<%=student.getTempAdd() %>"  placeholder="Enter address">
                 </div>
                   
                   <div class="form-group">
                   <label for="perm_address">Permanent Address</label>
-                  <input type="text" class="form-control" id="perm_address" value=" <%= student.getPermAdd() %>" placeholder="Enter permanent address">
+                  <input type="text" class="form-control" id="perm_address" value="<%=student.getPermAdd() %>" placeholder="Enter permanent address">
                 </div>
                   <div class="form-group">
                   <label for="nic">NIC #</label>
-                  <input type="text" class="form-control" id="nic" value=" <%= student.getCnic() %>" placeholder="Enter nic #">
+                  <input type="text" class="form-control" id="nic" value="<%=student.getCnic() %>" placeholder="Enter nic #">
                 </div>
                   <div class="form-group">
                   <label for="gender">Gender</label>
-                  <input type="text" class="form-control" id="gender" value=" <%= student.getGender() %>" placeholder="Enter gender">
+                  <input type="text" class="form-control" id="gender" value="<%=student.getGender() %>" placeholder="Enter gender">
                 </div>
                   <div class="form-group">
                   <label for="father_contact">Father Contact #</label>
-                  <input type="text" class="form-control" id="father_contact" value=" <%= student.getFtContactNum() %>" placeholder="Enter father contact #">
+                  <input type="text" class="form-control" id="father_contact" value="<%=student.getFtContactNum() %>" placeholder="Enter father contact #">
                 </div>
                   <div class="form-group">
                   <label for="student_contact_num">Student Contact #</label>
-                  <input type="text" class="form-control" id="student_contact_num" value=" <%= student.getStContactNum() %>" placeholder="Enter student contact #">
+                  <input type="text" class="form-control" id="student_contact_num" value="<%=student.getStContactNum() %>" placeholder="Enter student contact #">
                 </div>
                   
                 <div class="form-group">
                   <label for="email">Email address</label>
-                  <input type="email" class="form-control" value=" <%= student.getStEmail() %>" id="email" placeholder="Enter email">
+                  <input type="email" class="form-control" value="<%=student.getStEmail() %>" id="email" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" value=" <%= student.getPassword() %>" placeholder="Password">
+                  <input type="password" class="form-control" id="password" value="<%=student.getPassword() %>" placeholder="Password">
                 </div>
              
                 
@@ -129,35 +129,35 @@
                     <h3 class="box-title">Matriculation Education</h3><br />
                     <div class="form-group">
                         <label for="collageName">School/Collage Name</label>
-                        <input type="text" class="form-control" value=" <%= matric.getSchoolName() %>"  id="matricCollageName" placeholder="Enter school/collage name">
+                        <input type="text" class="form-control" value="<%=matric.getSchoolName() %>"  id="matricCollageName" placeholder="Enter school/collage name">
                     </div>
                     <div class="form-group">
                         <label for="grade">Grade</label>
-                        <input type="text" class="form-control"  value ="<%= matric.getGrade() %>"   id="matricGrade" placeholder="Enter grade">
+                        <input type="text" class="form-control"  value ="<%=matric.getGrade() %>"   id="matricGrade" placeholder="Enter grade">
                     </div>
 
                     <div class="form-group">
                         <label for="board">Board</label>
-                        <input type="text" class="form-control" value ="<%= matric.getBoard() %>"  id="matricBoard" placeholder="Enter board">
+                        <input type="text" class="form-control" value ="<%=matric.getBoard() %>"  id="matricBoard" placeholder="Enter board">
                     </div>
 
 
                     <div class="form-group">
                         <label for="totalMarks">Total Marks</label>
-                        <input type="text" class="form-control" value ="<%= matric.getTotalMarks() %>"  id="matricTotalMarks" placeholder="Enter total marks">
+                        <input type="text" class="form-control" value ="<%=matric.getTotalMarks() %>"  id="matricTotalMarks" placeholder="Enter total marks">
                     </div>
                     <div class="form-group">
                         <label for="passingYear">Passing Year</label>
-                        <input type="text" class="form-control" value ="<%= matric.getPassingYear() %>"  id="matricPassingYear" placeholder="Enter passing year">
+                        <input type="text" class="form-control" value ="<%=matric.getPassingYear() %>"  id="matricPassingYear" placeholder="Enter passing year">
                     </div>
 
                     <div class="form-group">
                         <label for="district">District</label>
-                        <input type="text" class="form-control" value ="<%= matric.getDistrict() %>"  id="matricDistrict" placeholder="Enter district">
+                        <input type="text" class="form-control" value ="<%=matric.getDistrict() %>"  id="matricDistrict" placeholder="Enter district">
                     </div>
                     <div class="form-group">
                         <label for="obtainedMarks">Obtained Marks</label>
-                        <input type="text" class="form-control" value ="<%= matric.getObtainedMarks() %>"  id="matricObtainedMarks" placeholder="Enter obtained marks">
+                        <input type="text" class="form-control" value ="<%=matric.getObtainedMarks() %>"  id="matricObtainedMarks" placeholder="Enter obtained marks">
                     </div>
 
 
@@ -166,35 +166,35 @@
                     <h3 class="box-title">Intermediate Education</h3><br />
                     <div class="form-group">
                         <label for="collageName">Collage Name</label>
-                        <input type="text" class="form-control" value ="<%= inter.getCollageName() %>"  id="interCollageName" placeholder="Enter collage name">
+                        <input type="text" class="form-control" value ="<%=inter.getCollageName() %>"  id="interCollageName" placeholder="Enter collage name">
                     </div>
                     <div class="form-group">
                         <label for="grade">Grade</label>
-                        <input type="text" class="form-control" value ="<%= inter.getGrade() %>" id="interGrade" placeholder="Enter grade">
+                        <input type="text" class="form-control" value ="<%=inter.getGrade() %>" id="interGrade" placeholder="Enter grade">
                     </div>
 
                     <div class="form-group">
                         <label for="board">Board</label>
-                        <input type="text" class="form-control" value ="<%= inter.getBoard() %>" id="interBoard" placeholder="Enter board">
+                        <input type="text" class="form-control" value ="<%=inter.getBoard() %>" id="interBoard" placeholder="Enter board">
                     </div>
 
 
                     <div class="form-group">
                         <label for="totalMarks">Total Marks</label>
-                        <input type="text" class="form-control" value ="<%= inter.getTotalMarks() %>"id="interTotalMarks" placeholder="Enter total marks">
+                        <input type="text" class="form-control" value ="<%=inter.getTotalMarks() %>"id="interTotalMarks" placeholder="Enter total marks">
                     </div>
                     <div class="form-group">
                         <label for="passingYear">Passing Year</label>
-                        <input type="text" class="form-control" value ="<%= inter.getPassingYear() %>" id="interPassingYear" placeholder="Enter passing year">
+                        <input type="text" class="form-control" value ="<%=inter.getPassingYear() %>" id="interPassingYear" placeholder="Enter passing year">
                     </div>
 
                     <div class="form-group">
                         <label for="district">District</label>
-                        <input type="text" class="form-control" value ="<%= inter.getDistrict() %>" id="interDistrict" placeholder="Enter district">
+                        <input type="text" class="form-control" value ="<%=inter.getDistrict() %>" id="interDistrict" placeholder="Enter district">
                     </div>
                     <div class="form-group">
                         <label for="obtainedMarks">Obtained Marks</label>
-                        <input type="number" class="form-control" value ="<%= inter.getObtainedMarks() %>" id="interObtainedMarks" placeholder="Enter obtained marks">
+                        <input type="number" class="form-control" value ="<%=inter.getObtainedMarks() %>" id="interObtainedMarks" placeholder="Enter obtained marks">
                     </div>
 
 
