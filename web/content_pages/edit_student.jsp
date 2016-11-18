@@ -4,6 +4,8 @@
 
 <%
     Students student = (Students)session.getAttribute("student");
+    Intermediate inter = (Intermediate)session.getAttribute("inter");
+    MatricInformation matric = (MatricInformation)session.getAttribute("matric");
 
 %>
 
@@ -122,6 +124,80 @@
                   <input type="password" class="form-control" id="password" value=" <%= student.getPassword() %>" placeholder="Password">
                 </div>
              
+                
+                 <!-- Matric info -->
+                    <h3 class="box-title">Matriculation Education</h3><br />
+                    <div class="form-group">
+                        <label for="collageName">School/Collage Name</label>
+                        <input type="text" class="form-control" value=" <%= matric.getSchoolName() %>"  id="matricCollageName" placeholder="Enter school/collage name">
+                    </div>
+                    <div class="form-group">
+                        <label for="grade">Grade</label>
+                        <input type="text" class="form-control"  value ="<%= matric.getGrade() %>"   id="matricGrade" placeholder="Enter grade">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="board">Board</label>
+                        <input type="text" class="form-control" value ="<%= matric.getBoard() %>"  id="matricBoard" placeholder="Enter board">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="totalMarks">Total Marks</label>
+                        <input type="text" class="form-control" value ="<%= matric.getTotalMarks() %>"  id="matricTotalMarks" placeholder="Enter total marks">
+                    </div>
+                    <div class="form-group">
+                        <label for="passingYear">Passing Year</label>
+                        <input type="text" class="form-control" value ="<%= matric.getPassingYear() %>"  id="matricPassingYear" placeholder="Enter passing year">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="district">District</label>
+                        <input type="text" class="form-control" value ="<%= matric.getDistrict() %>"  id="matricDistrict" placeholder="Enter district">
+                    </div>
+                    <div class="form-group">
+                        <label for="obtainedMarks">Obtained Marks</label>
+                        <input type="text" class="form-control" value ="<%= matric.getObtainedMarks() %>"  id="matricObtainedMarks" placeholder="Enter obtained marks">
+                    </div>
+
+
+
+                    <!-- Intermeidate info -->
+                    <h3 class="box-title">Intermediate Education</h3><br />
+                    <div class="form-group">
+                        <label for="collageName">Collage Name</label>
+                        <input type="text" class="form-control" value ="<%= inter.getCollageName() %>"  id="interCollageName" placeholder="Enter collage name">
+                    </div>
+                    <div class="form-group">
+                        <label for="grade">Grade</label>
+                        <input type="text" class="form-control" value ="<%= inter.getGrade() %>" id="interGrade" placeholder="Enter grade">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="board">Board</label>
+                        <input type="text" class="form-control" value ="<%= inter.getBoard() %>" id="interBoard" placeholder="Enter board">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="totalMarks">Total Marks</label>
+                        <input type="text" class="form-control" value ="<%= inter.getTotalMarks() %>"id="interTotalMarks" placeholder="Enter total marks">
+                    </div>
+                    <div class="form-group">
+                        <label for="passingYear">Passing Year</label>
+                        <input type="text" class="form-control" value ="<%= inter.getPassingYear() %>" id="interPassingYear" placeholder="Enter passing year">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="district">District</label>
+                        <input type="text" class="form-control" value ="<%= inter.getDistrict() %>" id="interDistrict" placeholder="Enter district">
+                    </div>
+                    <div class="form-group">
+                        <label for="obtainedMarks">Obtained Marks</label>
+                        <input type="number" class="form-control" value ="<%= inter.getObtainedMarks() %>" id="interObtainedMarks" placeholder="Enter obtained marks">
+                    </div>
+
+
                 
               </div>
               <!-- /.box-body -->

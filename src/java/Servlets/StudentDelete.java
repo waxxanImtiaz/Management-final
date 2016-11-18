@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
@@ -23,35 +24,37 @@ public class StudentDelete extends HttpServlet {
 
     private Students student;
     private Session session;
+    private SessionFactory sf;
     private PrintWriter out;
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String rollNumber = request.getParameter("rollNumber");
-      //  student =(Students) request.getSession().getAttribute("student");
-        
+        //  student =(Students) request.getSession().getAttribute("student");
+
         out = response.getWriter();
-        
-         session = (Session) request.getServletContext().getAttribute("hibernateSession");
-        
-         student = (Students)session.get(Students.class, rollNumber);
+
+//        session = (Session) request.getServletContext().getAttribute("hibernateSession");
+        sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
+
+        session = sf.openSession();
+        student = (Students) session.get(Students.class, rollNumber);
         Transaction tr = session.beginTransaction();
-        
+
         session.delete(student);
-        
+
         tr.commit();
         out.print("Data deleted successfully");
         System.out.println("Data deleted successfully");
-       
+
     }
 
     /**

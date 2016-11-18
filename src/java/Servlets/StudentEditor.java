@@ -5,6 +5,8 @@
  */
 package Servlets;
 
+import beans.Intermediate;
+import beans.MatricInformation;
 import beans.Students;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
 
 /**
  *
@@ -20,7 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class StudentEditor extends HttpServlet {
 
-   
+   private Intermediate inter;
+   private MatricInformation matric;
+    private Session session;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,15 +37,23 @@ public class StudentEditor extends HttpServlet {
             throws ServletException, IOException {
         
         String rollNumber = request.getParameter("rollNumber");
+        session = (Session) request.getServletContext().getAttribute("hibernateSession");
         
         List<Students> students = (List<Students>)request.getSession().getAttribute("allStudents");
         System.out.println("Inside studentEditor");
+       
+        matric = (MatricInformation)session.get(MatricInformation.class, rollNumber);
+        inter = (Intermediate)session.get(Intermediate.class, rollNumber);
        
         
         for(Students st : students){
             if(st.getRollNum().equalsIgnoreCase(rollNumber)){
                 request.getSession().setAttribute("student",st);
+                request.getSession().setAttribute("inter",inter);
+                request.getSession().setAttribute("matric",matric);
+                
                 response.getWriter().println("true");
+                System.out.println("editor is ok");
                 //response.sendRedirect("content_pages/edit_student.jsp");
                 return;
             }

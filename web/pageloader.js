@@ -198,7 +198,7 @@ function storeStudentData() {
                 +"&interTotalMarks="+formFields[18]+"&interDistrict="+formFields[19]+"&interBoard="+formFields[20]
                 +"&interObtainedMarks="+formFields[21]
                 +"&matricCollageName="+formFields[22]+"&matricGrade="+formFields[23]+"&matricPassingYear="+formFields[24]
-                +"&interTotalMarks="+formFields[25]+"&interDistrict="+formFields[26]+"&interBoard="+formFields[27]
+                +"&matricTotalMarks="+formFields[25]+"&matricDistrict="+formFields[26]+"&matricBoard="+formFields[27]
                 +"&matricObtainedMarks="+formFields[28]
             ,
                 
@@ -327,7 +327,25 @@ function validateEditStudentForm() {
         document.forms["add_student_form"]["father_contact"].value,
         document.forms["add_student_form"]["student_contact_num"].value,
         document.forms["add_student_form"]["email"].value,
-        document.forms["add_student_form"]["password"].value
+        document.forms["add_student_form"]["password"].value,
+        
+        
+        document.forms["add_student_form"]["interCollageName"].value,
+        document.forms["add_student_form"]["interGrade"].value,
+        document.forms["add_student_form"]["interPassingYear"].value,
+        document.forms["add_student_form"]["interTotalMarks"].value,
+        document.forms["add_student_form"]["interDistrict"].value,
+        document.forms["add_student_form"]["interBoard"].value,
+        document.forms["add_student_form"]["interObtainedMarks"].value,
+        
+        document.forms["add_student_form"]["matricCollageName"].value,
+        document.forms["add_student_form"]["matricGrade"].value,
+        document.forms["add_student_form"]["matricPassingYear"].value,
+        document.forms["add_student_form"]["matricTotalMarks"].value,
+        document.forms["add_student_form"]["matricDistrict"].value,
+        document.forms["add_student_form"]["matricBoard"].value,
+        document.forms["add_student_form"]["matricObtainedMarks"].value
+        
     ];
 
 
@@ -398,7 +416,24 @@ function updateStudentData() {
         document.forms["add_student_form"]["father_contact"].value,
         document.forms["add_student_form"]["student_contact_num"].value,
         document.forms["add_student_form"]["email"].value,
-        document.forms["add_student_form"]["password"].value];
+        document.forms["add_student_form"]["password"].value,
+        
+        document.forms["add_student_form"]["interCollageName"].value,
+        document.forms["add_student_form"]["interGrade"].value,
+        document.forms["add_student_form"]["interPassingYear"].value,
+        document.forms["add_student_form"]["interTotalMarks"].value,
+        document.forms["add_student_form"]["interDistrict"].value,
+        document.forms["add_student_form"]["interBoard"].value,
+        document.forms["add_student_form"]["interObtainedMarks"].value,
+        
+        document.forms["add_student_form"]["matricCollageName"].value,
+        document.forms["add_student_form"]["matricGrade"].value,
+        document.forms["add_student_form"]["matricPassingYear"].value,
+        document.forms["add_student_form"]["matricTotalMarks"].value,
+        document.forms["add_student_form"]["matricDistrict"].value,
+        document.forms["add_student_form"]["matricBoard"].value,
+        document.forms["add_student_form"]["matricObtainedMarks"].value
+    ];
 
 //     for (var i = 0; i < formFields.length; i++) {
 //        //if (formFields[i] == null || formFields[i] == "") {
@@ -415,6 +450,13 @@ function updateStudentData() {
                 + "&caste=" + formFields[6] + "&address=" + formFields[7] + "&perm_address=" + formFields[8]
                 + "&nic=" + formFields[9] + "&gender=" + formFields[10] + "&father_contact=" + formFields[11]
                 + "&student_contact_num=" + formFields[12] + "&email=" + formFields[13] + "&password=" + formFields[14]
+       
+                +"&interCollageName="+formFields[15]+"&interGrade="+formFields[16]+"&interPassingYear="+formFields[17]
+                +"&interTotalMarks="+formFields[18]+"&interDistrict="+formFields[19]+"&interBoard="+formFields[20]
+                +"&interObtainedMarks="+formFields[21]
+                +"&matricCollageName="+formFields[22]+"&matricGrade="+formFields[23]+"&matricPassingYear="+formFields[24]
+                +"&matricTotalMarks="+formFields[25]+"&matricDistrict="+formFields[26]+"&matricBoard="+formFields[27]
+                +"&matricObtainedMarks="+formFields[28]
                 , true);
         xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
         xmlHttp.send(null);
