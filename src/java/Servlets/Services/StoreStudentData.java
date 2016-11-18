@@ -17,10 +17,13 @@ public class StoreStudentData implements Callable {
 
     private Students student;
     private Session session;
-
-    public StoreStudentData(Students student, Session session) {
+    private Intermediate inter;
+    private MatricInformation matric;
+    public StoreStudentData(Students student,Intermediate inter,MatricInformation matric, Session session) {
         this.student = student;
         this.session = session;
+        this.inter = inter;
+        this.matric = matric;
     }
 
     @Override
@@ -30,19 +33,51 @@ public class StoreStudentData implements Callable {
 
     private Boolean storeData() {
 
+        boolean flag = true;
+        
         Transaction tr = session.beginTransaction();
+        
         String pk = (String) session.save(student);
+        
         System.out.println("pk=" + pk);
         tr.commit();
         session.evict(student);
-
-        if (pk != null) {
-            System.err.println("data stored successfully");
-            return true;
-        } else {
-            System.err.println("data not stored");
-            return false;
+        
+        
+        if (pk == null) {
+            System.err.println("student data not stored");
+            flag = false;
         }
+        
+        tr = session.beginTransaction();
+        
+        pk = (String) session.save(inter);
+        
+        tr.commit();
+        session.evict(inter);
+        
+        if (pk == null) {
+            System.err.println("inter data not stored");
+            flag = false;
+        }
+        
+        
+        tr = session.beginTransaction();
+        
+        pk = (String) session.save(matric);
+        
+        tr.commit();
+        session.evict(matric);
+        
+        if (pk == null) {
+            System.err.println("matric data not stored");
+            flag = false;
+        }
+        
+        if(flag){
+            System.err.println("All student data stored successfully");
+        }
+         return flag;
     }
 
 }

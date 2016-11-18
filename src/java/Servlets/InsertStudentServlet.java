@@ -5,6 +5,8 @@
  */
 package Servlets;
 
+import Servlets.Services.InterEduDataLoader;
+import Servlets.Services.MatricEduDataLoader;
 import Servlets.Services.StoreStudentData;
 import Servlets.Services.StudentDataChecker;
 import Servlets.Services.StudentDataLoader;
@@ -34,6 +36,8 @@ public class InsertStudentServlet extends HttpServlet {
     private Session session;
     private Students student;
     private ExecutorService executorService;
+    private Intermediate inter;
+    private MatricInformation matric;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -58,22 +62,34 @@ public class InsertStudentServlet extends HttpServlet {
               }
              
              
-            executorService = Executors.newFixedThreadPool(3);
+            executorService = Executors.newFixedThreadPool(5);
 
             //Initialize student data
             StudentDataLoader loader = new StudentDataLoader(new Students(), request);
             Future<Students> studentFuture = executorService.submit(loader);
+
+
+            InterEduDataLoader interData = new InterEduDataLoader(new Intermediate(), request);
+            MatricEduDataLoader matricData = new MatricEduDataLoader(new MatricInformation(), request);
             
-           
+            Future<MatricInformation> matricFuture = executorService.submit(matricData);
+            Future<Intermediate> interFuture = executorService.submit(interData);
+            
+            
+            
             student = studentFuture.get();
             
             
             //Check data..
             StudentDataChecker studentChecker = new StudentDataChecker(student, session);
             Future<Boolean> b = executorService.submit(studentChecker);
-
             
-           
+            inter = interFuture.get();
+            matric = matricFuture.get();
+            
+            inter.setUniRollNum(student.getRollNum());
+            matric.setUniRollNum(student.getRollNum());
+            
             Boolean result = b.get();
             if (result) {
                 printWriter.println("Student with " + student.getRollNum() + " already exists");
@@ -83,7 +99,7 @@ public class InsertStudentServlet extends HttpServlet {
 
             //Store student data
              //Check data..
-            StoreStudentData store = new StoreStudentData(student, session);
+            StoreStudentData store = new StoreStudentData(student,inter,matric, session);
             Future<Boolean> st = executorService.submit(store);
             
             result = st.get();
