@@ -100,6 +100,10 @@
         <servlet-name>SubjectDelete</servlet-name>
         <servlet-class>Servlets.SubjectDelete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubjectsAndDepartLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.SubjectsAndDepartLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -195,6 +199,10 @@
     <servlet-mapping>
         <servlet-name>SubjectDelete</servlet-name>
         <url-pattern>/SubjectDelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectsAndDepartLoader</servlet-name>
+        <url-pattern>/SubjectsAndDepartLoader</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

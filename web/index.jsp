@@ -65,6 +65,10 @@
         </script>
         <script type="text/javascript" src="subjects.js">
         </script>
+        <script type="text/javascript" src="result.js">
+        </script>
+        <script type="text/javascript" src="jquery_pageLoader.js">
+        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini" >
         <div class="wrapper">
@@ -381,18 +385,14 @@
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-laptop"></i>
-                                <span>UI Elements</span>
+                                <span>Result</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                                <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                                <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                                <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                                <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                                <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+                                <li><a href="#" id="add_result"><i class="fa fa-circle-o"></i> Add Result</a></li>
+                                <li><a href="#" id="view_result"><i class="fa fa-circle-o"></i> View Result</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
