@@ -23,6 +23,19 @@ $(document).ready(function () {
         $(".content-wrapper").load("content_pages/add_subject.jsp", function (responseTxt, statusTxt, xhr) {
         });
     });
+    
+     $("#add_result").click(function () {
+        $(".content-wrapper").load("/final_year_project/SubjectsAndDepartLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
+     $("#add_batch").click(function () {
+        $(".content-wrapper").load("content_pages/batch_and_depart_pages/add_depart_batch.jsp", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
+     $("#view_batch").click(function () {
+        $(".content-wrapper").load("/final_year_project/AllBatchLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
 });
 
 

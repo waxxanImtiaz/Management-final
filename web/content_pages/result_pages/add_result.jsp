@@ -1,7 +1,15 @@
+
+<%@page import="java.util.List"%>
+<%@page import="beans.*" %>
+
+<%
+   List<Subjects> subjects = (List<Subjects>)session.getAttribute("allSubjects");
+    List<DepartAndBatches> departs = (List<DepartAndBatches>)session.getAttribute("departments");
+%>
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Add Result Of Student
+        Add Subject Of department
         
         <small>Control panel</small>
       </h1>
@@ -29,25 +37,20 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form"  name="add_subject_form">
-              
-               
+              <div class="box-body">
+                  <div class="form-group">
+                  <label for="subjectName">Subject Name</label>
+                  <input type="text" class="form-control" id="subjectName" placeholder="Enter subject name">
+              </div>
                   <div class="form-group">
                         <label>Department</label>
                          <select class="form-control" id = "department" >
-                            <option>Computer System</option>
-                            <option>Chemical Engineering</option>
-                            <option>Electronic Engineering</option>
-                            <option>Industrial Engineering</option>
-                            <option>Energy & Environement Engineering</option>
+                             <% for(DepartAndBatches db : departs){ %>
+                            <option><%= db.getDepart() %></option>
+                            <% } %>
                         </select>
                     </div>
                   
-                 <div class="form-group">
-                        <label>Subject</label>
-                         <select class="form-control" id = "department" >
-                            <option>Computer System</option>
-                        </select>
-                    </div>
                   <div class="form-group">
                         <label>Semester</label>
                          <select class="form-control" id = "semester" >

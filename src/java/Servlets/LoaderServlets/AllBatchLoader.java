@@ -6,7 +6,7 @@
 package Servlets.LoaderServlets;
 
 
-import beans.Subjects;
+import beans.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -22,9 +22,9 @@ import org.hibernate.SessionFactory;
 import java.util.concurrent.Callable;
 import org.hibernate.Criteria;
 
-public class AllSubjectsLoader extends HttpServlet {
+public class AllBatchLoader extends HttpServlet {
 
-    private Subjects subjects;
+    private DepartAndBatches batch;
     private Session session; 
     private SessionFactory sf;
     private ExecutorService executorService;
@@ -38,7 +38,6 @@ public class AllSubjectsLoader extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        session = (Session) request.getServletContext().getAttribute("hibernateSession");
         sf= (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
         try {
 
@@ -48,20 +47,22 @@ public class AllSubjectsLoader extends HttpServlet {
             }
             executorService = Executors.newFixedThreadPool(1);
 
-            AllSubjectsDataLoaderService loader = new AllSubjectsDataLoaderService(session);
+            AllBatchesDataLoaderService loader = new AllBatchesDataLoaderService(session);
 
             Future future = executorService.submit(loader);
 
-            List<Subjects> subjects = (List<Subjects>) future.get();
+            List<DepartAndBatches> batches = (List<DepartAndBatches>) future.get();
 
-            request.getSession().setAttribute("allSubjects", subjects);
+            request.getSession().setAttribute("allBatches", batches);
 
-            response.sendRedirect("content_pages/view_subject.jsp");
-            System.out.println("All Subjects Got");
+            response.sendRedirect("content_pages/batch_and_depart_pages/view_depart_batch.jsp");
+            System.out.println("All Batches Got");
+            
+            executorService.shutdown();
         } catch (NullPointerException e) {
-            System.err.println("AllSubjectsLoader: null value is thrown=" + e.getMessage());
+            System.err.println("AllBatchesLoader: null value is thrown=" + e.getMessage());
         } catch (Exception e) {
-            System.err.println("Exceptoin in AllSubjectsLoader:=" + e.getMessage());
+            System.err.println("Exceptoin in AllBatchesLoader:=" + e.getMessage());
         }
     }
 
@@ -70,21 +71,21 @@ public class AllSubjectsLoader extends HttpServlet {
         return "AllStudentLoader";
     }// </editor-fold>
 
-    class AllSubjectsDataLoaderService implements Callable {
+    class AllBatchesDataLoaderService implements Callable {
     private Session session;
-    public AllSubjectsDataLoaderService(Session session){
+    public AllBatchesDataLoaderService(Session session){
         this.session = session;
     }
     @Override 
-    public List<Subjects> call(){
+    public List<DepartAndBatches> call(){
         return getAllStudents();
     }
     
-    public List<Subjects> getAllStudents(){
-        Criteria cr = session.createCriteria(Subjects.class);
-        List<Subjects> subjects = cr.list();
+    public List<DepartAndBatches> getAllStudents(){
+        Criteria cr = session.createCriteria(DepartAndBatches.class);
+        List<DepartAndBatches> batches = cr.list();
         
-        return subjects;
+        return batches;
     }
 }
 }

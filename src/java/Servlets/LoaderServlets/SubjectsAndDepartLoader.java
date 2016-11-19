@@ -5,85 +5,129 @@
  */
 package Servlets.LoaderServlets;
 
+import beans.DepartAndBatches;
+import beans.Subjects;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import org.hibernate.SessionFactory;
+import java.util.concurrent.Callable;
+import org.hibernate.Criteria;
 
-/**
- *
- * @author waxxan
- */
 public class SubjectsAndDepartLoader extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SubjectsAndDepartLoader</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SubjectsAndDepartLoader at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {
-            out.close();
-        }
-    }
+    private Subjects subjects;
+    private DepartAndBatches departs;
+    private Session session;
+    private SessionFactory sf;
+    private ExecutorService executorService;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doPost(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        session = (Session) request.getServletContext().getAttribute("hibernateSession");
+        System.out.println("Inside subjects and depart loader");
+        sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
+        try {
+
+            session = sf.openSession();
+            if (session == null) {
+                throw new NullPointerException("Hibernate Session is null");
+            }
+            executorService = Executors.newFixedThreadPool(2);
+
+            AllSubjectsDataLoaderService loader = new AllSubjectsDataLoaderService(session);
+
+            Future future = executorService.submit(loader);
+
+            List<Subjects> subjects = (List<Subjects>) future.get();
+
+            AllDepartsDataLoaderService dep = new AllDepartsDataLoaderService(session);
+
+            Future fut = executorService.submit(dep);
+
+            List<DepartAndBatches> departs = (List<DepartAndBatches>) fut.get();
+
+            System.out.println("Total departs");
+
+            for (DepartAndBatches db : departs) {
+                System.out.println(db.getDepart());
+            }
+
+            request.getSession().setAttribute("allSubjects", subjects);
+            request.getSession().setAttribute("departments", departs);
+
+            response.sendRedirect("content_pages/result_pages/add_result.jsp");
+            System.out.println("All Subjects Got");
+        } catch (NullPointerException e) {
+            System.err.println("AllSubjectsLoader: null value is thrown=" + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Exceptoin in AllSubjectsLoader:=" + e.getMessage());
+        }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "AllStudentLoader";
     }// </editor-fold>
 
+    class AllSubjectsDataLoaderService implements Callable {
+
+        private Session session;
+
+        public AllSubjectsDataLoaderService(Session session) {
+            this.session = session;
+        }
+
+        @Override
+        public List<Subjects> call() {
+            return getAllStudents();
+        }
+
+        public List<Subjects> getAllStudents() {
+            Criteria cr = session.createCriteria(Subjects.class);
+            List<Subjects> subjects = cr.list();
+
+            return subjects;
+        }
+    }
+
+    class AllDepartsDataLoaderService implements Callable {
+
+        private Session session;
+
+        public AllDepartsDataLoaderService(Session session) {
+            this.session = session;
+        }
+
+        @Override
+        public List<DepartAndBatches> call() {
+            return getAllDeparts();
+        }
+
+        public List<DepartAndBatches> getAllDeparts() {
+            Criteria cr = session.createCriteria(DepartAndBatches.class);
+
+            List<DepartAndBatches> alterDeparts = new ArrayList<DepartAndBatches>();
+            //cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+            List<DepartAndBatches> departs = cr.list();
+
+            return departs;
+        }
+    }
 }

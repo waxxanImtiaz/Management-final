@@ -104,6 +104,18 @@
         <servlet-name>SubjectsAndDepartLoader</servlet-name>
         <servlet-class>Servlets.LoaderServlets.SubjectsAndDepartLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertBatchData</servlet-name>
+        <servlet-class>Servlets.InsertBatchData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllBatchLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.AllBatchLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BatchEditor</servlet-name>
+        <servlet-class>Servlets.BatchEditor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -203,6 +215,18 @@
     <servlet-mapping>
         <servlet-name>SubjectsAndDepartLoader</servlet-name>
         <url-pattern>/SubjectsAndDepartLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertBatchData</servlet-name>
+        <url-pattern>/InsertBatchData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllBatchLoader</servlet-name>
+        <url-pattern>/AllBatchLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BatchEditor</servlet-name>
+        <url-pattern>/BatchEditor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
