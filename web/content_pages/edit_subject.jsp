@@ -42,8 +42,12 @@
            <form role="form"  name="add_subject_form">
               <div class="box-body">
                   <div class="form-group">
+                  <label for="subjectName">Subject Id</label>
+                  <input type="text" class="form-control" id="subjectId" value="<%=subject.getId() %>" placeholder="Enter subject name" disabled="true">
+              </div>
+                  <div class="form-group">
                   <label for="subjectName">Subject Name</label>
-                  <input type="text" class="form-control" id="subjectName" value="<%=subject.getSubjectName() %>" placeholder="Enter subject name" disabled="true">
+                  <input type="text" class="form-control" id="subjectName" value="<%=subject.getSubjectName() %>" placeholder="Enter subject name" >
               </div>
                   <div class="form-group">
                         <label>Department</label>
@@ -92,7 +96,7 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                  <button type="submit" class="btn btn-primary" onclick="return checkSubjectAddForm()" >Submit</button>
+                  <button type="submit" class="btn btn-primary" onclick="return  validateEditSubjectForm()" >Submit</buttcheckSubjectAddFormon>
               </div>
             </form>
           </div>

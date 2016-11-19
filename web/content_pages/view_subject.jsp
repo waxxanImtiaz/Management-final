@@ -48,12 +48,13 @@
                                 <th>Semester</th>
                                 <th>Type</th>
                                 <th>Credit Hours</th>
+                                <th>Total Subjects</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
                             <% for (Subjects s : subjects) {%>
-                            <tr id = "<%=s.getId()%>">
+                            <tr id = "<%="sub"+s.getId()%>">
                             
                                 <td><%=s.getId() %></td>
                                 <td><%=s.getSubjectName() %></td>
@@ -62,6 +63,7 @@
                                 </td>
                                 <td><%=s.getTheoryOrPractical() %></td>
                                 <td> <%=s.getCreditHours() %></td>
+                                <td> <%=s.getTotalLectures() %></td>
                                 
 
                                 <td>

@@ -14,6 +14,10 @@ function createXmlHttpRequestObject() {
         return xmlHttp;
 
 }
+
+
+
+
 var formFields;
 function checkSubjectAddForm() {
     formFields = [document.forms["add_subject_form"]["department"].value,
@@ -41,7 +45,7 @@ function storeSubjectData(){
                 "&subjectName=" + formFields[1] + "&semester=" + formFields[2]
                 + "&theoryOrPractical=" + formFields[3] + "&creditHours=" + formFields[4] + "&totalLectures="+ formFields[5],
                 true);
-        xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
+        xmlHttp.onreadystatechange = handleServerOfSubjectInsert;
         xmlHttp.send(null);
     } else {
         // setTimeout('storeStudentData()', 1000);
@@ -50,19 +54,18 @@ function storeSubjectData(){
       return false;  
 }
 
-
-
-function handleServerResponseOfIssuanceForm() {
+function handleServerOfSubjectInsert() {
     if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
 
         try {
             xmlResponse = xmlHttp.responseText;
             var message = xmlResponse.toString();
 
-            document.getElementById("formData").innerHTML = '<span style="color: green">'
-                    + message + '</span>';
-
-           // alert("Data Stored Successfully");
+                
+//            document.getElementById("formData").innerHTML = '<span style="color: green">'
+//                    + message + '</span>';
+              alert(message);           
+           
                   
         } catch (e) {
             alert("exception=" + e.toString());
@@ -144,7 +147,7 @@ function subjectDelete(){
 
 
 
-//librarian form validator
+/*==========================UPDATE SUBJECT DATA FORM============================*/
 function validateEditSubjectForm() {
     
     
@@ -153,7 +156,9 @@ function validateEditSubjectForm() {
         document.forms["add_subject_form"]["semester"].value,
         document.forms["add_subject_form"]["theoryOrPractical"].value,
         document.forms["add_subject_form"]["creditHours"].value,
-        document.forms["add_subject_form"]["totalLectures"].value];
+        document.forms["add_subject_form"]["totalLectures"].value,
+        document.forms["add_subject_form"]["subjectId"].value
+    ];
 
     for (var i = 0; i < formFields.length; i++) {
         if (formFields[i] == null || formFields[i] == "") {
@@ -172,13 +177,34 @@ function updateSubjectData() {
 
          xmlHttp.open("GET", "/final_year_project/UpdateSubjectData?department=" + formFields[0] +
                 "&subjectName=" + formFields[1] + "&semester=" + formFields[2]
-                + "&theoryOrPractical=" + formFields[3] + "&creditHours=" + formFields[4] + "&totalLectures="+ formFields[5],
+                + "&theoryOrPractical=" + formFields[3] + "&creditHours=" + formFields[4] + "&totalLectures="+ formFields[5]
+                + "&subjectId="+ formFields[6],
                 true);
-        xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
+        xmlHttp.onreadystatechange = handleServerResponseUpdateSubject;
         xmlHttp.send(null);
     } else {
         // setTimeout('storeStudentData()', 1000);
 
     }
 
+}
+
+function handleServerResponseUpdateSubject() {
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+                
+//            document.getElementById("formData").innerHTML = '<span style="color: green">'
+//                    + message + '</span>';
+              if(message)
+                alert(message);           
+           
+                  
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
 }
