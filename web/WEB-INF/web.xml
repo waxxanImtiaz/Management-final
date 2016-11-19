@@ -116,6 +116,10 @@
         <servlet-name>BatchEditor</servlet-name>
         <servlet-class>Servlets.BatchEditor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateBatchData</servlet-name>
+        <servlet-class>Servlets.UpdaterServlets.UpdateBatchData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -227,6 +231,10 @@
     <servlet-mapping>
         <servlet-name>BatchEditor</servlet-name>
         <url-pattern>/BatchEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateBatchData</servlet-name>
+        <url-pattern>/UpdateBatchData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

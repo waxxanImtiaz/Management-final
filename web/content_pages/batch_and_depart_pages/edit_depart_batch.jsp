@@ -42,18 +42,18 @@
               <div class="box-body">
                   <div class="form-group">
                   <label for="subjectName">Batch Name</label>
-                  <input type="text" class="form-control" id="subjectId" value="<%=batch.getBatch() %>" placeholder="Enter subject name" disabled="true">
+                  <input type="text" class="form-control" id="batch" value="<%=batch.getBatch() %>" placeholder="Enter subject name" disabled="true">
               </div>
                   <div class="form-group">
                   <label for="subjectName">Department</label>
-                  <input type="text" class="form-control" id="subjectName" value="<%=batch.getDepart() %>" placeholder="Enter subject name" >
+                  <input type="text" class="form-control" id="department" value="<%=batch.getDepart() %>" placeholder="Enter subject name" >
               </div>
                   
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                  <button type="submit" class="btn btn-primary" onclick="return  validateEditSubjectForm()" >Submit</buttcheckSubjectAddFormon>
+                  <button type="submit" class="btn btn-primary" onclick="return  validateEditBatchForm()" >Submit</buttcheckSubjectAddFormon>
               </div>
             </form>
           </div>
