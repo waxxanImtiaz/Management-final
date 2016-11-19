@@ -1,9 +1,10 @@
 
 <%@page import="java.util.*" %>
-<%@page import="beans.*" %>
+<%@page import="beans.Subjects" %>
 
 <%
-//    List<Students> students = (List<Students>) session.getAttribute("allStudents");
+    List<Subjects> subjects = (List<Subjects>) session.getAttribute("allSubjects");
+    
 
 %>
 
@@ -41,33 +42,27 @@
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Father Name</th>
-                                <th>Roll Number</th>
-                                <th>Caste</th>
+                                <th>Subject Id</th>
+                                <th>Subject Name</th>
                                 <th>Department</th>
-                                <th>Permanent Address</th>
-                                <th>Batch</th>
+                                <th>Semester</th>
+                                <th>Type</th>
+                                <th>Credit Hours</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
-                            <% for (Students st : students) {%>
-                            <tr id = "<%=st.getRollNum()%>">
-                                <td><%=st.getName()%></td>
-                                <td><%=st.getFatherName()%>
+                            <% for (Subjects s : subjects) {%>
+                            <tr id = "<%=s.getId()%>">
+                            
+                                <td><%=s.getId() %></td>
+                                <td><%=s.getSubjectName() %></td>
+                                <td><%=s.getDepartment() %></td>
+                                <td><%=s.getSemester() %>
                                 </td>
-                                <td><%=st.getRollNum()%></td>
-                                <td> <%=st.getCaste()%></td>
-                                <td><%=st.getDepartment()%>
-                                </td>
-
-
-                                <td><%=st.getPermAdd()%>
-                                </td>
-
-                                <td><%=st.getBatch()%>
-                                </td>
-
+                                <td><%=s.getTheoryOrPractical() %></td>
+                                <td> <%=s.getCreditHours() %></td>
+                                
 
                                 <td>
                                     <div class="btn-group">
@@ -75,9 +70,8 @@
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <!--<li><a href="${pageContext.request.contextPath}/StudentEditor?rollNumber=<%=st.getRollNum()%>">Edit</a></li>-->
-                                            <li><a href="#" onclick="callEditor('<%=st.getRollNum()%>');">Edit</a></li>
-                                            <li><a href="#" onclick="deleteStudent('<%=st.getRollNum()%>');">Delete</a></li>
+                                            <li><a href="#" onclick="callSubjectEditor('<%=s.getId() %>');">Edit</a></li>
+                                            <li><a href="#" onclick="deleteSubject('<%=s.getId()+"" %>');">Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>

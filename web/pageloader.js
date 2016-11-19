@@ -17,7 +17,7 @@ $(document).ready(function () {
         });
     });
     $("#inter").click(function () {
-        $(".content-wrapper").load("content_pages/view_subject.jsp", function (responseTxt, statusTxt, xhr) {
+        $(".content-wrapper").load("/final_year_project/AllSubjectsLoader", function (responseTxt, statusTxt, xhr) {
         });
     });
     $("#matric").click(function () {

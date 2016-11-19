@@ -48,6 +48,7 @@ public class InsertSubjectData extends HttpServlet {
         String totalLectures = request.getParameter("totalLectures");
         
         try{
+            out.println("Before inserting subject data");
             session = sf.openSession();
             Subjects subject = new Subjects();
             

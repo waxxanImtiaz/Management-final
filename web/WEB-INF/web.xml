@@ -84,6 +84,22 @@
         <servlet-name>InsertSubjectData</servlet-name>
         <servlet-class>Servlets.InsertSubjectData</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllSubjectsLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.AllSubjectsLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubjectEditor</servlet-name>
+        <servlet-class>Servlets.SubjectEditor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSubjectData</servlet-name>
+        <servlet-class>Servlets.UpdaterServlets.UpdateSubjectData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubjectDelete</servlet-name>
+        <servlet-class>Servlets.SubjectDelete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -163,6 +179,22 @@
     <servlet-mapping>
         <servlet-name>InsertSubjectData</servlet-name>
         <url-pattern>/InsertSubjectData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllSubjectsLoader</servlet-name>
+        <url-pattern>/AllSubjectsLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectEditor</servlet-name>
+        <url-pattern>/SubjectEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSubjectData</servlet-name>
+        <url-pattern>/UpdateSubjectData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectDelete</servlet-name>
+        <url-pattern>/SubjectDelete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
