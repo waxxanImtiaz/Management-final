@@ -132,8 +132,9 @@ function subjectDelete(){
             document.getElementById("formData").innerHTML = '<span style="color: green">'
                     + message + '</span>';
 
+
             if (message) {
-                 $('#sub'+id).hide();
+                 $('#sub'+sId).hide();
                    
             }
 
