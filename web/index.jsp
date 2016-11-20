@@ -73,6 +73,8 @@
         </script>
         <script type="text/javascript" src="newsMessages.js">
         </script>
+        <script type="text/javascript" src="teacher.js">
+        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini" >
         <div class="wrapper">

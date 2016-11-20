@@ -48,6 +48,14 @@ $(document).ready(function () {
         $(".content-wrapper").load("content_pages/messages/message.jsp", function (responseTxt, statusTxt, xhr) {
         });   
     });
+     $("#add_teacher").click(function () {
+        $(".content-wrapper").load("/final_year_project/TeacherDepartmentLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
+     $("#view_teacher").click(function () {
+        $(".content-wrapper").load("/final_year_project/TeacherLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
 });
 
 

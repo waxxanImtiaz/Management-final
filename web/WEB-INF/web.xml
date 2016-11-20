@@ -168,6 +168,22 @@
         <servlet-name>TeacherDepartmentLoader</servlet-name>
         <servlet-class>Servlets.LoaderServlets.TeacherDepartmentLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertTeacherData</servlet-name>
+        <servlet-class>Servlets.InsertDataServlets.InsertTeacherData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.TeacherLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditTeacher</servlet-name>
+        <servlet-class>Servlets.Editors.EditTeacher</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateTeacherData</servlet-name>
+        <servlet-class>Servlets.UpdaterServlets.UpdateTeacherData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -331,6 +347,22 @@
     <servlet-mapping>
         <servlet-name>TeacherDepartmentLoader</servlet-name>
         <url-pattern>/TeacherDepartmentLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertTeacherData</servlet-name>
+        <url-pattern>/InsertTeacherData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherLoader</servlet-name>
+        <url-pattern>/TeacherLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditTeacher</servlet-name>
+        <url-pattern>/EditTeacher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateTeacherData</servlet-name>
+        <url-pattern>/UpdateTeacherData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

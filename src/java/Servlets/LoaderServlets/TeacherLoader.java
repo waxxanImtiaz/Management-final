@@ -22,9 +22,8 @@ import org.hibernate.SessionFactory;
 import java.util.concurrent.Callable;
 import org.hibernate.Criteria;
 
-public class TeacherDepartmentLoader extends HttpServlet {
+public class TeacherLoader extends HttpServlet {
 
-    private DepartAndBatches batch;
     private Session session; 
     private SessionFactory sf;
     private ExecutorService executorService;
@@ -39,7 +38,7 @@ public class TeacherDepartmentLoader extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         sf= (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
-        System.out.println("Inside all TeacherDepartmentLoader");
+        System.out.println("Inside all TeacherLoader");
         try {
 
             session = sf.openSession();
@@ -48,22 +47,22 @@ public class TeacherDepartmentLoader extends HttpServlet {
             }
             executorService = Executors.newFixedThreadPool(1);
 
-            AllBatchesDataLoaderService loader = new AllBatchesDataLoaderService(session);
+            AllTeacherDataLoaderService loader = new AllTeacherDataLoaderService(session);
 
             Future future = executorService.submit(loader);
 
-            List<DepartAndBatches> batches = (List<DepartAndBatches>) future.get();
+            List<Teacher> batches = (List<Teacher>) future.get();
 
-            request.getSession().setAttribute("allDeparts", batches);
+            request.getSession().setAttribute("allTechers", batches);
 
-            response.sendRedirect("content_pages/teacher/add_teacher.jsp");
-            System.out.println("All TeacherDepartmentLoader Got");
+            response.sendRedirect("content_pages/teacher/view_teacher.jsp");
+            System.out.println("All TeacherLoader Got");
             
             executorService.shutdown();
         } catch (NullPointerException e) {
-            System.err.println("TeacherDepartmentLoader: null value is thrown=" + e.getMessage());
+            System.err.println("TeacherLoader: null value is thrown=" + e.getMessage());
         } catch (Exception e) {
-            System.err.println("Exceptoin in TeacherDepartmentLoader:=" + e.getMessage());
+            System.err.println("Exceptoin in TeacherLoader:=" + e.getMessage());
         }
     }
 
@@ -72,21 +71,21 @@ public class TeacherDepartmentLoader extends HttpServlet {
         return "AllStudentLoader";
     }// </editor-fold>
 
-    class AllBatchesDataLoaderService implements Callable {
+    class AllTeacherDataLoaderService implements Callable {
     private Session session;
-    public AllBatchesDataLoaderService(Session session){
+    public AllTeacherDataLoaderService(Session session){
         this.session = session;
     }
     @Override 
-    public List<DepartAndBatches> call(){
-        return getAllStudents();
+    public List<Teacher> call(){
+        return getAllTeachers();
     }
     
-    public List<DepartAndBatches> getAllStudents(){
-        Criteria cr = session.createCriteria(DepartAndBatches.class);
-        List<DepartAndBatches> batches = cr.list();
+    public List<Teacher> getAllTeachers(){
+        Criteria cr = session.createCriteria(Teacher.class);
+        List<Teacher> teacher = cr.list();
         
-        return batches;
+        return teacher;
     }
 }
 }
