@@ -156,8 +156,9 @@ function resultEdit() {
         try {
             xmlResponse = xmlHttp.responseText;
             var message = xmlResponse.toString();
-
+                
             if (message) {
+              
                 $(".content-wrapper").load("content_pages/result_pages/edit_result.jsp", function (responseTxt, statusTxt, xhr) {
                 });
             }
@@ -201,4 +202,46 @@ function resultDelete(){
             alert("exception=" + e.toString());
         }
     }
+}
+var id;
+function checkResultUpdateForm(rId){
+    alert("checkResultUpdateForm is called");
+    id = rId;
+    
+ formFields = [document.forms["add_subject_form"]["department"].value,
+        document.forms["add_subject_form"]["subject"].value,
+        document.forms["add_subject_form"]["semester"].value,
+        document.forms["add_subject_form"]["theoryOrPractical"].value,
+        document.forms["add_subject_form"]["rollNumber"].value,
+        document.forms["add_subject_form"]["batch"].value,
+        document.forms["add_subject_form"]["result"].value
+        
+    ];
+    
+    for (var i = 0; i < formFields.length; i++) {
+        if (formFields[i] == null || formFields[i] == "") {
+            alert("Please Fill All Fields");
+            return false;
+        }
+    }
+    storeResultData();
+    return false;
+
+}
+
+function storeResultData() {
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/UpdateResultData?department=" + formFields[0] +
+                "&subjectName=" + formFields[1] + "&semester=" + formFields[2]
+                + "&theoryOrPractical=" + formFields[3] + "&rollNumber=" + formFields[4]
+                + "&batch=" + formFields[5] + "&result=" + formFields[6]+"&id=" + id,
+                true);
+        xmlHttp.onreadystatechange = handleServerOfResultInsert;
+        xmlHttp.send(null);
+    } else {
+        // setTimeout('storeStudentData()', 1000);
+
+    }
+    return false;
 }

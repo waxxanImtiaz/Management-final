@@ -144,6 +144,10 @@
         <servlet-name>ResultDelete</servlet-name>
         <servlet-class>Servlets.DataRemoverServlets.ResultDelete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateResultData</servlet-name>
+        <servlet-class>Servlets.UpdaterServlets.UpdateResultData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -283,6 +287,10 @@
     <servlet-mapping>
         <servlet-name>ResultDelete</servlet-name>
         <url-pattern>/ResultDelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateResultData</servlet-name>
+        <url-pattern>/UpdateResultData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

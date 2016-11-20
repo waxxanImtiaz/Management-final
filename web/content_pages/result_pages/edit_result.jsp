@@ -1,17 +1,134 @@
-<%-- 
-    Document   : edit_result
-    Created on : Nov 19, 2016, 4:18:08 AM
-    Author     : waxxan
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+
+<%@page import="java.util.*" %>
+<%@page import="beans.*" %>
+
+<%
+    StudentSemesterResult result = (StudentSemesterResult)session.getAttribute("editResult");
+   List<Subjects> subjects = (List<Subjects>) session.getAttribute("allSubjects");
+   List<DepartAndBatches> departs = (List<DepartAndBatches>) session.getAttribute("departments");
+
+
+%>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        UpdateSemester Result Of Student
+
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+
+
+
+
+    <div class="col-md-12">
+
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Please Fill Following Fields</h3>
+                <h3 class="formData"></h3>
+
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form"  name="add_subject_form">
+
+
+
+                <div class="box-body">
+
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select class="form-control" id="department"  onchange="return getDepartmentSubjects();"    >
+                            <% for (int i = 0; i < departs.size(); i++) {
+                                    DepartAndBatches db = departs.get(i);
+                                    if(db.getDepart().equalsIgnoreCase(result.getDepart())){
+                            %>
+                            <option value="<%=db.getDepart() %>" selected><%= db.getDepart()%></option>
+                            <% }else %>
+                             <option value="<%=db.getDepart() %>" ><%= db.getDepart()%></option>
+                            <% }%>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select class="form-control"  id = "subject" >
+                            <% for (Subjects s : subjects) {
+                                if(s.getSubjectName().equalsIgnoreCase(result.getSubject())){
+                              %>
+                            <option selected><%= result.getSubject()%></option>
+                            <% }
+                                else{
+                            %>
+                            <option ><%=s.getSubjectName()  %></option>
+                            
+                            <% }
+                                }                   
+                            %>
+                        </select>
+                    </div>
+
+                    <% String[] semesters = {"1st","2nd","3rd","4th","5th","6th","7th","8th"};  %>        
+                    <div class="form-group">
+                        <label>Semester</label>
+                        <select class="form-control" id = "semester" >
+
+                           <% for( int i = 0; i< semesters.length; i++ ) { 
+                               if(semesters[ i ].equalsIgnoreCase(result.getSemester())){ %>
+                                <option selected><%=result.getSemester()  %></option>
+                                <% } else %>
+                                 <option><%=semesters[ i ] %></option>
+                                 <% } %>
+                        </select>
+                    </div>
+
+                     <% String[] type = {"Theory","Practical"}; %>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select class="form-control" selected="<%=result.getTheoryOrPractical() %>" id = "theoryOrPractical" >
+                            <% for(int i = 0; i< type.length; i++){
+                            if(type[ i ].equalsIgnoreCase(result.getTheoryOrPractical())){    
+                            %>
+                            <option selected><%=result.getTheoryOrPractical() %></option>
+                            <% }else %>
+                            <option ><%=type[ i ]%></option>
+                            <% }
+                            %>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="rollNumber">Student Roll Number</label>
+                        <input type="text" class="form-control" value="<%=result.getRollNum() %>" id="rollNumber" placeholder="Enter roll number" disabled="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="result">Result</label>
+                        <input type="text" class="form-control" value="<%=result.getResult() %>" id="result" placeholder="Enter student result">
+                    </div>
+                    <div class="form-group">
+                        <label for="batch">Batch</label>
+                        <input type="text" class="form-control" value="<%=result.getBatch() %>" id="batch" placeholder="Enter batch">
+                    </div>
+                    
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" onclick="return checkResultUpdateForm('<%=result.getId()+"" %>')" >Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
