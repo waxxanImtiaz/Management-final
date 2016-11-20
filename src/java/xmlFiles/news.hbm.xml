@@ -19,4 +19,5 @@
       <column length="256" name="datetime"/>
     </property>
   </class>
+  
 </hibernate-mapping>

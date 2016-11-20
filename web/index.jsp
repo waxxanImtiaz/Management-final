@@ -435,14 +435,13 @@
                         <li>
                             <a id="m"  href="#">
                                 <i  class="fa fa-envelope"></i> <span> News</span>
-                                <!--            <span class="pull-right-container">
-                                              <small class="label pull-right bg-yellow">12</small>
-                                              <small class="label pull-right bg-green">16</small>
-                                              <small class="label pull-right bg-red">5</small>
-                                            </span>-->
                             </a>
                         </li>
-
+                        <li>
+                            <a id="message"  href="#">
+                                <i  class="fa fa-envelope"></i> <span> Message</span>
+                            </a>
+                        </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-share"></i> <span>Multilevel</span>

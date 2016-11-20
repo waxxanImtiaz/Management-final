@@ -21,7 +21,7 @@ function sendNews() {
     news = document.getElementById("news").value;
     
 
-    if(news == "Write news Here"){
+    if(news == "Write news Here" || news == ""){
         alert("Please write news first");
         return false;
     }
@@ -62,4 +62,34 @@ function handleServerOfNewsSend() {
             alert("exception=" + e.toString());
         }
     }
+}
+
+var message;
+var to;
+function sendMessage(){
+     message = document.getElementById("message").value;
+     to = document.getElementById("to").value;
+    
+
+    if(message == "Write Message Here" || message == ""){
+        alert("Please write message first");
+        return false;
+    }
+    
+    storeMessage();
+    return false;
+}
+
+function storeMessage(){
+     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/SendMessage?to=" + to +
+                "&message=" + message ,true);
+        xmlHttp.onreadystatechange = handleServerOfNewsSend;
+        xmlHttp.send(null);
+    } else {
+        // setTimeout('storeStudentData()', 1000);
+
+    }
+      return false;  
 }
