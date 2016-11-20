@@ -414,6 +414,19 @@
                             </ul>
                         </li>
                         <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
+                                <span>Teacher</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#" id="add_teacher"><i class="fa fa-circle-o"></i> Add Teacher</a></li>
+                                <li><a href="#" id="view_teacher"><i class="fa fa-circle-o"></i> View Teacher</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
                             <a href="#" id="login_information">
                                 <i class="fa fa-edit"></i> <span>Login Information</span>
                               
