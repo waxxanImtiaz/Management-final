@@ -40,6 +40,10 @@ $(document).ready(function () {
         $(".content-wrapper").load("/final_year_project/AllResultLoader", function (responseTxt, statusTxt, xhr) {
         });   
     });
+     $("#login_information").click(function () {
+        $(".content-wrapper").load("/final_year_project/LoginInfoLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
 });
 
 

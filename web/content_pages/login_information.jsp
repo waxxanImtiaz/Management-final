@@ -18,7 +18,6 @@
         Login Information 
         <small>Management Information System</small>
     </h1>
-          </ol>-->
 </section>
 
 <!-- Main content -->

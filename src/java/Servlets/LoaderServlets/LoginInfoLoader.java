@@ -5,85 +5,86 @@
  */
 package Servlets.LoaderServlets;
 
+import beans.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import org.hibernate.SessionFactory;
+import java.util.concurrent.Callable;
+import org.hibernate.Criteria;
 
-/**
- *
- * @author waxxan
- */
 public class LoginInfoLoader extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginInfoLoader</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginInfoLoader at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {
-            out.close();
-        }
-    }
+    private LoginInformation info;
+    private Session session; 
+    private SessionFactory sf;
+    private ExecutorService executorService;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doPost(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        sf= (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
+        try {
+
+            session = sf.openSession();
+            if (session == null) {
+                throw new NullPointerException("Hibernate Session is null");
+            }
+            executorService = Executors.newFixedThreadPool(1);
+
+            LoginInfoLoaderService loader = new LoginInfoLoaderService(session);
+
+            Future future = executorService.submit(loader);
+
+            List<LoginInformation> batches = (List<LoginInformation>) future.get();
+
+            request.getSession().setAttribute("loginInfo", batches);
+
+            response.sendRedirect("content_pages/login_information.jsp");
+            System.out.println("All Login data Got");
+            
+            executorService.shutdown();
+        } catch (NullPointerException e) {
+            System.err.println("LoginInfoLoader: null value is thrown=" + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Exceptoin in LoginInfoLoader:=" + e.getMessage());
+        }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "AllStudentLoader";
     }// </editor-fold>
 
+    class LoginInfoLoaderService implements Callable {
+    private Session session;
+    public LoginInfoLoaderService(Session session){
+        this.session = session;
+    }
+    @Override 
+    public List<LoginInformation> call(){
+        return getLoginInfo();
+    }
+    
+    public List<LoginInformation> getLoginInfo(){
+        Criteria cr = session.createCriteria(LoginInformation.class);
+        List<LoginInformation> batches = cr.list();
+        
+        return batches;
+    }
+}
 }
