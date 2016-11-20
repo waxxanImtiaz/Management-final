@@ -87,19 +87,24 @@
 
 
                     <div class="form-group">
-                        <label for="totalLectures">Total Lectures</label>
-                        <input type="text" class="form-control" id="totalLectures" placeholder="Enter total lectures">
+                        <label for="rollNumber">Student Roll Number</label>
+                        <input type="text" class="form-control" id="rollNumber" placeholder="Enter roll number">
                     </div>
                     <div class="form-group">
-                        <label for="creditHours">Credit Hours</label>
-                        <input type="text" class="form-control" id="creditHours" placeholder="Enter total credit hours">
+                        <label for="result">Result</label>
+                        <input type="text" class="form-control" id="result" placeholder="Enter student result">
                     </div>
+                    <div class="form-group">
+                        <label for="batch">Batch</label>
+                        <input type="text" class="form-control" id="batch" placeholder="Enter batch">
+                    </div>
+                    
 
                 </div>
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary" onclick="return checkSubjectAddForm()" >Submit</button>
+                    <button type="submit" class="btn btn-primary" onclick="return checkResultAddForm()" >Submit</button>
                 </div>
             </form>
         </div>

@@ -128,6 +128,10 @@
         <servlet-name>SubjectLoader</servlet-name>
         <servlet-class>Servlets.LoaderServlets.SubjectLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertResultData</servlet-name>
+        <servlet-class>Servlets.InsertDataServlets.InsertResultData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -251,6 +255,10 @@
     <servlet-mapping>
         <servlet-name>SubjectLoader</servlet-name>
         <url-pattern>/SubjectLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertResultData</servlet-name>
+        <url-pattern>/InsertResultData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

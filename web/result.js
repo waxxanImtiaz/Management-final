@@ -48,18 +48,18 @@ function handleServerGetDepartment() {
                 var json = JSON.parse(message);
 
 
-               // var count = Object.keys(json).length;
+                // var count = Object.keys(json).length;
 
                 var flag = true;
                 for (var key in json) {
-                    if(json[key] != null){
+                    if (json[key] != null) {
                         flag = false;
-                         select.innerHTML += "<option value=\"" + json[key] + "\">" + json[key] + "</option>";
+                        select.innerHTML += "<option value=\"" + json[key] + "\">" + json[key] + "</option>";
                     }
                 }
-                if(flag){
-                            select.innerHTML += "<option value=\"" + 0 + "\">No subject found</option>";
-                 
+                if (flag) {
+                    select.innerHTML += "<option value=\"" + 0 + "\">No subject found</option>";
+
                 }
 
             } else {
@@ -80,4 +80,60 @@ function handleServerGetDepartment() {
     }
 }
 
+var formFields;
+function checkResultAddForm() {
+    
+    formFields = [document.forms["add_subject_form"]["department"].value,
+        document.forms["add_subject_form"]["subject"].value,
+        document.forms["add_subject_form"]["semester"].value,
+        document.forms["add_subject_form"]["theoryOrPractical"].value,
+        document.forms["add_subject_form"]["rollNumber"].value,
+        document.forms["add_subject_form"]["batch"].value,
+        document.forms["add_subject_form"]["result"].value];
+    
+    for (var i = 0; i < formFields.length; i++) {
+        if (formFields[i] == null || formFields[i] == "") {
+            alert("Please Fill All Fields");
+            return false;
+        }
+    }
+    storeResultData();
+    return false;
 
+}
+
+function storeResultData() {
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/InsertResultData?department=" + formFields[0] +
+                "&subjectName=" + formFields[1] + "&semester=" + formFields[2]
+                + "&theoryOrPractical=" + formFields[3] + "&rollNumber=" + formFields[4]
+                + "&batch=" + formFields[5] + "&result=" + formFields[6],
+                true);
+        xmlHttp.onreadystatechange = handleServerOfResultInsert;
+        xmlHttp.send(null);
+    } else {
+        // setTimeout('storeStudentData()', 1000);
+
+    }
+    return false;
+}
+
+function handleServerOfResultInsert() {
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+
+//            document.getElementById("formData").innerHTML = '<span style="color: green">'
+//                    + message + '</span>';
+            alert(message);
+
+
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
+}
