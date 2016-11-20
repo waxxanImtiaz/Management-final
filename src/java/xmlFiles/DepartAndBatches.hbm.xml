@@ -8,7 +8,7 @@
          <generator class="assigned"/>
         </id>
         <property name="depart" type="string">
-          <column length="20" name="depart"/>
+          <column length="500" name="depart"/>
         </property>
        
     </class>

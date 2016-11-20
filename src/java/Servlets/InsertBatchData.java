@@ -57,7 +57,7 @@ public class InsertBatchData extends HttpServlet {
             session.beginTransaction().commit();
             session.close();
 
-            out.println("Subject data stored successfully");
+            out.println("Batch data stored successfully");
 
         } catch (ConstraintViolationException e) {
             out.println("Entered Batch is Already Available");

@@ -38,15 +38,15 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-           <form role="form"  name="add_subject_form">
+           <form role="form"  name="add_batch_form">
               <div class="box-body">
                   <div class="form-group">
                   <label for="subjectName">Batch Name</label>
-                  <input type="text" class="form-control" id="batch" value="<%=batch.getBatch() %>" placeholder="Enter subject name" disabled="true">
+                  <input type="text" class="form-control" id="batch" value="<%=batch.getBatch() %>" placeholder="Enter batch name" disabled="true">
               </div>
                   <div class="form-group">
                   <label for="subjectName">Department</label>
-                  <input type="text" class="form-control" id="department" value="<%=batch.getDepart() %>" placeholder="Enter subject name" >
+                  <input type="text" class="form-control" id="department" value="<%=batch.getDepart() %>" placeholder="Enter department name" >
               </div>
                   
               </div>

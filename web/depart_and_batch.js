@@ -97,8 +97,8 @@ function batchEdit() {
 }
 
 function validateEditBatchForm(){
-     formFields = [document.forms["add_depart_form"]["department"].value,
-        document.forms["add_depart_form"]["batch"].value];
+     formFields = [document.forms["add_batch_form"]["department"].value,
+        document.forms["add_batch_form"]["batch"].value];
 
     for (var i = 0; i < formFields.length; i++) {
         if (formFields[i] == null || formFields[i] == "") {
@@ -131,7 +131,7 @@ function handleServerResponseUpdateBatch() {
             var message = xmlResponse.toString();
 
                
-              if(message)
+             // if(message)
                 alert(message);           
            
                   
@@ -140,3 +140,39 @@ function handleServerResponseUpdateBatch() {
         }
     }
 } 
+
+var dd;
+function deleteBatch(batch){
+
+     dd = batch;
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/BatchDelete?batch=" +dd
+                , true);
+        xmlHttp.onreadystatechange = batchDelete;
+        xmlHttp.send(null);
+    }
+}
+
+function batchDelete(){
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+            document.getElementById("formData").innerHTML = '<span style="color: green">'
+                    + message + '</span>';
+
+
+            if (message) {
+                 $('#'+dd).hide();
+                   
+            }
+
+
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
+}

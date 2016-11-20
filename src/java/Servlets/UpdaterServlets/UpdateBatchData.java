@@ -70,7 +70,6 @@ public class UpdateBatchData extends HttpServlet {
 
             batch.setBatch(b);
             batch.setDepart(department);
-            
 
             Transaction tr = session.beginTransaction();
 
@@ -78,13 +77,14 @@ public class UpdateBatchData extends HttpServlet {
 
             System.out.println("Batch data in UpdateSubjectDataServlet");
             
-           
+             //out.println("Before Data updated successfully");
             session.merge(batch);
             tr.commit();
-            out.print("Data updated successfully");
+            out.println("Data updated successfully");
             System.out.println("Data updated successfully by UpdateBatchDataServlet");
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             out.println(e.getMessage());
             
