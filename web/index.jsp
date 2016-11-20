@@ -412,7 +412,7 @@
                             </ul>
                         </li>
                         <li class="treeview">
-                            <a href="#">
+                            <a href="#" id="login_information">
                                 <i class="fa fa-edit"></i> <span>Login Information</span>
                               
                             </a>

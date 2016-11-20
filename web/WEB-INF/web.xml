@@ -148,6 +148,10 @@
         <servlet-name>UpdateResultData</servlet-name>
         <servlet-class>Servlets.UpdaterServlets.UpdateResultData</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginInfoLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.LoginInfoLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -291,6 +295,10 @@
     <servlet-mapping>
         <servlet-name>UpdateResultData</servlet-name>
         <url-pattern>/UpdateResultData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginInfoLoader</servlet-name>
+        <url-pattern>/LoginInfoLoader</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
