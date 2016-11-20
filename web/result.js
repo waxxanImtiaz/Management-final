@@ -137,3 +137,68 @@ function handleServerOfResultInsert() {
         }
     }
 }
+var rowId;
+function callResultEditor(rId){
+    
+   rowId = rId;
+  //alert("data Loaded");
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/ResultEditor?id=" + rId, true);
+        xmlHttp.onreadystatechange = resultEdit;
+        xmlHttp.send(null);
+    }
+}
+
+function resultEdit() {
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+            if (message) {
+                $(".content-wrapper").load("content_pages/result_pages/edit_result.jsp", function (responseTxt, statusTxt, xhr) {
+                });
+            }
+
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
+}
+
+function deleteResult(id){
+  
+    rowId = id;
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/ResultDelete?id=" +id
+                , true);
+        xmlHttp.onreadystatechange = resultDelete;
+        xmlHttp.send(null);
+    }
+}
+
+function resultDelete(){
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+            document.getElementById("formData").innerHTML = '<span style="color: green">'
+                    + message + '</span>';
+
+
+            if (message) {
+                 $('#'+rowId).hide();
+                   
+            }
+
+
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
+}

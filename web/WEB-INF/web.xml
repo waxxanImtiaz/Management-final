@@ -132,6 +132,18 @@
         <servlet-name>InsertResultData</servlet-name>
         <servlet-class>Servlets.InsertDataServlets.InsertResultData</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllResultLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.AllResultLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResultEditor</servlet-name>
+        <servlet-class>Servlets.Editors.ResultEditor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResultDelete</servlet-name>
+        <servlet-class>Servlets.DataRemoverServlets.ResultDelete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -259,6 +271,18 @@
     <servlet-mapping>
         <servlet-name>InsertResultData</servlet-name>
         <url-pattern>/InsertResultData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllResultLoader</servlet-name>
+        <url-pattern>/AllResultLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResultEditor</servlet-name>
+        <url-pattern>/ResultEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResultDelete</servlet-name>
+        <url-pattern>/ResultDelete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

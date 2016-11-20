@@ -36,6 +36,10 @@ $(document).ready(function () {
         $(".content-wrapper").load("/final_year_project/AllBatchLoader", function (responseTxt, statusTxt, xhr) {
         });   
     });
+     $("#view_result").click(function () {
+        $(".content-wrapper").load("/final_year_project/AllResultLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
 });
 
 
