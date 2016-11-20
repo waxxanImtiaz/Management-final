@@ -71,6 +71,8 @@
         </script>
         <script type="text/javascript" src="depart_and_batch.js">
         </script>
+        <script type="text/javascript" src="newsMessages.js">
+        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini" >
         <div class="wrapper">
@@ -432,7 +434,7 @@
 
                         <li>
                             <a id="m"  href="#">
-                                <i  class="fa fa-envelope"></i> <span>Messages</span>
+                                <i  class="fa fa-envelope"></i> <span> News</span>
                                 <!--            <span class="pull-right-container">
                                               <small class="label pull-right bg-yellow">12</small>
                                               <small class="label pull-right bg-green">16</small>

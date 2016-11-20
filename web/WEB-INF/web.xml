@@ -152,6 +152,14 @@
         <servlet-name>LoginInfoLoader</servlet-name>
         <servlet-class>Servlets.LoaderServlets.LoginInfoLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllNewsLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.AllNewsLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendNews</servlet-name>
+        <servlet-class>Servlets.InsertDataServlets.SendNews</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -299,6 +307,14 @@
     <servlet-mapping>
         <servlet-name>LoginInfoLoader</servlet-name>
         <url-pattern>/LoginInfoLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllNewsLoader</servlet-name>
+        <url-pattern>/AllNewsLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendNews</servlet-name>
+        <url-pattern>/SendNews</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

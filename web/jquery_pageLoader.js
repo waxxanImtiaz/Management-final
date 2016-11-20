@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 ///student_list.jsp
     $("#m").click(function () {
-        $(".content-wrapper").load("content_pages/messages.jsp", function (responseTxt, statusTxt, xhr) {
+        $(".content-wrapper").load("/final_year_project/AllNewsLoader", function (responseTxt, statusTxt, xhr) {
         });
     });
     $("#inter").click(function () {
