@@ -20,8 +20,7 @@ function sendNews() {
     department = document.getElementById("department").value;
     news = document.getElementById("news").value;
     
-    alert("news="+news+",department="+department);
-    
+
     if(news == "Write news Here"){
         alert("Please write news first");
         return false;

@@ -5,12 +5,20 @@
  */
 package Servlets.InsertDataServlets;
 
+import beans.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Criteria;
+import org.hibernate.NonUniqueObjectException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.exception.ConstraintViolationException;
 
 /**
  *
@@ -18,72 +26,57 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class SendNews extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SendNews</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SendNews at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {
-            out.close();
-        }
-    }
+    private PrintWriter out;
+    private Session session;
+    private SessionFactory sf;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doPost(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+        sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
+        out = response.getWriter();
+
+        System.out.println("Inside NewsSender servlet");
+
+        String department = request.getParameter("department");
+        String news = request.getParameter("news");
+
+        try {
+            session = sf.openSession();
+            News n = new News();
+
+            Calendar calender = Calendar.getInstance();
+            String date = calender.getTime().toString();
+            
+            n.setDate(date);
+            n.setSender("Admin");
+            n.setReciever(department);
+            n.setNews(news);
+
+            session.save(n);
+
+            session.beginTransaction().commit();
+            session.close();
+
+            System.out.println("NewsSender is ok");
+            out.println("News sent successfully");
+
+        }  catch (Exception e) {
+            out.println("Exception in NewsSender:" + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "NewsSender";
     }// </editor-fold>
 
 }

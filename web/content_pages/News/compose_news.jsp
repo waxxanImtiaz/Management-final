@@ -39,8 +39,8 @@
                     </div>
               
               <div class="form-group">
-<textarea id="news" placeholder="Write News Here" class="form-control" style="height: 300px">
- Write news Here
+<textarea maxlength="500" placeholder="Write News Here" id="news"  class="form-control" style="height: 300px">
+
 </textarea>
               </div>
             </div>
