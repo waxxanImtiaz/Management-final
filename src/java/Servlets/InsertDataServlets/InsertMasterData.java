@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets.UpdaterServlets;
-
-
+package Servlets.InsertDataServlets;
 
 import beans.*;
 import java.io.IOException;
@@ -16,17 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 
 /**
  *
  * @author waxxan
  */
-public class UpdateBatchData extends HttpServlet {
+public class InsertMasterData extends HttpServlet {
 
-  
-    private Session session;
     private PrintWriter out;
+    private Session session;
     private SessionFactory sf;
 
     @Override
@@ -38,45 +35,43 @@ public class UpdateBatchData extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                
-        
+
         sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
         out = response.getWriter();
 
-        String b = request.getParameter("batchName");
         String department = request.getParameter("department");
-        
-        
+        String password = request.getParameter("password");
+
         try {
             session = sf.openSession();
-            DepartAndBatches batch = new DepartAndBatches();
+            Master master = new Master();
 
-            batch.setBatch(b);
-            batch.setDepart(department);
+            master.setDepart(department);
+            master.setMasterKey(password);
 
-            Transaction tr = session.beginTransaction();
+            session.save(master);
 
-            System.out.println("UpdateBatchDataServlet");
+            session.beginTransaction().commit();
+            session.close();
 
-            System.out.println("Batch data in UpdateSubjectDataServlet");
-            
-             //out.println("Before Data updated successfully");
-            session.merge(batch);
-            tr.commit();
-            out.println("Data updated successfully");
-            System.out.println("Data updated successfully by UpdateBatchDataServlet");
+            out.println("Master key data stored successfully");
 
-        }
-        catch (Exception e) {
+        } catch (ConstraintViolationException e) {
+            out.println("Entered Master key is Already Available");
+        } catch (Exception e) {
+            out.println("Exception in InsertMasterData:" + e.getMessage());
             e.printStackTrace();
-            out.println(e.getMessage());
-            
         }
+
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
-        return "UpdateBatchtDataServlet ";
+        return "InsertMasterData";
     }// </editor-fold>
-
 }

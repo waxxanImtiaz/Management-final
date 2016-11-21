@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    
+    
     $(".content-wrapper").load("content_pages/add_student.jsp", function (responseTxt, statusTxt, xhr) {
     });
     $("#add_student").click(function () {
@@ -68,6 +70,14 @@ $(document).ready(function () {
         $(".content-wrapper").load("content_pages/librarybooks/add_librarybooks.jsp", function (responseTxt, statusTxt, xhr) {
         });   
     });
+     $("#addmaster").click(function () {
+        $(".content-wrapper").load("content_pages/master/add_master.jsp", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
+     $("#view_master").click(function () {
+        $(".content-wrapper").load("/final_year_project/MasterLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
      $("#view_book").click(function () {
         $(".content-wrapper").load("/final_year_project/LibraryBookLoader", function (responseTxt, statusTxt, xhr) {
         });   
@@ -76,6 +86,7 @@ $(document).ready(function () {
         $(".content-wrapper").load("/final_year_project/ComplainLoader", function (responseTxt, statusTxt, xhr) {
         });   
     });
+     
 });
 ///final_year_project/ComplainLoader
 //content_pages/complains/readComplain.jsp

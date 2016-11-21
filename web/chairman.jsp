@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Admin Panel</title>
+        <title>Chariman Pannel</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -81,8 +81,6 @@
         </script>
         <script type="text/javascript" src="complain.js">
         </script>
-        <script type="text/javascript" src="master.js">
-        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini" >
         <div class="wrapper">
@@ -93,7 +91,7 @@
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>A</b>LT</span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Admin</b>Panel</span>
+                    <span class="logo-lg"><b>Chairman</b>Panel</span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -118,7 +116,7 @@
                                             <li><!-- start message -->
                                                 <a href="#">
                                                     <div class="pull-left">
-                                                        <img src="dist/img/imtiaz.jpg" class="img-circle" alt="User Image">
+                                                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                                     </div>
                                                     <h4>
                                                         Support Team
@@ -423,19 +421,6 @@
                                 <li><a href="#" id="view_batch"><i class="fa fa-circle-o"></i> View Batch</a></li>
                             </ul>
                         </li>
-                         <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-laptop"></i>
-                                <span>Master Key</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#" id="addmaster"><i class="fa fa-circle-o"></i> Add Master Key</a></li>
-                                <li><a href="#" id="view_master"><i class="fa fa-circle-o"></i> View Master Key</a></li>
-                            </ul>
-                        </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-laptop"></i>
@@ -462,7 +447,6 @@
                                 <li><a href="#" id="view_librarian"><i class="fa fa-circle-o"></i> View Librarian</a></li>
                             </ul>
                         </li>
-                       
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-laptop"></i>
@@ -476,79 +460,12 @@
                                 <li><a href="#" id="view_book"><i class="fa fa-circle-o"></i> View Book</a></li>
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="#" id="login_information">
-                                <i class="fa fa-edit"></i> <span>Login Information</span>
-                              
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-table"></i> <span>Tables</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                                <li><a  href="#"><i class="fa fa-circle-o"></i> Data tables</a></li>
-                            </ul>
-                        </li>
+                        
+                       
 
-                        <li>
-                            <a id="m"  href="#">
-                                <i  class="fa fa-envelope"></i> <span> News</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a id="message"  href="#">
-                                <i  class="fa fa-envelope"></i> <span> Message</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a id="complains"  href="#">
-                                <i  class="fa fa-envelope"></i> <span> Complains</span>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-share"></i> <span>Multilevel</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                                <li>
-                                    <a href="#"><i class="fa fa-circle-o"></i> Level One
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                                                <span class="pull-right-container">
-                                                    <i class="fa fa-angle-left pull-right"></i>
-                                                </span>
-                                            </a>
-                                            <ul class="treeview-menu">
-                                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-                        <li class="header">LABELS</li>
-                        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-                        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-                        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
-                    </ul>
+                        
+                       
+                        </ul>
                 </section>
                 <!-- /.sidebar -->
             </aside>

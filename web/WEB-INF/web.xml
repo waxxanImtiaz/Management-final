@@ -240,6 +240,22 @@
         <servlet-name>DeleteComplain</servlet-name>
         <servlet-class>Servlets.DataRemoverServlets.DeleteComplain</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertMasterData</servlet-name>
+        <servlet-class>Servlets.InsertDataServlets.InsertMasterData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MasterLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.MasterLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MasterEditor</servlet-name>
+        <servlet-class>Servlets.Editors.MasterEditor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateMasterData</servlet-name>
+        <servlet-class>Servlets.UpdaterServlets.UpdateMasterData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -475,6 +491,22 @@
     <servlet-mapping>
         <servlet-name>DeleteComplain</servlet-name>
         <url-pattern>/DeleteComplain</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertMasterData</servlet-name>
+        <url-pattern>/InsertMasterData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MasterLoader</servlet-name>
+        <url-pattern>/MasterLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MasterEditor</servlet-name>
+        <url-pattern>/MasterEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateMasterData</servlet-name>
+        <url-pattern>/UpdateMasterData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
