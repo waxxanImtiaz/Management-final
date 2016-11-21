@@ -16,7 +16,7 @@ function createXmlHttpRequestObject() {
 }
 
 function readComplain(id){
-    
+    alert("id="+id);
 }
 
 

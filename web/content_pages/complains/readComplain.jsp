@@ -42,7 +42,7 @@
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
-                  Total <%=complains.size() %> Complains
+                  Total number of complains: <%=complains.size() %> 
                  
                   <!-- /.btn-group -->
                 </div>
@@ -54,8 +54,8 @@
                       <% for(Complain c : complains) { %>
                   <tr id="<%=c.getId() %>">
                     <td id="<%="cb"+c.getId() %>"><input type="checkbox"></td>
-                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="#" onclick="readComplain.jsp?id=<%=c.getId() %>"><%=c.getName() %></a></td>
+                    <td class="mailbox-star"><a href="#" onclick="readComplain('<%=c.getId() %>')"><i class="fa fa-star text-yellow"></i></a></td>
+                    <td class="mailbox-name"><a href="#" onclick="readComplain('<%=c.getId() %>')"><%=c.getName() %></a></td>
                     <td class="mailbox-subject"><b><%=c.getComplain() %></b>
                     </td>
                     <td class="mailbox-attachment"></td>
@@ -79,7 +79,7 @@
                 <!-- /.btn-group -->
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
-                  1-50/200
+              
 
                 </div>
                 <!-- /.pull-right -->

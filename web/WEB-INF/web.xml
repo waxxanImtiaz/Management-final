@@ -232,6 +232,10 @@
         <servlet-name>ComplainLoader</servlet-name>
         <servlet-class>Servlets.LoaderServlets.ComplainLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReadComplainLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.ReadComplainLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -459,6 +463,10 @@
     <servlet-mapping>
         <servlet-name>ComplainLoader</servlet-name>
         <url-pattern>/ComplainLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReadComplainLoader</servlet-name>
+        <url-pattern>/ReadComplainLoader</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
