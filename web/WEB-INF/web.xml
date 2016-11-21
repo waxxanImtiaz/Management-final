@@ -188,6 +188,26 @@
         <servlet-name>DeleteTeacher</servlet-name>
         <servlet-class>Servlets.DataRemoverServlets.DeleteTeacher</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditLibrarian</servlet-name>
+        <servlet-class>Servlets.Editors.EditLibrarian</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertLibrarianData</servlet-name>
+        <servlet-class>Servlets.InsertDataServlets.InsertLibrarianData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LibrarianLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.LibrarianLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteLibrarian</servlet-name>
+        <servlet-class>Servlets.DataRemoverServlets.DeleteLibrarian</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateLibrarianData</servlet-name>
+        <servlet-class>Servlets.UpdaterServlets.UpdateLibrarianData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -371,6 +391,26 @@
     <servlet-mapping>
         <servlet-name>DeleteTeacher</servlet-name>
         <url-pattern>/DeleteTeacher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditLibrarian</servlet-name>
+        <url-pattern>/EditLibrarian</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertLibrarianData</servlet-name>
+        <url-pattern>/InsertLibrarianData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LibrarianLoader</servlet-name>
+        <url-pattern>/LibrarianLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteLibrarian</servlet-name>
+        <url-pattern>/DeleteLibrarian</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateLibrarianData</servlet-name>
+        <url-pattern>/UpdateLibrarianData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -56,6 +56,14 @@ $(document).ready(function () {
         $(".content-wrapper").load("/final_year_project/TeacherLoader", function (responseTxt, statusTxt, xhr) {
         });   
     });
+     $("#add_librarian").click(function () {
+        $(".content-wrapper").load("content_pages/librarian/add_librarian.jsp", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
+     $("#view_librarian").click(function () {
+        $(".content-wrapper").load("/final_year_project/LibrarianLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
 });
 
 

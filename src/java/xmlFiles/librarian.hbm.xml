@@ -12,6 +12,9 @@
     <property name="email" type="string">
       <column length="256" name="email"/>
     </property>
+    <property name="mobileNumber" type="string">
+      <column length="256" name="mobileNumber"/>
+    </property>
     <property name="password" type="string">
       <column length="256" name="password"/>
     </property>
