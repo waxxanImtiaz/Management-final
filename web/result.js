@@ -97,12 +97,14 @@ function checkResultAddForm() {
             return false;
         }
     }
-    storeResultData();
+    //alert("inside storeResultData");
+    storeData();
     return false;
 
 }
 
-function storeResultData() {
+function storeData() {
+    
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
 
         xmlHttp.open("GET", "/final_year_project/InsertResultData?department=" + formFields[0] +
@@ -110,16 +112,17 @@ function storeResultData() {
                 + "&theoryOrPractical=" + formFields[3] + "&rollNumber=" + formFields[4]
                 + "&batch=" + formFields[5] + "&result=" + formFields[6],
                 true);
-        xmlHttp.onreadystatechange = handleServerOfResultInsert;
+        xmlHttp.onreadystatechange = handleServerOfIns;
         xmlHttp.send(null);
     } else {
         // setTimeout('storeStudentData()', 1000);
 
     }
+    
     return false;
 }
 
-function handleServerOfResultInsert() {
+function handleServerOfIns() {
     if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
 
         try {
@@ -205,7 +208,7 @@ function resultDelete(){
 }
 var id;
 function checkResultUpdateForm(rId){
-    alert("checkResultUpdateForm is called");
+
     id = rId;
     
  formFields = [document.forms["add_subject_form"]["department"].value,
@@ -237,7 +240,7 @@ function storeResultData() {
                 + "&theoryOrPractical=" + formFields[3] + "&rollNumber=" + formFields[4]
                 + "&batch=" + formFields[5] + "&result=" + formFields[6]+"&id=" + id,
                 true);
-        xmlHttp.onreadystatechange = handleServerOfResultInsert;
+        xmlHttp.onreadystatechange = handleServerOfIns;
         xmlHttp.send(null);
     } else {
         // setTimeout('storeStudentData()', 1000);
