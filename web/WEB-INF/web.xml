@@ -228,6 +228,10 @@
         <servlet-name>BookEditor</servlet-name>
         <servlet-class>Servlets.Editors.BookEditor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ComplainLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.ComplainLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -451,6 +455,10 @@
     <servlet-mapping>
         <servlet-name>BookEditor</servlet-name>
         <url-pattern>/BookEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComplainLoader</servlet-name>
+        <url-pattern>/ComplainLoader</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

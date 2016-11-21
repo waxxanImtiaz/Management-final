@@ -59,24 +59,17 @@ function handleServerResponse() {
     if (xmlHttp.readyState == 4) {
 
         try {
-            //if (xmlHttp.status == 200) {
             xmlResponse = xmlHttp.responseText;
-            //xmlDocumentElement = xmlResponse.documentElement;
             var message = xmlResponse.toString();
 
-//                document.getElementById("serverOutput").innerHTML = '<span style="color: green">'
-//                        + message + '</span>';
 
             if (message) {
                 alert("Complain sent successfully!");
             }
-//                }
             setTimeout('process()', 1000);
-            //}
         } catch (e) {
             alert(e.toString());
         }
-//        }
     } else {
         //alert("Ooops!! Something went wrong!"+xmlHttp.readyState);
         setTimeout('process()', 1000);
@@ -85,7 +78,7 @@ function handleServerResponse() {
 
 
 function checkBookData() {
-    
+
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
         rollNumber = encodeURIComponent(document.getElementById("rollNumber").value);
         bookAuthor = encodeURIComponent(document.getElementById("bookAuthor").value);
@@ -99,7 +92,7 @@ function checkBookData() {
                 + "&bookAuthor=" + bookAuthor + "&bookName=" + bookName
                 + "&department=" + department + "&name=" + name
                 + "&bookIssueDate=" + bookIssueDate + "&bookReturnDate=" + bookReturnDate
-        , true);
+                , true);
         xmlHttp.onreadystatechange = handleTestServletResponse;
         xmlHttp.send(null);
     } else {
@@ -134,8 +127,8 @@ function validateLibrarianForm() {
     var bookReturnDate = document.forms["librarianForm"]["bookReturnDate"].value;
     var bookAuthor = document.forms["librarianForm"]["bookAuthor"].value;
     var bookName = document.forms["librarianForm"]["bookName"].value;
-    
-    
+
+
     if (rollNumber == null || rollNumber == "") {
         alert("Roll Number must be filled out");
         return false;
@@ -159,14 +152,14 @@ function validateLibrarianForm() {
         alert("Please insert Date of Returning!");
         return false;
     }
-    
-    
-   storeLibraryIssuanceFormData();
+
+
+    storeLibraryIssuanceFormData();
 }//end of method
 
 
 //======================BOOK ISSUE FORM DATA===================
-function storeLibraryIssuanceFormData(){
+function storeLibraryIssuanceFormData() {
 
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
         rollNumber = encodeURIComponent(document.getElementById("rollNumber").value);
@@ -181,10 +174,10 @@ function storeLibraryIssuanceFormData(){
                 + "&bookAuthor=" + bookAuthor + "&bookName=" + bookName
                 + "&department=" + department + "&name=" + name
                 + "&bookIssueDate=" + bookIssueDate + "&bookReturnDate=" + bookReturnDate
-        , true);
+                , true);
         xmlHttp.onreadystatechange = handleServerResponseOfIssuanceForm;
         xmlHttp.send(null);
-    } else{
+    } else {
         //setTimeout('storeLibraryIssuanceFormData()', 1000);
     }
 }
@@ -199,10 +192,10 @@ function handleServerResponseOfIssuanceForm() {
 
             document.getElementById("formData").innerHTML = '<span style="color: green">'
                     + message + '</span>';
-             //if(message == 'true'){
-                 alert('Book Issued Successfully!');
-             //}       
-          //  setTimeout('storeLibraryIssuanceFormData()', 1000);
+            //if(message == 'true'){
+            alert('Book Issued Successfully!');
+            //}       
+            //  setTimeout('storeLibraryIssuanceFormData()', 1000);
             //}
         } catch (e) {
             alert(e.toString());

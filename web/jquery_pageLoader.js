@@ -72,7 +72,11 @@ $(document).ready(function () {
         $(".content-wrapper").load("/final_year_project/LibraryBookLoader", function (responseTxt, statusTxt, xhr) {
         });   
     });
+     $("#complains").click(function () {
+        $(".content-wrapper").load("/final_year_project/ComplainLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
 });
-
-
+///final_year_project/ComplainLoader
+//content_pages/complains/readComplain.jsp
 

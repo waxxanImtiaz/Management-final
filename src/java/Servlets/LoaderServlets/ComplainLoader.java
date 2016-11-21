@@ -22,10 +22,11 @@ import org.hibernate.SessionFactory;
 import java.util.concurrent.Callable;
 import org.hibernate.Criteria;
 
-public class ComplainsLoader extends HttpServlet {
+public class ComplainLoader extends HttpServlet {
     private Session session; 
     private SessionFactory sf;
     private ExecutorService executorService;
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,9 +37,10 @@ public class ComplainsLoader extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("Inside ComplainsLoader");
         sf= (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
         try {
-
+            
             session = sf.openSession();
             if (session == null) {
                 throw new NullPointerException("Hibernate Session is null");
@@ -52,8 +54,10 @@ public class ComplainsLoader extends HttpServlet {
             List<Complain> complain = (List<Complain>) future.get();
 
             request.getSession().setAttribute("allComplains", complain);
-
-            response.sendRedirect("content_pages/complains/complains.jsp");
+                
+            System.out.println("Complains");
+            System.out.println(complain.get(0).getComplain());
+            response.sendRedirect("content_pages/complains/readComplain.jsp");
             System.out.println("All ComplainsLoader Got");
             
             executorService.shutdown();
