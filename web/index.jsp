@@ -77,6 +77,8 @@
         </script>
         <script type="text/javascript" src="librarian.js">
         </script>
+        <script type="text/javascript" src="libraryBooks.js">
+        </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini" >
         <div class="wrapper">
@@ -441,6 +443,19 @@
                             <ul class="treeview-menu">
                                 <li><a href="#" id="add_librarian"><i class="fa fa-circle-o"></i> Add Librarian</a></li>
                                 <li><a href="#" id="view_librarian"><i class="fa fa-circle-o"></i> View Librarian</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
+                                <span>Library Books</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#" id="add_book"><i class="fa fa-circle-o"></i> Add Book</a></li>
+                                <li><a href="#" id="view_book"><i class="fa fa-circle-o"></i> View Book</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

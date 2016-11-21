@@ -208,6 +208,22 @@
         <servlet-name>UpdateLibrarianData</servlet-name>
         <servlet-class>Servlets.UpdaterServlets.UpdateLibrarianData</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertBookData</servlet-name>
+        <servlet-class>Servlets.InsertDataServlets.InsertBookData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LibraryBookLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.LibraryBookLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateBookData</servlet-name>
+        <servlet-class>Servlets.UpdaterServlets.UpdateBookData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BookDelete</servlet-name>
+        <servlet-class>Servlets.DataRemoverServlets.BookDelete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -411,6 +427,22 @@
     <servlet-mapping>
         <servlet-name>UpdateLibrarianData</servlet-name>
         <url-pattern>/UpdateLibrarianData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertBookData</servlet-name>
+        <url-pattern>/InsertBookData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LibraryBookLoader</servlet-name>
+        <url-pattern>/LibraryBookLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateBookData</servlet-name>
+        <url-pattern>/UpdateBookData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookDelete</servlet-name>
+        <url-pattern>/BookDelete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
