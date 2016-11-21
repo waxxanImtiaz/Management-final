@@ -224,6 +224,10 @@
         <servlet-name>BookDelete</servlet-name>
         <servlet-class>Servlets.DataRemoverServlets.BookDelete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookEditor</servlet-name>
+        <servlet-class>Servlets.Editors.BookEditor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -443,6 +447,10 @@
     <servlet-mapping>
         <servlet-name>BookDelete</servlet-name>
         <url-pattern>/BookDelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookEditor</servlet-name>
+        <url-pattern>/BookEditor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

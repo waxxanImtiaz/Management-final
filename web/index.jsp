@@ -487,6 +487,11 @@
                                 <i  class="fa fa-envelope"></i> <span> Message</span>
                             </a>
                         </li>
+                        <li>
+                            <a id="complains"  href="#">
+                                <i  class="fa fa-envelope"></i> <span> Complains</span>
+                            </a>
+                        </li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-share"></i> <span>Multilevel</span>

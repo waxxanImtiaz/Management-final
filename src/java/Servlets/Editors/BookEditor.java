@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets.InsertDataServlets;
-
-import beans.*;
+package Servlets.Editors;
+import beans.DepartAndBatches;
+import beans.Intermediate;
+import beans.LibraryBooks;
+import beans.MatricInformation;
+import beans.Students;
+import beans.Subjects;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -13,19 +17,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.hibernate.Criteria;
-import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.exception.ConstraintViolationException;
 
 /**
  *
  * @author waxxan
  */
-public class InsertBookData extends HttpServlet {
+public class BookEditor extends HttpServlet {
 
-    private PrintWriter out;
     private Session session;
     private SessionFactory sf;
 
@@ -39,34 +39,24 @@ public class InsertBookData extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String id = request.getParameter("id");
+//        session = (Session) request.getServletContext().getAttribute("hibernateSession");
         sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
-        out = response.getWriter();
+        session = sf.openSession();
 
-        String bookName = request.getParameter("bookName");
-        String bookAuthor = request.getParameter("bookAuthor");
+//        List<DepartAndBatches> allSubjects = (List<DepartAndBatches>) request.getSession().getAttribute("allBatches");
+        System.out.println("Inside BookEditor");
 
-        try {
-            session = sf.openSession();
-            LibraryBooks book = new LibraryBooks();
+        int i = Integer.parseInt(id);
+        
+        LibraryBooks b = (LibraryBooks) session.get(LibraryBooks.class, i);
 
-            book.setBookName(bookName);
-            book.setAuthor(bookAuthor);
+        request.getSession().setAttribute("book", b);
 
-            
-            session.save(book);
-
-            session.beginTransaction().commit();
-            session.close();
-
-            out.println("Book data stored successfully");
-
-        } catch (ConstraintViolationException e) {
-            out.println("Entered Book is Already Available");
-        } catch (Exception e) {
-            out.println("Exception in InsertBookData:" + e.getMessage());
-            e.printStackTrace();
-        }
-
+        response.getWriter().println("true");
+        System.out.println("BookEditor is ok");
+        //response.sendRedirect("content_pages/edit_student.jsp");
+        return;
     }
 
     /**
@@ -76,7 +66,8 @@ public class InsertBookData extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "InsertBookData";
+        return "BookEditor";
     }// </editor-fold>
 
 }
+

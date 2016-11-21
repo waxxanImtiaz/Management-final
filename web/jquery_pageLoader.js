@@ -69,7 +69,7 @@ $(document).ready(function () {
         });   
     });
      $("#view_book").click(function () {
-        $(".content-wrapper").load("/final_year_project/LibrarianBookLoader", function (responseTxt, statusTxt, xhr) {
+        $(".content-wrapper").load("/final_year_project/LibraryBookLoader", function (responseTxt, statusTxt, xhr) {
         });   
     });
 });

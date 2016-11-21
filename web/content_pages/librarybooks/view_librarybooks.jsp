@@ -52,6 +52,7 @@
                             <tr id = "<%=d.getId() %>">
                             
                                 <td><%=d.getBookName() %></td>
+                                <td><%=d.getAuthor() %></td>
 
 
                                 <td>

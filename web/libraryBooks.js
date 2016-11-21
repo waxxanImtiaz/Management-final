@@ -71,7 +71,7 @@ function callBookEditor(bookId) {
     //alert("data Loaded");
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
 
-        xmlHttp.open("GET", "/final_year_project/BookEditor?bookId=" + bookId
+        xmlHttp.open("GET", "/final_year_project/BookEditor?id=" + bookId
                 , true);
         xmlHttp.onreadystatechange = bookEdit;
         xmlHttp.send(null);
@@ -95,25 +95,25 @@ function bookEdit() {
         }
     }
 }
-
-function validateEditBookForm(){
+var bookId;
+function validateEditBookForm(id){
+    bookId = id;
      formFields = [document.forms["add_batch_form"]["bookName"].value,
         document.forms["add_batch_form"]["bookAuthor"].value];
-
     for (var i = 0; i < formFields.length; i++) {
         if (formFields[i] == null || formFields[i] == "") {
             alert("Please Fill All Fields");
             return false;
         }
     }
-    updateBatchData();
+    updateBookData();
     return false;
 }
-function updateBatchData(){
+function updateBookData(){
    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
 
           xmlHttp.open("GET", "/final_year_project/UpdateBookData?bookName=" + formFields[0] +
-                "&bookAuthor=" + formFields[1], true);
+                "&bookAuthor=" + formFields[1]+"&id=" + bookId, true);
         xmlHttp.onreadystatechange = handleServerResponseUpdateBook;
         xmlHttp.send(null);
     } else {

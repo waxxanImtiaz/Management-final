@@ -46,14 +46,14 @@
               </div>
                   <div class="form-group">
                   <label for="bookAuthor">Book Author</label>
-                  <input type="text" class="form-control" id="department" value="<%=book.getAuthor() %>" placeholder="Enter department name" >
+                  <input type="text" class="form-control" id="bookAuthor" value="<%=book.getAuthor() %>" placeholder="Enter department name" >
               </div>
                   
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                  <button type="submit" class="btn btn-primary" onclick="return  validateEditBookForm()" >Submit</buttcheckSubjectAddFormon>
+                  <button type="submit" class="btn btn-primary" onclick="return  validateEditBookForm('<%=book.getId() %>')" >Submit</buttcheckSubjectAddFormon>
               </div>
             </form>
           </div>
