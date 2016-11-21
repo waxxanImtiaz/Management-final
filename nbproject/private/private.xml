@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/F:/Fyp%20final/final%20year%20project/web/pages/mailbox/read-mail.html</file>
             <file>file:/F:/Fyp%20final/final%20year%20project/web/jquery_pageLoader.js</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/web/subjects.js</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/web/content_pages/teacher/view_teacher.jsp</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/web/content_pages/complains/complains.jsp</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/web/result.js</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/LoaderServlets/ReadComplainLoader.java</file>
             <file>file:/F:/Fyp%20final/final%20year%20project/web/index.jsp</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/web/content_pages/teacher/edit_teacher.jsp</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/InsertDataServlets/InsertTeacherData.java</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/UpdaterServlets/UpdateTeacherData.java</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/web/teacher.js</file>
-            <file>file:/F:/Fyp%20final/final%20year%20project/src/java/Servlets/Editors/EditTeacher.java</file>
+            <file>file:/F:/Fyp%20final/final%20year%20project/web/complain.js</file>
         </group>
     </open-files>
 </project-private>
