@@ -13,7 +13,7 @@
       <column length="256" name="rollNumber"/>
     </property>
     <property name="complain" type="string">
-      <column length="256" name="complain"/>
+      <column length="1000" name="complain"/>
     </property>
     <property name="dateTime" type="string">
       <column length="256" name="dateTime"/>

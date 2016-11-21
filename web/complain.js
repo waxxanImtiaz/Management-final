@@ -15,8 +15,8 @@ function createXmlHttpRequestObject() {
 
 }
 
-function readComplain(id){
-   
+function readComplain(id) {
+
     xmlHttp.open("GET", "/final_year_project/ReadComplainLoader?id=" + id
             , true);
     xmlHttp.onreadystatechange = handleServerGetComplain;
@@ -32,45 +32,70 @@ function handleServerGetComplain() {
             xmlResponse = xmlHttp.responseText;
             var message = xmlResponse.toString();
 
-//            document.getElementById("formData").innerHTML = '<span style="color: green">'
-//                    + message + '</span>';
-            var select = document.getElementById("subject");
-            //if(message){
             if (message) {
-
-                // Optional: Clear all existing options first:
-                select.innerHTML = "";
-                var json = JSON.parse(message);
-
-
-                // var count = Object.keys(json).length;
-
-                var flag = true;
-                for (var key in json) {
-                    if (json[key] != null) {
-                        flag = false;
-                        select.innerHTML += "<option value=\"" + json[key] + "\">" + json[key] + "</option>";
-                    }
-                }
-                if (flag) {
-                    select.innerHTML += "<option value=\"" + 0 + "\">No subject found</option>";
-
-                }
-
+                $(".content-wrapper").load("content_pages/complains/complains.jsp", function (responseTxt, statusTxt, xhr) {
+                });
             } else {
-                alert("Subjects not found");
+                alert("Complain is deleted");
             }
-
-
-
-
-            // }
-            //  }else{
-            //  select.innerHTML += "<option value=\"" + opt + "\">Not found</option>";
-            //}
 
         } catch (e) {
             // alert("exception=" + e.toString());
         }
     }
 }
+
+var complainId;
+function deleteComplain(id) {
+    complainId = id;
+
+    xmlHttp.open("GET", "/final_year_project/DeleteComplain?id=" + id
+            , true);
+    xmlHttp.onreadystatechange = handleServerDeleteComplain;
+    xmlHttp.send(null);
+    return false;
+}
+
+jQuery("complainContent").ready(
+        function () {
+            refreshPage();
+        }
+);
+function refreshPage() {
+//    setInterval(function ()
+//    {
+        $(".content-wrapper").load("/final_year_project/ComplainLoader", function (responseTxt, statusTxt, xhr) {
+        });
+//    }, 3000);
+
+}
+
+function deleteButton(id) {
+    complainId = id;
+
+    xmlHttp.open("GET", "/final_year_project/DeleteComplain?id=" + id
+            , true);
+    xmlHttp.onreadystatechange = handleServerDeleteComplain;
+    xmlHttp.send(null);
+    return false;
+}
+function handleServerDeleteComplain() {
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+            if (message) {
+                alert("Complain deleted succesfully");
+                $(".content-wrapper").load("/final_year_project/ComplainLoader", function (responseTxt, statusTxt, xhr) {
+                });
+            }
+
+
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
+}
+

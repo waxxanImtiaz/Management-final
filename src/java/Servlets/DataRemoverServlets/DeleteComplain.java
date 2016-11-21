@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Servlets.DataRemoverServlets;
-
 import beans.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,9 +19,9 @@ import org.hibernate.Transaction;
  *
  * @author waxxan
  */
-public class BookDelete extends HttpServlet {
+public class DeleteComplain extends HttpServlet {
 
-    private LibraryBooks book;
+    private Complain complain;
     private Session session;
     private SessionFactory sf;
     private PrintWriter out;
@@ -38,7 +37,7 @@ public class BookDelete extends HttpServlet {
             throws ServletException, IOException {
 
         
-        System.out.println("Inside BookDelete");
+        System.out.println("Inside DeleteComplain");
         String b = request.getParameter("id");
         //  subject =(Students) request.getSession().getAttribute("subject");
 
@@ -46,23 +45,23 @@ public class BookDelete extends HttpServlet {
         out = response.getWriter();
 
         try{
-        System.out.println("Inside BookDelete");
+        System.out.println("Inside DeleteComplain");
 
         int i = Integer.parseInt(b);
 //        session = (Session) request.getServletContext().getAttribute("hibernateSession");
         sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
 
         session = sf.openSession();
-        book = (LibraryBooks) session.get(LibraryBooks.class, i);
+        complain = (Complain) session.get(Complain.class, i);
 
         
         Transaction tr = session.beginTransaction();
 
-        session.delete(book);
+        session.delete(complain);
 
         tr.commit();
-        out.print("Book  deleted successfully");
-        System.out.println("Book deleted successfully");
+        out.print("Complain  deleted successfully");
+        System.out.println("Complain deleted successfully");
         }catch(Exception e){
             out.println(e.getMessage());
         }
@@ -76,6 +75,6 @@ public class BookDelete extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "BookDelete";
+        return "DeleteComplain";
     }// </editor-fold>
 }

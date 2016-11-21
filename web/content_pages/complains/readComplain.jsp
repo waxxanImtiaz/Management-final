@@ -19,8 +19,8 @@
         Complains
       </h1>
     </section>
- <section class="content">
-      <div class="row">
+ <section class="content" >
+      <div class="row"  id ="complainContent" >
      
         <!-- /.col -->
         <div class="col-md-12">
@@ -36,11 +36,8 @@
               <div class="mailbox-controls">
                 <!-- Check all button -->
                 
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                </div>
                 <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <button type="button" onclick="refreshPage()" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                 <div class="pull-right">
                   Total number of complains: <%=complains.size() %> 
                  
@@ -53,10 +50,11 @@
                   <tbody>
                       <% for(Complain c : complains) { %>
                   <tr id="<%=c.getId() %>">
-                    <td id="<%="cb"+c.getId() %>"><input type="checkbox"></td>
+                    <td onclick="deleteButton('<%=c.getId() %>');">   <button type="button"   class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+               </td>
                     <td class="mailbox-star"><a href="#" onclick="readComplain('<%=c.getId() %>')"><i class="fa fa-star text-yellow"></i></a></td>
                     <td class="mailbox-name"><a href="#" onclick="readComplain('<%=c.getId() %>')"><%=c.getName() %></a></td>
-                    <td class="mailbox-subject"><b><%=c.getComplain() %></b>
+                    <td class="mailbox-subject"><b><%=c.getRollNumber() %></b>
                     </td>
                     <td class="mailbox-attachment"></td>
                     <td class="mailbox-date"><%=c.getDateTime() %></td>
@@ -73,15 +71,8 @@
               <div class="mailbox-controls">
                 <!-- Check all button -->
                 
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                </div>
-                <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                <div class="pull-right">
-              
-
-                </div>
+                
+                
                 <!-- /.pull-right -->
               </div>
             </div>
