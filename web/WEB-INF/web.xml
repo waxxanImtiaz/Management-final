@@ -184,6 +184,10 @@
         <servlet-name>UpdateTeacherData</servlet-name>
         <servlet-class>Servlets.UpdaterServlets.UpdateTeacherData</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteTeacher</servlet-name>
+        <servlet-class>Servlets.DataRemoverServlets.DeleteTeacher</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -363,6 +367,10 @@
     <servlet-mapping>
         <servlet-name>UpdateTeacherData</servlet-name>
         <url-pattern>/UpdateTeacherData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteTeacher</servlet-name>
+        <url-pattern>/DeleteTeacher</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

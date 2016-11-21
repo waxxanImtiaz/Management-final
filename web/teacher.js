@@ -129,3 +129,41 @@ function storeTeacherUpdatedData(){
     }
       return false;  
 }
+var teacherId
+function deleteTeacher(tId){
+ teacherId = tId;
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/DeleteTeacher?id=" + tId
+                , true);
+        xmlHttp.onreadystatechange = teacherDelete;
+        xmlHttp.send(null);
+    }
+}
+
+function teacherDelete(){
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+
+
+
+            if (message) {
+                
+            document.getElementById("formData").innerHTML = '<span style="color: green">Teacher\'s data deleted successfully</span>';
+                 $('#sub'+teacherId).hide();
+            }else{
+                 document.getElementById("formData").innerHTML = '<span style="color: green">Teacher\'s data not deleted</span>';
+           
+            }
+
+
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
+    
+}
+

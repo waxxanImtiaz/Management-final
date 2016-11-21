@@ -29,7 +29,7 @@ public class InsertTeacherData extends HttpServlet {
     private PrintWriter out;
     private Session session;
     private SessionFactory sf;
-
+    private  Teacher teacher;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -53,7 +53,7 @@ public class InsertTeacherData extends HttpServlet {
 
         try {
             session = sf.openSession();
-            Teacher teacher = new Teacher();
+            teacher = new Teacher();
 
            
             teacher.setName(name);
@@ -61,7 +61,9 @@ public class InsertTeacherData extends HttpServlet {
             teacher.setEmail(email);
             teacher.setPassword(password);
             teacher.setDepartment(department);
-
+            
+            if(isTeacherOk())
+            {
             session.save(teacher);
 
             session.beginTransaction().commit();
@@ -69,7 +71,8 @@ public class InsertTeacherData extends HttpServlet {
 
             System.out.println("InsertTeacherData is ok");
             out.println("Data inserted successfully");
-
+            }else
+                out.println("Teacher already available");
         }  catch (Exception e) {
             out.println("Exception in InsertTeacherData:" + e.getMessage());
             e.printStackTrace();
@@ -81,4 +84,13 @@ public class InsertTeacherData extends HttpServlet {
         return "InsertTeacherData";
     }// </editor-fold>
 
+    public boolean isTeacherOk(){
+        Criteria cr = session.createCriteria(Teacher.class);
+        for(Teacher t : (List<Teacher>)cr.list()){
+            if(t.getName().equalsIgnoreCase(teacher.getName()) && t.getDepartment().equalsIgnoreCase(teacher.getDepartment())
+                    || t.getUsername().equalsIgnoreCase(teacher.getUsername()))
+                return false;
+        }
+        return true;
+    }
 }

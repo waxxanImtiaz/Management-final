@@ -16,6 +16,7 @@
     <h1>
         All Teachers  
     </h1>
+    <h5 id="formData"></h5>
 </section>
 
 <!-- Main content -->
@@ -46,7 +47,7 @@
                         </thead>
                         <tbody>
                             <% for (Teacher t : teachers) {%>
-                            <tr id = "<%=t.getId() %>">
+                            <tr id = "<%="sub"+t.getId() %>">
                             
                                 <td><%=t.getName() %></td>
                                 <td><%=t.getDepartment() %></td>
