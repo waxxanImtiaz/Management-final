@@ -8,6 +8,7 @@ package Servlets;
 import beans.Complain;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,13 +30,6 @@ public class ComplaintHandler extends HttpServlet {
     private SessionFactory sf;
     private Session session;
 
-    @Override
-    public void init() {
-        cf = new Configuration();
-        cf.configure("xmlFiles/hibernate.cfg.xml");
-        sf = cf.buildSessionFactory();
-        session = sf.openSession();
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,7 +39,9 @@ public class ComplaintHandler extends HttpServlet {
         response.setContentType("text/javascript");
         response.setCharacterEncoding("UTF-8");
 
-        //get Transaction object
+         sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
+         session = sf.openSession();
+         //get Transaction object
         Transaction tr = session.beginTransaction();
         //GET PARAMETERS
         Complain complain = new Complain();
@@ -54,6 +50,10 @@ public class ComplaintHandler extends HttpServlet {
         String rollNumber = request.getParameter("rollNumber");
         String complaint = request.getParameter("complain");
 
+        Calendar cal = Calendar.getInstance();
+        String time = cal.getTime().toString();
+        
+        complain.setDateTime(time);
         complain.setComplain(complaint);
         complain.setName(name);
         complain.setRollNumber(rollNumber);

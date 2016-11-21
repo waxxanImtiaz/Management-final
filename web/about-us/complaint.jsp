@@ -212,7 +212,7 @@
                                                     <center>
                                                         <textarea cols="70" id="complaint" rows="7" name="complaint"></textarea>
                                                     </center>
-                                                    <input type="submit" value="Send"  onclick ="validateForm()" >
+                                                    <input type="submit" value="Send"  onclick ="return validateForm()" >
                                                 </form>
 
                                             </div>

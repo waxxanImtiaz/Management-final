@@ -15,5 +15,8 @@
     <property name="complain" type="string">
       <column length="256" name="complain"/>
     </property>
+    <property name="dateTime" type="string">
+      <column length="256" name="dateTime"/>
+    </property>
   </class>
 </hibernate-mapping>

@@ -14,6 +14,7 @@ public class Complain {
  private String name;
  private String rollNumber;
  private String complain;
+ private String dateTime;
 
     /**
      * @return the name
@@ -69,5 +70,19 @@ public class Complain {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the dateTime
+     */
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    /**
+     * @param dateTime the dateTime to set
+     */
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 }

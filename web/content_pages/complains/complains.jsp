@@ -49,7 +49,7 @@
                   <tr id="<%=c.getId() %>">
                     <td id="<%="cb"+c.getId() %>"><input type="checkbox"></td>
                     <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                    <td class="mailbox-name"><a href="#" onclick="readComplain.jsp?id=<%=c.getId() %>"><%=c.getRollNumber() %></a></td>
+                    <td class="mailbox-name"><a href="#" onclick="readComplain.jsp?id=<%=c.getId() %>"><%=c.getName() %></a></td>
                     <td class="mailbox-subject"><b><%=c.getRollNumber() %></b><%=c.getComplain() %>
                     </td>
                     <td class="mailbox-attachment"></td>

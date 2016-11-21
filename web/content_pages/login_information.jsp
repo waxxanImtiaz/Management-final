@@ -40,9 +40,9 @@
                                 <th>Username</th>
                                 <th>Password</th>
                                 <th>Date And Time</th>
-                                <th>Host</th>
-                                <th>Connection</th>
-                                <th>UserAgent</th>
+                              
+                                
+                             
                                 
                             </tr>
                         </thead>
@@ -53,9 +53,8 @@
                                 <td><%=s.getUsername() %></td>
                                 <td><%=s.getPassword() %></td>
                                 <td><%=s.getDate() %></td>
-                                <td><%=s.getConnection() %>
-                                </td>
-                                <td><%=s.getUserAgent() %></td>
+                                
+                              
                             </tr>
                             <% }%>
                     </table>

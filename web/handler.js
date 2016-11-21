@@ -16,6 +16,7 @@ function validateForm() {
     }
 
     process();
+    return false;
 }//end of method
 
 
@@ -66,7 +67,7 @@ function handleServerResponse() {
 //                document.getElementById("serverOutput").innerHTML = '<span style="color: green">'
 //                        + message + '</span>';
 
-            if (message == "true") {
+            if (message) {
                 alert("Complain sent successfully!");
             }
 //                }
