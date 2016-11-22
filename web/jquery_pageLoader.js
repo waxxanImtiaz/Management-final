@@ -66,6 +66,10 @@ $(document).ready(function () {
         $(".content-wrapper").load("/final_year_project/LibrarianLoader", function (responseTxt, statusTxt, xhr) {
         });   
     });
+     $("#library_details").click(function () {
+        $(".content-wrapper").load("/final_year_project/LibraryDetailsLoader", function (responseTxt, statusTxt, xhr) {
+        });   
+    });
      $("#add_book").click(function () {
         $(".content-wrapper").load("content_pages/librarybooks/add_librarybooks.jsp", function (responseTxt, statusTxt, xhr) {
         });   

@@ -140,19 +140,19 @@ function handleServerResponseUpdateMaster() {
 } 
 
 var dd;
-function deleteBatch(batch){
+function deleteMaster(id){
 
-     dd = batch;
+     dd = id;
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
 
-        xmlHttp.open("GET", "/final_year_project/BatchDelete?batch=" +dd
+        xmlHttp.open("GET", "/final_year_project/MasterDelete?department=" +dd
                 , true);
-        xmlHttp.onreadystatechange = batchDelete;
+        xmlHttp.onreadystatechange = masterDelete;
         xmlHttp.send(null);
     }
 }
 
-function batchDelete(){
+function masterDelete(){
     if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
 
         try {

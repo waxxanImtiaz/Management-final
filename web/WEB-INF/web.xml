@@ -256,6 +256,14 @@
         <servlet-name>UpdateMasterData</servlet-name>
         <servlet-class>Servlets.UpdaterServlets.UpdateMasterData</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MasterDelete</servlet-name>
+        <servlet-class>Servlets.DataRemoverServlets.MasterDelete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LibraryDetailsLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.LibraryDetailsLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -507,6 +515,14 @@
     <servlet-mapping>
         <servlet-name>UpdateMasterData</servlet-name>
         <url-pattern>/UpdateMasterData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MasterDelete</servlet-name>
+        <url-pattern>/MasterDelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LibraryDetailsLoader</servlet-name>
+        <url-pattern>/LibraryDetailsLoader</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

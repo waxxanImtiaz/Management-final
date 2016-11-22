@@ -2,12 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
   <class catalog="system" name="beans.Master" optimistic-lock="version" table="masterTable">
-    <id name="masterKey" type="string">
-      <column name="masterKey"/>
+    <id name="depart" type="string">
+      <column name="depart"/>
       <generator class="assigned"/>
     </id>
-    <property name="depart" type="string">
-      <column length="40" name="depart"/>
+    <property name="masterKey" type="string">
+      <column length="100" name="masterKey"/>
     </property>
   </class>
 </hibernate-mapping>
