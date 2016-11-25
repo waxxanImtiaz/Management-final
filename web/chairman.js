@@ -77,3 +77,42 @@ function handleServerAssignSubject() {
         }
     }
 }
+
+function callSubjectsEditor(subjectId) {
+    //alert("data Loaded");
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/ChairmanSubjectEditor?id=" + subjectId
+                , true);
+        xmlHttp.onreadystatechange = handleServerAssignSubject;
+        xmlHttp.send(null);
+    }
+}
+
+var sId;
+function deleteSubject(subject) {
+
+     sId = subject;
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+        xmlHttp.open("GET", "/final_year_project/DeleteAssignedSubjects?id=" + sId
+                , true);
+        xmlHttp.onreadystatechange = subjectDelete;
+        xmlHttp.send(null);
+    }
+}
+function subjectDelete() {
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+             if (message) {
+                 $('#'+sId).hide();
+                   
+            }
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
+}

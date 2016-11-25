@@ -276,6 +276,14 @@
         <servlet-name>TeacherAssignedSubjectLoader</servlet-name>
         <servlet-class>Servlets.LoaderServlets.TeacherAssignedSubjectLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChairmanSubjectEditor</servlet-name>
+        <servlet-class>Servlets.Editors.ChairmanSubjectEditor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteAssignedSubjects</servlet-name>
+        <servlet-class>Servlets.DataRemoverServlets.DeleteAssignedSubjects</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -547,6 +555,14 @@
     <servlet-mapping>
         <servlet-name>TeacherAssignedSubjectLoader</servlet-name>
         <url-pattern>/TeacherAssignedSubjectLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChairmanSubjectEditor</servlet-name>
+        <url-pattern>/ChairmanSubjectEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteAssignedSubjects</servlet-name>
+        <url-pattern>/DeleteAssignedSubjects</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
