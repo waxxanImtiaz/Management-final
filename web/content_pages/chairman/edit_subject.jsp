@@ -38,9 +38,6 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form"  name="add_subject_form">
-
-
-
                 <div class="box-body">
 
                      <div class="form-group">
@@ -51,9 +48,9 @@
                               if(db.getName().equalsIgnoreCase(assingedSubject.getTeacherName())){
                             %>
                             <option value="<%=db.getName() %>" selected><%= db.getName() %></option>
-                            <% }else %>
+                            <% }else { %>
                              <option value="<%=db.getName() %>" ><%= db.getName() %></option>
-                            <% }%>
+                            <% }} %>
                         </select>
                     </div>
                     
@@ -64,9 +61,9 @@
                              if(s.getSubjectName().equalsIgnoreCase(assingedSubject.getSubject())) {
                             %>
                             <option value="<%=s.getSubjectName() %>" selected><%=s.getSubjectName() %></option>
-                            <% } else %>
+                            <% } else { %>
                              <option value=<%=s.getSubjectName() %> ><%=s.getSubjectName() %></option>
-                            <% }%>
+                            <% }} %>
                         </select>
                     </div>
                     <% String[] type = {"Theory","Practical"}; %>
@@ -77,9 +74,9 @@
                             if(type[ i ].equalsIgnoreCase(assingedSubject.getType() )){    
                             %>
                             <option selected><%=assingedSubject.getType() %></option>
-                            <% }else %>
+                            <% }else {%>
                             <option ><%=type[ i ]%></option>
-                            <% }
+                            <% } }
                             %>
                         </select>
                     </div>

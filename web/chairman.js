@@ -84,15 +84,32 @@ function callSubjectsEditor(subjectId) {
 
         xmlHttp.open("GET", "/final_year_project/ChairmanSubjectEditor?id=" + subjectId
                 , true);
-        xmlHttp.onreadystatechange = handleServerAssignSubject;
+        xmlHttp.onreadystatechange = handleServerEditChairmanSubject;
         xmlHttp.send(null);
     }
 }
 
+function handleServerEditChairmanSubject() {
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0) {
+
+        try {
+            xmlResponse = xmlHttp.responseText;
+            var message = xmlResponse.toString();
+            if (message) {
+                $(".content-wrapper").load("content_pages/chairman/edit_subject.jsp", function (responseTxt, statusTxt, xhr) {
+                });
+            }
+        } catch (e) {
+            alert("exception=" + e.toString());
+        }
+    }
+}
+
+
 var sId;
 function deleteSubject(subject) {
 
-     sId = subject;
+    sId = subject;
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
 
         xmlHttp.open("GET", "/final_year_project/DeleteAssignedSubjects?id=" + sId
@@ -107,9 +124,9 @@ function subjectDelete() {
         try {
             xmlResponse = xmlHttp.responseText;
             var message = xmlResponse.toString();
-             if (message) {
-                 $('#'+sId).hide();
-                   
+            if (message) {
+                $('#' + sId).hide();
+
             }
         } catch (e) {
             alert("exception=" + e.toString());
@@ -117,9 +134,9 @@ function subjectDelete() {
     }
 }
 
- function checkSubjectUpdateForm(id){
-    
-     formFields = [
+function checkSubjectUpdateForm(id) {
+
+    formFields = [
         document.forms["add_subject_form"]["subject"].value,
         document.forms["add_subject_form"]["semester"].value,
         document.forms["add_subject_form"]["theoryOrPractical"].value,
@@ -134,22 +151,22 @@ function subjectDelete() {
             return false;
         }
     }
-    
+
     updateSubjectData();
     return false;
 
 }//end of method
 function updateSubjectData() {
-    
+
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
 
-         xmlHttp.open("GET", "/final_year_project/UpdateSubjectData?"+
+        xmlHttp.open("GET", "/final_year_project/UpdateAssignedSubjectData?" +
                 "subjectName=" + formFields[0] + "&semester=" + formFields[1]
-                + "&theoryOrPractical=" + formFields[2] + "&teacherName=" + formFields[3] + "&batch="+ formFields[4]
-                + "&id="+ formFields[5],
+                + "&theoryOrPractical=" + formFields[2] + "&teacherName=" + formFields[3] + "&batch=" + formFields[4]
+                + "&id=" + formFields[5],
                 true);
         xmlHttp.onreadystatechange = handleServerAssignSubject;
         xmlHttp.send(null);
-    } 
+    }
 
 }

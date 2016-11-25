@@ -5,19 +5,6 @@
  */
 package Servlets.UpdaterServlets;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import Servlets.Services.InterEduDataLoader;
-import Servlets.Services.MatricEduDataLoader;
-import Servlets.Services.StudentDataLoader;
-import beans.Intermediate;
-import beans.MatricInformation;
-import beans.Students;
 import beans.Subjects;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,10 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 

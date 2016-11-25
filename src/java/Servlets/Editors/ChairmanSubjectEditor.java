@@ -7,6 +7,7 @@ package Servlets.Editors;
 
 import beans.*;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,9 +46,22 @@ public class ChairmanSubjectEditor extends HttpServlet {
 
         request.getSession().setAttribute("assignedSubject", b);
 
-        response.sendRedirect("content_pages/chairman/edit_subject.jsp");
+         List<Subjects> subjects = (List<Subjects>) request.getSession().getAttribute("allSubjects");
+        List<Teacher> teachers = (List<Teacher>) request.getSession().getAttribute("departTeachers");
+        System.out.println("Subjects");
+        for(Subjects s : subjects){
+             System.out.println(s.getSubjectName());
+         }
+         
+        System.out.println("Teachers");
+        for(Teacher t : teachers){
+             System.out.println(t.getDepartment());
+         }
         
-        response.getWriter().println("true");
+        
+//        response.sendRedirect("content_pages/chairman/edit_subject.jsp");
+        
+        //response.getWriter().println("true");
         System.out.println("ChairmanSubjectEditor is ok");
         return;
     }
