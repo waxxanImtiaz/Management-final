@@ -85,6 +85,7 @@ public class Checker extends HttpServlet {
                 request.getSession().setAttribute("session", "true");
                 master.getStudentChecker().goToStudentProfile();
             } else if (librarian.isLibrarian()) {
+                storeUserInformation(request);
                 response.sendRedirect("about-us/Librarian.jsp");
             }else if (teacherChecker.isTeacher()) {
                 Criteria cr = initializer.getSession().createCriteria(TeacherSubjects.class);
@@ -95,9 +96,13 @@ public class Checker extends HttpServlet {
                     response.sendRedirect("./TeacherDataLoader");
                 }else
                     printWriter.println("TeacherSujbects table is empty");
+            }else if(teacherChecker.isChairman()){
+                    storeUserInformation(request);
+                    request.getSession().setAttribute("department",getUsername());
+                    response.sendRedirect("chairman.jsp");
             }
             else {
-                showMessage("user is not student or invalid username or password");
+                showMessage("true");
             }
 
         } catch (Exception e) {

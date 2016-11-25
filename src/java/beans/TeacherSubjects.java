@@ -16,6 +16,7 @@ public class TeacherSubjects {
     private String semester;
     private String subject;
     private String batch;
+    private String type;
 
     /**
      * @return the id
@@ -99,6 +100,20 @@ public class TeacherSubjects {
      */
     public void setBatch(String batch) {
         this.batch = batch;
+    }
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
     }
     
 }

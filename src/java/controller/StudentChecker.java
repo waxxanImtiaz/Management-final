@@ -90,6 +90,7 @@ public class StudentChecker extends Person {
           super.getInitializer().getRequest().getSession().setAttribute("inter", Fields.getIntermediate());  
           super.getInitializer().getRequest().getSession().setAttribute("matric", Fields.getMatricInformation());  
           super.getInitializer().getResponse().sendRedirect("about-us/index.jsp");
+         
       }catch(IOException e)
       {
           

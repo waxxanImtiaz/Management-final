@@ -264,6 +264,18 @@
         <servlet-name>LibraryDetailsLoader</servlet-name>
         <servlet-class>Servlets.LoaderServlets.LibraryDetailsLoader</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChairmanLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.ChairmanLoader</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertTeacherSubject</servlet-name>
+        <servlet-class>Servlets.InsertDataServlets.InsertTeacherSubject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherAssignedSubjectLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.TeacherAssignedSubjectLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -523,6 +535,18 @@
     <servlet-mapping>
         <servlet-name>LibraryDetailsLoader</servlet-name>
         <url-pattern>/LibraryDetailsLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChairmanLoader</servlet-name>
+        <url-pattern>/ChairmanLoader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertTeacherSubject</servlet-name>
+        <url-pattern>/InsertTeacherSubject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherAssignedSubjectLoader</servlet-name>
+        <url-pattern>/TeacherAssignedSubjectLoader</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

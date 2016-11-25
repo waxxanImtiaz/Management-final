@@ -34,7 +34,7 @@ public class LibrarianChecker extends Person {
             List result = c.list();
             if (result != null) {
                 result = c.add(Restrictions.eq("password", getPassword())).list();
-                if (result != null) {
+                if (result != null && result.size() > 0) {
                     setLibrarian((Librarian) result.get(0));
                     return true;
                 }else

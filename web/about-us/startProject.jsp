@@ -23,13 +23,14 @@
     <img src="../img/duet_logo.png" height="80" width="110">
 		<h2>MANAGEMENT INFORMATION SYSTEM DUET</h2>
 		<!--${pageContext.request.contextPath}/Checker -->
-                <form  class="form" action="${pageContext.request.contextPath}/Checker" method="post" >
-			<input type="text" placeholder="username" name="username" />
-			<input type="password" placeholder="password" name="password" />
-			<button type="submit">Login</button>
+                <form role="form"   class="form" name="loginform" action="${pageContext.request.contextPath}/Checker" method="post">
+			<input type="text" placeholder="username" id="username" name="username" />
+                        <input type="password" placeholder="password" id="password" name="password" />
+                        <button type="submit"  o >Login</button>
             <button type="submit">Forget Password</button>
 		</form>
 	</div>
+                <!--nclick="return checkLoginForm();"-->
 	
     <ul class="bg-bubbles">
 		<li> <img src="../img/duet_logo.png" height="60" width="60" > </li>
@@ -62,8 +63,8 @@
     response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
 %>
 
-        <script src="js/index.js"s></script>
-
+        <script src="js/index.js"></script>
+         <script src="../js/loginHandler.js"></script>
     
     
     

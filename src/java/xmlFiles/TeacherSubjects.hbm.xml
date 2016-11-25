@@ -21,5 +21,8 @@
     <property name="semester" type="string">
       <column length="256" name="semester"/>
     </property>
+    <property name="type" type="string">
+      <column length="256" name="type"/>
+    </property>
   </class>
 </hibernate-mapping>

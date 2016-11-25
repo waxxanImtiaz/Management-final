@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -28,21 +29,46 @@ public class TeacherChecker extends Person {
     public boolean isTeacher() {
         try {
             Criteria c = getInitializer().getSession().createCriteria(Teacher.class);
-            System.out.println("username="+getUserName());
+            System.out.println("username=" + getUserName());
             c.add(Restrictions.eq("username", getUserName()));
             System.out.println("inside isTeacher()");
             List result = c.list();
             if (result != null) {
                 result = c.add(Restrictions.eq("password", getPassword())).list();
-                if (result != null) {
+                if (result != null && result.size() >0) {
                     setTeacher((Teacher) result.get(0));
                     return true;
-                }else
+                } else {
                     return false;
+                }
             }
             return false;
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Exception in Librarian=" + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean isChairman() {
+        try {
+            Criteria c = getInitializer().getSession().createCriteria(Master.class);
+
+            Criterion res = Restrictions.and(Restrictions.eq("depart", getUserName()),
+                    Restrictions.eq("masterKey", getPassword()));
+
+            c.add(res);
+
+            System.out.println("inside isChairman()");
+            List result = c.list();
+            if (result != null) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Exception in isChairman method=" + e.getMessage());
             e.printStackTrace();
             return false;
         }
