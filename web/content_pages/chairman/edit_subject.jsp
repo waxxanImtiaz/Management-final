@@ -106,7 +106,7 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary" onclick="return checkResultUpdateForm('<%=result.getId()+"" %>')" >Submit</button>
+                    <button type="submit" class="btn btn-primary" onclick="return checkSubjectUpdateForm('<%=assingedSubject.getId()+"" %>')" >Submit</button>
                 </div>
             </form>
         </div>

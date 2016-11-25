@@ -116,3 +116,40 @@ function subjectDelete() {
         }
     }
 }
+
+ function checkSubjectUpdateForm(id){
+    
+     formFields = [
+        document.forms["add_subject_form"]["subject"].value,
+        document.forms["add_subject_form"]["semester"].value,
+        document.forms["add_subject_form"]["theoryOrPractical"].value,
+        document.forms["add_subject_form"]["teacherName"].value,
+        document.forms["add_subject_form"]["batch"].value,
+        document.forms["add_subject_form"]["id"].value
+    ];
+
+    for (var i = 0; i < formFields.length; i++) {
+        if (formFields[i] == null || formFields[i] == "") {
+            alert("Please Fill All Fields");
+            return false;
+        }
+    }
+    
+    updateSubjectData();
+    return false;
+
+}//end of method
+function updateSubjectData() {
+    
+    if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
+
+         xmlHttp.open("GET", "/final_year_project/UpdateSubjectData?"+
+                "subjectName=" + formFields[0] + "&semester=" + formFields[1]
+                + "&theoryOrPractical=" + formFields[2] + "&teacherName=" + formFields[3] + "&batch="+ formFields[4]
+                + "&id="+ formFields[5],
+                true);
+        xmlHttp.onreadystatechange = handleServerAssignSubject;
+        xmlHttp.send(null);
+    } 
+
+}
