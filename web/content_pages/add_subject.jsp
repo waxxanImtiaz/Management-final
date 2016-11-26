@@ -62,7 +62,7 @@
                   <div class="form-group">
                         <label>Type</label>
                          <select class="form-control" id = "theoryOrPractical" >
-                            <option>Thoery</option>
+                            <option>Theory</option>
                             <option>Practical</option>
                         </select>
                     </div>
