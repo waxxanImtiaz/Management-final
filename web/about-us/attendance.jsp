@@ -246,6 +246,7 @@
                                                                 <% //print subject attendance
                                                                     double percentage = 0;
                                                                     float count = 0;
+                                                                    float totalLecturesCount = 0F;
                                                                     int index = 0;
                                                                     String subjectLectures = null;
                                                                     Subjects tempSubject = null;
@@ -269,6 +270,9 @@
                                                                         }//END OF WHILE LOOP
 
                                                                         //index++;
+                                                                        if(tempSubject.getTotalLectures() != null)
+                                                                          totalLecturesCount += Float.parseFloat(tempSubject.getTotalLectures());
+                                                                        else totalLecturesCount = 1F;
                                                                 %>
                                                                 <tr>
                                                                     <td><%= map.getKey()%></td>
@@ -321,9 +325,9 @@
 
 
                                                                 </tr>
-
-
-                                                                <% percentage = (count/200)*100; %>
+                                                              
+                                                                        
+                                                                <% percentage = (count/totalLecturesCount)*100; %>
                                                                 <tr>
                                                                     <td colspan="5" height="30" >  </td>
                                                                 </tr>
@@ -334,6 +338,11 @@
 
                                                                 </tbody>
                                                         </table>
+                                                                <h3 class="entry-title" style="color: red;"> <%
+                                                                        if(percentage < 75){
+                                                                            out.println("Note! Your attendance is less than 75%, Please improve your attendance");
+                                                                        }
+                                                                    %> </h3>
                                                     </div>
                                                     <p></p></div> </div>
                                     </div><!-- .entry-content -->

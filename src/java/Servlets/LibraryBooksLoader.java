@@ -37,37 +37,37 @@ public class LibraryBooksLoader extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-       Criteria criteria = session.createCriteria(LibraryBooks.class);
-      
-       String webPage = request.getParameter("jspPage");
-       
-       libraryBooks = criteria.list();
-        
+
+        Criteria criteria = session.createCriteria(LibraryBooks.class);
+
+        String webPage = request.getParameter("jspPage");
+
+        libraryBooks = criteria.list();
+
         alterList(libraryBooks);
-        
+
         request.getSession().setAttribute("libraryBooks", libraryBooks);
-        
-        if(webPage == null || webPage.isEmpty())
+
+        if (webPage == null || webPage.isEmpty()) {
             response.sendRedirect("about-us/libraryBooks.jsp");
-        else{
+        } else {
             response.sendRedirect("about-us/librarianAvailableBooks.jsp");
         }
     }
 
-      public void alterList(List<LibraryBooks> libraryBooks){
+    public void alterList(List<LibraryBooks> libraryBooks) {
         List<LibraryBooks> temp = new ArrayList<LibraryBooks>();
-        
-        for(int i = 0 ; i<libraryBooks.size(); i++){
+
+        for (int i = 0; i < libraryBooks.size(); i++) {
             String state = libraryBooks.get(i).getState();
-            if(state.equalsIgnoreCase("avail") )
-            {
+            if (state != null && state.equalsIgnoreCase("avail")) {
                 temp.add(libraryBooks.get(i));
-              }
+            }
         }//end of loop
-        
+
         this.libraryBooks = temp;
     }//end of method
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

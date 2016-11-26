@@ -15,6 +15,7 @@
     <mapping resource="xmlFiles/DepartAndBatches.hbm.xml"/>
     <mapping resource="xmlFiles/Students.hbm.xml"/>
     <mapping resource="xmlFiles/complain.hbm.xml"/>
+    <!--<mapping resource="xmlFiles/notifications.hbm.xml"/>-->
     <mapping resource="xmlFiles/Teacher.hbm.xml"/>
     <mapping resource="xmlFiles/news.hbm.xml"/>
     <mapping resource="xmlFiles/message.hbm.xml"/>

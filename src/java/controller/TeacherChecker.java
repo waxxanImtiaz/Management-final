@@ -54,8 +54,7 @@ public class TeacherChecker extends Person {
         try {
             Criteria c = getInitializer().getSession().createCriteria(Master.class);
 
-            Criterion res = Restrictions.and(Restrictions.eq("depart", getUserName()),
-                    Restrictions.eq("masterKey", getPassword()));
+            Criterion res = Restrictions.eq("depart", getUserName());
 
             c.add(res);
 

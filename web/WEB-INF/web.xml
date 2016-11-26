@@ -288,6 +288,10 @@
         <servlet-name>UpdateAssignedSubjectData</servlet-name>
         <servlet-class>Servlets.UpdaterServlets.UpdateAssignedSubjectData</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NotificationLoader</servlet-name>
+        <servlet-class>Servlets.LoaderServlets.NotificationLoader</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Checker</servlet-name>
         <url-pattern>/Checker</url-pattern>
@@ -571,6 +575,10 @@
     <servlet-mapping>
         <servlet-name>UpdateAssignedSubjectData</servlet-name>
         <url-pattern>/UpdateAssignedSubjectData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NotificationLoader</servlet-name>
+        <url-pattern>/NotificationLoader</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

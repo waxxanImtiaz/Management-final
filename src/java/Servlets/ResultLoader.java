@@ -60,6 +60,7 @@ public class ResultLoader extends HttpServlet {
         //GET CRITERIA
         criteria = hibernateSession.createCriteria(StudentSemesterResult.class);
         list = criteria.list();
+        System.out.println("result size="+list.size());
         semesterAttendance(semester);
     }
 
@@ -110,10 +111,14 @@ public class ResultLoader extends HttpServlet {
         resultList = new ArrayList<StudentSemesterResult>();
         for (StudentSemesterResult st : list) {
             //GET CURRENT STUDENT
+            System.out.println(st.getSemester()+","+semester+",roll avail="+st.getRollNum()+
+                    ", requested="+student.getRollNum()+",avail="+st.getTheoryOrPractical()+",request="+type);
+            
+            System.out.println(st.getTheoryOrPractical().equalsIgnoreCase(type));
             if (st.getSemester().equalsIgnoreCase(semester) && st.getRollNum().equalsIgnoreCase(student.getRollNum())
-                    && // st.getAttendance().equalsIgnoreCase("p") && 
-                    st.getTheoryOrPractical().equalsIgnoreCase(type)) {
+                    && st.getTheoryOrPractical().equalsIgnoreCase(type)) {
                 resultList.add(st);
+                
                 System.out.println(type + "," + st.getSubject() + "," + st.getTheoryOrPractical());
             }//end of else if
         }//END OF LOOP

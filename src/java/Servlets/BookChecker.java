@@ -20,6 +20,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import beans.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -42,14 +44,6 @@ public class BookChecker extends HttpServlet {
     private int count;
 
     @Override
-    public void init() {
-        cf = new Configuration();
-        cf.configure("xmlFiles/hibernate.cfg.xml");
-        sf = cf.buildSessionFactory();
-        session = sf.openSession();
-    }
-
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -58,9 +52,15 @@ public class BookChecker extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
         //GET WRITER
         pw = response.getWriter();
 
+        if (sf == null) {
+            throw new NullPointerException("BookChecker: Session is null");
+        }
+        session = sf.openSession();
         //GET PARAMENTERS
         bookName = request.getParameter("bookName");
         rollNumber = request.getParameter("rollNumber");
@@ -76,26 +76,48 @@ public class BookChecker extends HttpServlet {
         try {
             checkRollNumber(details);
             criteria = session.createCriteria(LibraryBooks.class);
+            if(!isValidStudent() && !rollNumber.isEmpty() ){
+                pw.println("Warning! "+name+ " is not Enrolled!");
+                return;
+            }
+            
             if (count >= 2) {
                 pw.println(rollNumber + " already got " + count + " book");
-            } else {
-                if (!bookAuthor.isEmpty() && !bookName.isEmpty()) {
-                    if (!checkBooks(criteria.list())) {
-                        pw.println(bookName + " book is not available ");
-                    }
+                return;
+            } else if (!bookAuthor.isEmpty() && !bookName.isEmpty()) {
+                if (!checkBooks(criteria.list())) {
+                    pw.println(bookName + " book is not available ");
+                    return;
                 }
-            }
+            } 
+           
 
-//            else if (!department.isEmpty() && !rollNumber.isEmpty()
-//                    && !bookAuthor.isEmpty() && !bookName.isEmpty() && !name.isEmpty()
-//                    && !bookReturnDate.isEmpty() && !bookIssueDate.isEmpty()) {
-//                storeData();
-//            }
         } catch (NullPointerException e) {
             //e.printStackTrace();
             pw.println(e.getMessage());
         }
 
+    }
+
+    private boolean isValidStudent() {
+        Criteria c = session.createCriteria(Students.class);
+
+        System.out.println("rollnumber="+rollNumber);
+        Criterion res = Restrictions.eq("rollNum", rollNumber);
+
+        c.add(res);
+
+      
+        List result = c.list();
+        if(result != null && result.size() > 0){
+            Students st = (Students)result.get(0);
+            if(st.getName().equalsIgnoreCase(name)){
+                System.out.println("valid student");
+                return true;
+            }
+        }
+        System.out.println("invalid student");
+        return false;
     }
 
     @Override
@@ -129,5 +151,5 @@ public class BookChecker extends HttpServlet {
             }
         }
         return false;
-    } 
+    }
 }

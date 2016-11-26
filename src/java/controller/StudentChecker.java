@@ -43,7 +43,7 @@ public class StudentChecker extends Person {
 
     
       private boolean isPasswordOk(){
-      
+      try{
         if(isUsernameOk())
         {
         String pass = getStudent().getPassword();
@@ -55,13 +55,18 @@ public class StudentChecker extends Person {
             return false;
         }
         }//end of outer if else
+      }catch(Exception e){
+          System.out.println("exception in isPasswordOk "+e.getMessage());
+          e.printStackTrace();
+          return false;
+      }
       return false;
       
   }//end of isPasswordOk method
       
       public void setUserInfo(){
           Criteria c = null;
-          
+          try{
           //GET STUDENTS DATA
           c = getInitializer().getSession().createCriteria(Students.class);
           c.add(Restrictions.eq("rollNum", getUserName()));
@@ -81,6 +86,9 @@ public class StudentChecker extends Person {
           Fields.setIntermediate((Intermediate)result.get(0));
           System.out.println("board="+Fields.getIntermediate().getBoard());
           System.out.println("User information is set");
+          }catch (Exception e){
+              System.err.println("Exception in setUserInfo "+e.getMessage());
+          }
           
       }
       public void goToStudentProfile(){

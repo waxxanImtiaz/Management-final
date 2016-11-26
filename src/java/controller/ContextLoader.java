@@ -32,7 +32,8 @@ public class ContextLoader implements ServletContextListener {
                 sc.setAttribute("hibernateSession", sf.openSession());
           }catch(Exception e)
           {
-              
+              System.out.println("Exception in ContextListener "+e.getMessage());
+              e.printStackTrace();
           }
  //To change body of generated methods, choose Tools | Templates.
     }

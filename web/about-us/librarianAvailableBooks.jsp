@@ -100,7 +100,6 @@
 
                                             </ul>
                                         </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7307"><a href="complaint.html"> Complaints/Help </a></li>
                                     </ul>
 
                                 </div>     
@@ -203,8 +202,7 @@
                             <li id="nav_menu-2" class="widget-container widget_nav_menu"><h3 class="widget-title">PERSONEL</h3><div class="menu-about-us-container"><ul id="menu-about-us" class="menu"><li id="menu-item-65" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65"><a href="#">Personel Information</a></li>
                                     </ul></div></li>
                             <li id="nav_menu-3" class="widget-container widget_nav_menu"><h3 class="widget-title"> </h3></a> <div class="menu-footer-house-of-habib-container"><ul id="menu-footer-house-of-habib" class="menu">
-                                        <li id="menu-item-6363" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6363"><a href="#">Complaints/Help</a></li>
-
+                        
                                     </ul></div></li>      </div>
                         <div class="footer_col">
                             <li id="nav_menu-4" class="widget-container widget_nav_menu"><h3 class="widget-title">DEPARTMENTS</h3><div class="menu-footer-prospective-container"><ul id="menu-footer-prospective" class="menu"><li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="#">Computer System Engineering</a></li>

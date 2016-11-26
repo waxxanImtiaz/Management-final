@@ -21,6 +21,8 @@ import org.hibernate.Transaction;
 import beans.*;
 import org.hibernate.Query;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -43,14 +45,6 @@ public class StoreBookIssueFormData extends HttpServlet {
     private int count;
 
     @Override
-    public void init() {
-        cf = new Configuration();
-        cf.configure("xmlFiles/hibernate.cfg.xml");
-        sf = cf.buildSessionFactory();
-        session = sf.openSession();
-    }
-
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -59,8 +53,14 @@ public class StoreBookIssueFormData extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
         //GET WRITER
         pw = response.getWriter();
+
+        if (sf == null) {
+            throw new NullPointerException("BookChecker: Session is null");
+        }
+        session = sf.openSession();
 
         //GET PARAMENTERS
         bookName = request.getParameter("bookName");
@@ -71,6 +71,9 @@ public class StoreBookIssueFormData extends HttpServlet {
         department = request.getParameter("department");
         name = request.getParameter("name");
 
+        if(!isValidStudent() ){
+            return;
+        }
         Criteria criteria = session.createCriteria(LibraryDetails.class);
         details = criteria.list();
 
@@ -85,6 +88,27 @@ public class StoreBookIssueFormData extends HttpServlet {
         }
 
     }
+    private boolean isValidStudent() {
+        Criteria c = session.createCriteria(Students.class);
+
+        System.out.println("rollnumber="+rollNumber);
+        Criterion res = Restrictions.eq("rollNum", rollNumber);
+
+        c.add(res);
+
+      
+        List result = c.list();
+        if(result != null && result.size() > 0){
+             Students st = (Students)result.get(0);
+            if(st.getName().equalsIgnoreCase(name)){
+                System.out.println("valid student");
+                return true;
+            }
+        }
+        System.out.println("invalid student");
+        return false;
+    }
+
 
     @Override
     public String getServletInfo() {

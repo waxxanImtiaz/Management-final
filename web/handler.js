@@ -155,6 +155,7 @@ function validateLibrarianForm() {
 
 
     storeLibraryIssuanceFormData();
+    return false
 }//end of method
 
 
@@ -190,13 +191,11 @@ function handleServerResponseOfIssuanceForm() {
             xmlResponse = xmlHttp.responseText;
             var message = xmlResponse.toString();
 
-            document.getElementById("formData").innerHTML = '<span style="color: green">'
-                    + message + '</span>';
-            //if(message == 'true'){
+//            document.getElementById("formData").innerHTML = '<span style="color: green">'
+//                    + message + '</span>';
+            if(message)
             alert('Book Issued Successfully!');
-            //}       
-            //  setTimeout('storeLibraryIssuanceFormData()', 1000);
-            //}
+            
         } catch (e) {
             alert(e.toString());
         }

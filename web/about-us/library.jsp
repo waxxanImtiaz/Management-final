@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
 
@@ -212,7 +213,9 @@
                                                                 </tr>
                                                                 <% for (int i = 0; i < libraryDetails.size(); i++) {%>
                                                                 <tr>                                                               
-                                                                    <td width="295" height="25"> <%= libraryDetails.get(i).getBookName()%></td><td>&nbsp;<%= libraryDetails.get(i).getIssueDate()%>  </td><td>&nbsp;  <%=libraryDetails.get(i).getReturnDate()%> </td >
+                                                                    <td width="295" height="25"> <%= libraryDetails.get(i).getBookName()%></td>
+                                                                    <td>&nbsp;<%= libraryDetails.get(i).getIssueDate()%>  </td>
+                                                                    <td>&nbsp;  <%=libraryDetails.get(i).getReturnDate()%> </td >
                                                                 </tr>
                                                                 <% }%>
 
@@ -228,7 +231,18 @@
                                                                 <tr>
                                                                     <td colspan="3" width="295"  height="25">&nbsp; </td>
                                                                 </tr>
-                                                                <!--Note : More than Two Book can not be issued to a student.-->
+                                                                <% for(LibraryDetails b : libraryDetails){  %>
+                                                                    <%
+                                                                        String date = new SimpleDateFormat("mm-dd-yyyy").format(new Date() );
+                                                                        Date currentDate = new Date(date);
+                                                                        Date returnDate = new SimpleDateFormat("mm-dd-yyyy").parse(b.getReturnDate());
+                                                                        if(currentDate.compareTo(returnDate) < 0){
+                                                                            out.println("Please return "+b.getBookName()+"!");
+                                                                        }else if((currentDate.compareTo(returnDate) == 0))    
+                                                                            out.println("Today is last date of returning "+b.getBookName());
+                                                                    %>
+                                                                
+                                                                <% } %>
                                                                 </tbody>
                                                         </table>
                                                     </div>

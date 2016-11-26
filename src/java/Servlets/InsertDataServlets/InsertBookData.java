@@ -49,6 +49,7 @@ public class InsertBookData extends HttpServlet {
             session = sf.openSession();
             LibraryBooks book = new LibraryBooks();
 
+            book.setState("avail");
             book.setBookName(bookName);
             book.setAuthor(bookAuthor);
 

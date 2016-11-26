@@ -76,6 +76,8 @@ public class CheckMaster extends Person {
       {
           System.out.println("Exception in isMasterKey="+e.getMessage());
           return false;
+      }catch(Exception e){
+          return false;
       }
       
   }//end of isMasterKey method
