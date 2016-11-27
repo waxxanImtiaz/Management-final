@@ -72,11 +72,13 @@ public class TeacherChecker extends Person {
                 return false;
             }
 
+           
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Exception in isChairman method=" + e.getMessage());
             e.printStackTrace();
             return false;
         }
+        return false;
     }
 
     /**

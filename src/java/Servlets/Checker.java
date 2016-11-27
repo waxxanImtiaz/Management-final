@@ -104,13 +104,13 @@ public class Checker extends HttpServlet {
                 }else
                     printWriter.println("TeacherSujbects table is empty");
             }
-//            else if(teacherChecker.isChairman()){
-//                    storeUserInformation(request);
-//                    request.getSession().setAttribute("department",getUsername());
-//                    response.sendRedirect("chairman.jsp");
-//            }
+            else if(teacherChecker.isChairman()){
+                    storeUserInformation(request);
+                    request.getSession().setAttribute("department",getUsername());
+                    response.sendRedirect("chairman.jsp");
+            }
             else {
-                showMessage("true");
+                showMessage("Invalid username or password");
             }
 
         } catch (Exception e) {
