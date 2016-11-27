@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Sorry! exception occured!</h1>
-        <%=exception.getMessage() %>
+        <h3>Sorry! exception occured!</h3>
+        <%= exception.getMessage() %>
     </body>
 </html>

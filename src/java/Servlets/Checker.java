@@ -89,6 +89,8 @@ public class Checker extends HttpServlet {
                 response.sendRedirect("about-us/Librarian.jsp");
             }else if (teacherChecker.isTeacher()) {
                 Criteria cr = initializer.getSession().createCriteria(TeacherSubjects.class);
+                request.getSession().setAttribute("username", getUsername());
+                
                 if(cr != null )
                 {
                      storeUserInformation(request);

@@ -44,7 +44,7 @@ public class StudentChecker extends Person {
     
       private boolean isPasswordOk(){
       try{
-        if(isUsernameOk())
+        if(isUsernameOk() && getStudent() != null )
         {
         String pass = getStudent().getPassword();
         

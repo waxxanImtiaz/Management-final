@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>MIS DUET</title>
+    <title>Welcome To MIS DUET</title>
   <link rel="stylesheet" href="../css/style2.css">
 <!--  <script type="text/javascript">
     window.history.forward();

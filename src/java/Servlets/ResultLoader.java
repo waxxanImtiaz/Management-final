@@ -101,6 +101,7 @@ public class ResultLoader extends HttpServlet {
 
             request.getSession().setAttribute("yearOrSemseter", semester);
 
+            
             response.sendRedirect("about-us/result.jsp");
         } catch (Exception e) {
             System.out.println("Exception in first semester " + e.getMessage());
@@ -125,13 +126,22 @@ public class ResultLoader extends HttpServlet {
     }//end of getResultListOf method
 
     public List<Subjects> getSubjects(String type,String semester,String depart){
-        if (depart.contains("computer system") || depart.contains("Computer System")) {
-            depart = "CS";
-        }
-        String hql = "FROM Subjects s WHERE s.semester = '" + semester + "' and s.department='" + depart + "' and s.theoryOrPractical='" + type + "'";
-        Query query = hibernateSession.createQuery(hql);
+
+      Criteria c = hibernateSession.createCriteria(Subjects.class);
+            List<Subjects> subject = new ArrayList<Subjects>();
+            
+            List<Subjects> s = c.list();
+            for(Subjects sub : s){
+                if(sub.getSemester().equalsIgnoreCase(semester) && sub.getDepartment().equalsIgnoreCase(depart)
+                        && sub.getTheoryOrPractical().equalsIgnoreCase(type)){
+                    subject.add(sub);
+                }
+            }
+            
+            
+            System.out.println("subjects size="+subject.size());
         
-        return query.list();
+        return subject;
     }
     /*============================*/
     public void alterList(List<StudentSemesterResult> students, String semester, String type) {

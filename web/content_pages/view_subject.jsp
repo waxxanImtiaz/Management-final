@@ -15,8 +15,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Total Students 
-        <small>All Departments</small>
+        Total Subjects
     </h1>
     <!--      <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -48,7 +47,7 @@
                                 <th>Semester</th>
                                 <th>Type</th>
                                 <th>Credit Hours</th>
-                                <th>Total Subjects</th>
+                                <th>Total Lectures</th>
                                 
                             </tr>
                         </thead>

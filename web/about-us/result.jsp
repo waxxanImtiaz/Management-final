@@ -1,6 +1,7 @@
 <%@page import="beans.StudentSemesterResult"%>
 <%@page import="beans.Subjects"%>
 <%@ page import="java.util.*" %>
+<%@ page errorPage="error.jsp" %> 
 <!DOCTYPE html>
 <html>
 
@@ -174,8 +175,17 @@
                         beans.Students personalInfo = (beans.Students) session.getAttribute("personalInfo");
                         List<StudentSemesterResult> theoryResult = (List<StudentSemesterResult>) session.getAttribute("theoryResult");
                         List<Subjects> theorySubjects = (List<Subjects>) session.getAttribute("theorySubjects");
-                        List<Subjects> practicalSubjects = (List<Subjects>) session.getAttribute("practicalSubjects");
-                        List<StudentSemesterResult> practicalResult = (List<StudentSemesterResult>) session.getAttribute("practicalResult");
+
+//                        Object sub = session.getAttribute("practicalSubjects");
+//                        List<Subjects> practicalSubjects = null;
+//                        List<StudentSemesterResult> practicalResult = null;
+//                        Object pr = session.getAttribute("practicalResult");
+//                        if (sub != null) {
+//                            practicalSubjects = (List<Subjects>) sub;
+//                            if(pr != null){
+//                                practicalResult = (List<StudentSemesterResult>) pr;
+//                            }
+//                        }
                         String yearOrSemester = (String) session.getAttribute("yearOrSemseter");
                     %> 
 
@@ -200,21 +210,17 @@
                                                             <tbody>
                                                             <align="center" width="780">
                                                                 <tr><td colspan="5" width="197"> <%= yearOrSemester%> Semister 
-                                                                       <% 
-                                                                        if( yearOrSemester.equalsIgnoreCase("1st") || yearOrSemester.equalsIgnoreCase("2nd") )
-                                                                        {
-                                                                        out.println("1st");
-                                                                        }else if( yearOrSemester.equalsIgnoreCase("3rd") || yearOrSemester.equalsIgnoreCase("4th") )
-                                                                        {
-                                                                        out.println("2nd");
-                                                                        }else if( yearOrSemester.equalsIgnoreCase("6th") || yearOrSemester.equalsIgnoreCase("5th") )
-                                                                        {
-                                                                        out.println("3rd");
-                                                                        }else if( yearOrSemester.equalsIgnoreCase("7th") || yearOrSemester.equalsIgnoreCase("8th") )
-                                                                        {
-                                                                        out.println("4th");
-                                                                        }
-                                                                        
+                                                                        <%
+                                                                            if (yearOrSemester.equalsIgnoreCase("1st") || yearOrSemester.equalsIgnoreCase("2nd")) {
+                                                                                out.println("1st");
+                                                                            } else if (yearOrSemester.equalsIgnoreCase("3rd") || yearOrSemester.equalsIgnoreCase("4th")) {
+                                                                                out.println("2nd");
+                                                                            } else if (yearOrSemester.equalsIgnoreCase("6th") || yearOrSemester.equalsIgnoreCase("5th")) {
+                                                                                out.println("3rd");
+                                                                            } else if (yearOrSemester.equalsIgnoreCase("7th") || yearOrSemester.equalsIgnoreCase("8th")) {
+                                                                                out.println("4th");
+                                                                            }
+
                                                                         %> Year</FONT></td>     
                                                                 <tr>
                                                                     <td width="197" height="29">  <%= yearOrSemester.toUpperCase()%> SEMISTER</FONT></td>
@@ -223,7 +229,7 @@
                                                                 <tr>
                                                                     <td width="197">  COURSE</td>
                                                                     <td colspan="2" width="206">  <center>THEORY MARKS</center></td>
-                                                                <td colspan="2" width="188">  <center>PRACTICAL MARKS</center></td>
+                                                                <!--<td colspan="2" width="188">  <center>PRACTICAL MARKS</center></td>-->
                                                                 </td>
                                                                 </tr>
 
@@ -231,8 +237,8 @@
                                                                     <td width="156">  </td>
                                                                     <td width="156">TOTAL  </td>
                                                                     <td width="156">OBTAINED</td>
-                                                                    <td width="156">TOTAL </td>
-                                                                    <td width="156">OBTAINED </td>
+<!--                                                                    <td width="156">TOTAL </td>
+                                                                    <td width="156">OBTAINED </td>-->
 
                                                                 </tr>
                                                                 <% for (StudentSemesterResult result : theoryResult) {
@@ -245,40 +251,44 @@
                                                                                 break;
                                                                             }
                                                                         }//end of loop
-%>
+                                                                %>
                                                                 <tr>
                                                                     <!--====theroy result -->
                                                                     <td>
-                                                                        <%= subject%>
-                                                                    </td>
+                                                                     <%=theorySubject.getSubjectName() %>
+                                                                      </td>
                                                                     <td> <%
                                                                         //print total marks of theory    
-                                                                        Integer creditHours = Integer.parseInt(theorySubject.getCreditHours());
-                                                                        if (creditHours == 2) {
+                                                                         Integer creditHours = Integer.parseInt(theorySubject.getCreditHours());
+                                                                       if (creditHours == 2) {
                                                                             out.println("50");
                                                                         } else {
                                                                             out.println("100");
-                                                                        }
+                                                                         }
                                                                         %> </td>
                                                                     <td> <%= result.getResult()%> </td>
 
                                                                     <%
-                                                                        Subjects practicalSub = null;
-                                                                        StudentSemesterResult practResult = null;
-                                                                        for (StudentSemesterResult practical : practicalResult) {
-                                                                            if (practical.getSubject().equalsIgnoreCase(subject)) {
-                                                                                practResult = practical;
-                                                                                break;
-                                                                            } //end of if
-                                                                        }//end of outer loop
+                                                                        //
+//                                                                        Subjects practicalSub = null;
+//                                                                        StudentSemesterResult practResult = null;
+//                                                                        if (practicalResult != null && practicalResult.size() > 0) {
+//                                                                            for (StudentSemesterResult practical : practicalResult) {
+//                                                                                if (practical.getSubject().equalsIgnoreCase(subject)) {
+//                                                                                    practResult = practical;
+//                                                                                    break;
+//                                                                                } //end of if
+//                                                                            }//end of outer loop
+//
+//                                                                            for (Subjects practical : practicalSubjects) {
+//                                                                                if (practical.getSubjectName().equalsIgnoreCase(subject)) {
+//                                                                                    practicalSub = practical;
+//                                                                                    break;
+//                                                                                } //end of if
+//                                                                            }//end of outer loop
+//                                                                        }
 
-                                                                        for (Subjects practical : practicalSubjects) {
-                                                                            if (practical.getSubjectName().equalsIgnoreCase(subject)) {
-                                                                                practicalSub = practical;
-                                                                                break;
-                                                                            } //end of if
-                                                                        }//end of outer loop
-
+                                                                        //
 //                                                                        if (practicalSub != null) {
 //                                                                            out.println("practicalSub = " + practicalSub.getSubjectName());
 //                                                                        }
@@ -287,19 +297,19 @@
 //                                                                        }
                                                                     %>       
                                                                     <!--====practical result -->
-                                                                    <td> <%                                                                        if (practicalSub != null) {
-                                                                            out.println("50");
-                                                                        } else {
-                                                                            out.println("---");
-                                                                        }
-                                                                        %></td>
-                                                                    <td> <%
-                                                                        if (practResult != null) {
-                                                                            out.println(practResult.getResult());
-                                                                        } else {
-                                                                            out.println("---");
-                                                                        }
-                                                                        %></td>
+                                                                                                                                      <!-- <td> --> <%//                                                                        if (practicalSub != null) {
+                                                                        //                                                                            out.println("50");
+                                                                        //                                                                        } else {
+                                                                        //                                                                            out.println("---");
+                                                                        //                                                                        }
+                                                                        //                                                                        %><!-- </td> -->
+                                                                                                                                    <!--   <td> --> <%
+                                                                        //                                                                        if (practResult != null) {
+                                                                        //                                                                            out.println(practResult.getResult());
+                                                                        //                                                                        } else {
+                                                                        //                                                                            out.println("---");
+                                                                        //                                                                        }
+                                                                        //                                                                        %> <!-- </td> -->
                                                                 </tr>
                                                                 <% }//end of loop %>
                                                                 <!-- end of row-->        
@@ -307,14 +317,14 @@
                                                                 <tr>
                                                                     <td colspan="5" height="30" >  </td>
                                                                 </tr>
-<!--                                                                <tr>
-                                                                    <td colspan="2" width="197">  GPA </td>
-                                                                    <td colspan="3" width="196">   --	 </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2" width="197">  PERCENTAGE</td>
-                                                                    <td colspan="3" width="196">   --	 </td>
-                                                                </tr>-->
+                                                                <!--                                                                <tr>
+                                                                                                                                    <td colspan="2" width="197">  GPA </td>
+                                                                                                                                    <td colspan="3" width="196">   --	 </td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                    <td colspan="2" width="197">  PERCENTAGE</td>
+                                                                                                                                    <td colspan="3" width="196">   --	 </td>
+                                                                                                                                </tr>-->
 
                                                                 </tbody>
                                                         </table>

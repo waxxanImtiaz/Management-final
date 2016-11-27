@@ -6,7 +6,7 @@
 package Servlets;
 
 import beans.DepartAndBatches;
-import beans.Students;
+import beans.*;
 import beans.TeacherSubjects;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,10 +17,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 public class TeacherDataLoader extends HttpServlet {
 
@@ -46,8 +48,37 @@ public class TeacherDataLoader extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<TeacherSubjects> subjects = (List<TeacherSubjects>) request.getSession().getAttribute("teacherSubject");
-        TeacherSubjects s = subjects.get(0);
+        HttpSession ses = request.getSession();
+        String username = (String)ses.getAttribute("username");
+        List<TeacherSubjects> subjects = (List<TeacherSubjects>) ses.getAttribute("teacherSubject");
+        
+        Criteria cr =session.createCriteria(Teacher.class);
+        cr.add(Restrictions.eq("username", username));
+        
+        List<Teacher> t = cr.list();
+        
+        if(t == null && t.size() <=0)
+            return;
+        
+        Teacher teach = t.get(0);
+        
+        
+        List<TeacherSubjects> teacher = new ArrayList<TeacherSubjects>();
+        System.out.println("teacher name="+teach.getName());
+//        System.out.println("teachersubjects="+subjects.size());
+        for(TeacherSubjects sub : subjects ){
+            if(sub.getTeacherName().equalsIgnoreCase(teach.getName())){
+                teacher.add(sub);
+                System.out.println("subject="+sub.getSubject()+",name="+sub.getTeacherName());
+            }
+        }
+        
+//        if(teacher == null && teacher.size() <=0)
+//            return;
+        
+        TeacherSubjects s = teacher.get(0);
+        
+        
        // List<DepartAndBatches> db = session.createCriteria(DepartAndBatches.class).list();
         
        
@@ -59,8 +90,8 @@ public class TeacherDataLoader extends HttpServlet {
             List<Students> students = getStudentList(department, semester, batch);
          
             
-            request.getSession().setAttribute("subjectName", subjects.get(0).getSubject());
-            request.getSession().setAttribute("subjects", subjects);
+            request.getSession().setAttribute("subjectName", s.getSubject());
+            request.getSession().setAttribute("subjects", teacher);
             request.getSession().setAttribute("departments"
                     + "", removeDuplicates(subjects));
             request.getSession().setAttribute("studentsList", students);

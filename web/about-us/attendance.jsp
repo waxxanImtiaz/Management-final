@@ -1,4 +1,5 @@
 <%@page import="beans.Subjects"%>
+<%@ page errorPage="error.jsp" %> 
 <!DOCTYPE html>
 <html>
 
@@ -200,9 +201,10 @@
                                                             beans.Students personalInfo = (beans.Students) session.getAttribute("personalInfo");
                                                             Map<String, Integer> attendance = (HashMap) session.getAttribute("theoryAttendance");
                                                             List<Subjects> theorySubjects = (List<Subjects>) session.getAttribute("theorySubjects");
-                                                            List<Subjects> practicalSubjects = (List<Subjects>) session.getAttribute("practicalSubjects");
-                                                            Map<String, Integer> practicalAttendance = (HashMap) session.getAttribute("practicalAttendace");
+//                                                            List<Subjects> practicalSubjects = (List<Subjects>) session.getAttribute("practicalSubjects");
+//                                                            Map<String, Integer> practicalAttendance = (HashMap) session.getAttribute("practicalAttendace");
                                                             String yearOrSemester = (String) session.getAttribute("yearOrSemseter");
+                                                           
                                                         %> 
                                                         <table class="huTable" border="0" width="100%" cellspacing="0" cellpadding="10">
                                                             <tbody>
@@ -226,21 +228,21 @@
                                                                         %> Year</FONT></td>     
                                                                 <tr>
                                                                     <td width="197" height="29">  <%= yearOrSemester%> SEMISTER</FONT></td>
-                                                                    <td colspan="4" width="206">  <center>CEDIT HOUR</center></td>
+                                                                    <td colspan="4" width="206">  <center>CREDIT HOUR</center></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width="197">  COURSE</td>
                                                                     <td colspan="2" width="206">  <center>THEORY </center></td>
-                                                                <td colspan="2" width="188">  <center>PRACTICAL</center></td>
-                                                                </td>
+                                                                <!--<td colspan="2" width="188">  <center>PRACTICAL</center></td>-->
+                                                                
                                                                 </tr>
 
                                                                 <tr>
                                                                     <td width="156">  </td>
                                                                     <td width="156">TOTAL  </td>
                                                                     <td width="156">ATTENDED</td>
-                                                                    <td width="156">TOTAL </td>
-                                                                    <td width="156"> ATTENDED </td>
+                                                                    <!--<td width="156">TOTAL </td>-->
+                                                                    <!--<td width="156"> ATTENDED </td>-->
 
                                                                 </tr>
                                                                 <% //print subject attendance
@@ -278,49 +280,52 @@
                                                                     <td><%= map.getKey()%></td>
                                                                     <td> <%= tempSubject.getTotalLectures()%> </td>
                                                                     <td> <%= map.getValue()%> </td>
+                                                                    
 
                                                                     <%
-                                                                        String s = null;
-                                                                        Integer att = null;
-                                                                        for (Map.Entry pAtt : practicalAttendance.entrySet()) {
-                                                                            s = pAtt.getKey().toString();
-                                                                            if (s != null && s.equalsIgnoreCase(key)) {
-                                                                                att = (Integer) pAtt.getValue();
-                                                                                break;
-                                                                            }
-                                                                        }//end of loop
+                                                                   //      String s = null;
+//                                                                        Integer att = null;
+//                                                                        for (Map.Entry pAtt : practicalAttendance.entrySet()) {
+//                                                                            s = pAtt.getKey().toString();
+//                                                                            if (s != null && s.equalsIgnoreCase(key)) {
+//                                                                                att = (Integer) pAtt.getValue();
+//                                                                                break;
+//                                                                            }
+//                                                                        }//end of loop
 
                                                                         //GET PRACTICAL SUBJECTS
-                                                                        i = 0;
-                                                                        tempSubject = null;
-                                                                        while (i < practicalSubjects.size()) {
-                                                                            subj = practicalSubjects.get(i).getSubjectName();
-                                                                            if (subj != null && subj.equalsIgnoreCase(key)) {
-                                                                                tempSubject = practicalSubjects.get(i);
-                                                                                break;
-                                                                            }
-                                                                            i++;
-                                                                        }//END OF LOOP  
+//                                                                        i = 0;
+//                                                                        tempSubject = null;
+//                                                                        while (i < practicalSubjects.size()) {
+//                                                                            subj = practicalSubjects.get(i).getSubjectName();
+//                                                                            if (subj != null && subj.equalsIgnoreCase(key)) {
+//                                                                                tempSubject = practicalSubjects.get(i);
+//                                                                                break;
+//                                                                            }
+//                                                                            i++;
+//                                                                        }//END OF LOOP  
 
 
                                                                     %>
 
-                                                                    <td><%                                                                        //print result
-                                                                        if (tempSubject == null) {
-                                                                            out.println("---");
-                                                                        } else {
-                                                                            out.print(tempSubject.getTotalLectures());
-                                                                        }
-                                                                        %> </td>
-                                                                    <td><%
-                                                                            if (att == null) {
-                                                                                out.println("---");
-                                                                            } else {
-                                                                                out.print(att);
-                                                                            }
+                                                                 <!--    <td>  --> <%                                                                        //print result
+//                                                                        if (tempSubject == null) {
+//                                                                            out.println("---");
+//                                                                        } else {
+//                                                                            out.print(tempSubject.getTotalLectures());
+//                                                                        //}
+//                                                                        %> 
+                                                                  <!--  </td>  -->
+                                                                    <!-- <td> -->
+                                                                        <%
+//                                                                            if (att == null) {
+//                                                                                out.println("---");
+//                                                                            } else {
+//                                                                                out.print(att);
+//                                                                            }
 
                                                                         }//end of outer loop  %>
-                                                                    </td>
+                                                                    <!-- </td> -->
 
 
 
