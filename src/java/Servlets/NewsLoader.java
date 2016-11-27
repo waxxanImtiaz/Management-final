@@ -21,11 +21,11 @@ import org.hibernate.cfg.Configuration;
 
 public class NewsLoader extends HttpServlet {
 
-
     private Configuration cf;
     private SessionFactory sf;
     private Session session;
     private List<News> news;
+
     @Override
     public void init() {
         cf = new Configuration();
@@ -33,38 +33,47 @@ public class NewsLoader extends HttpServlet {
         sf = cf.buildSessionFactory();
         session = sf.openSession();
     }
-  
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
         Criteria newsCriteria = session.createCriteria(News.class);
         news = newsCriteria.list();
-        
-        request.getSession().setAttribute("news", news);
-        
-        
-        request.getSession().setAttribute("news",news);
+
+        Students st = (Students) request.getSession().getAttribute("personalInfo");
+
+        List<News> totalNews = new ArrayList<News>();
+
+        for (News ne : news) {
+
+            if (ne.getReciever().equalsIgnoreCase(st.getDepartment()) || ne.getReciever().equalsIgnoreCase("All")) {
+                totalNews.add(ne);
+                System.out.println("======================");
+                System.out.println("Reciever=" + ne.getReciever());
+                System.out.println("Sender=" + ne.getSender());
+            }
+        }
+
+        request.getSession().setAttribute("news", totalNews);
+
         response.sendRedirect("about-us/news.jsp");
         System.out.println("News:");
-        for(News n: news){
-            System.out.println("Date:"+n.getDate());
-            System.out.println("News:"+n.getNews());
-            System.out.println("News Id:"+n.getId());
+        for (News n : news) {
+            System.out.println("Date:" + n.getDate());
+            System.out.println("News:" + n.getNews());
+            System.out.println("News Id:" + n.getId());
             System.out.println("");
         }
-        
-        
+
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
     }
 
-   
     @Override
     public String getServletInfo() {
         return "Short description";

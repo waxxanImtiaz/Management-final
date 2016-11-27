@@ -48,19 +48,22 @@ public class LibraryManager extends HttpServlet {
         Criteria criteria = hibernateSession.createCriteria(LibraryDetails.class);
         libraryDetails = criteria.list();
         alterList(libraryDetails);
+        System.out.println("libraryDetials="+libraryDetails.size());
         request.getSession().setAttribute("libraryDetails", libraryDetails);
         response.sendRedirect("about-us/library.jsp");
     }
 
     public void alterList(List<LibraryDetails> libraryDetails){
         List<LibraryDetails> temp = new ArrayList<LibraryDetails>();
-        
+        System.out.println("libraryDetails="+libraryDetails.size());
         for(int i = 0 ; i<libraryDetails.size(); i++){
             String rollNum = libraryDetails.get(i).getRollNum();
             String state = libraryDetails.get(i).getState();
+           
             if(state.equalsIgnoreCase("got") && rollNum.equalsIgnoreCase(student.getRollNum()))
             {
                 temp.add(libraryDetails.get(i));
+                System.out.println("inside if="+temp.size());
               }
         }//end of loop
         

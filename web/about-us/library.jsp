@@ -1,4 +1,5 @@
 <%@page import="java.text.SimpleDateFormat"%>
+<%@ page errorPage="error.jsp" %> 
 <!DOCTYPE html>
 <html>
 
@@ -233,15 +234,21 @@
                                                                 </tr>
                                                                 <% for(LibraryDetails b : libraryDetails){  %>
                                                                     <%
-                                                                        String date = new SimpleDateFormat("mm-dd-yyyy").format(new Date() );
-                                                                        Date currentDate = new Date(date);
-                                                                        Date returnDate = new SimpleDateFormat("mm-dd-yyyy").parse(b.getReturnDate());
+                                                                        String date = new SimpleDateFormat("MM/dd/yyyy").format(new Date() );
+                                                                       
+                                                                        
+                                                                        Date currentDate = new SimpleDateFormat("MM/dd/yyyy").parse(date);
+                                                                        
+                                                                        Date returnDate = new SimpleDateFormat("MM/dd/yyyy").parse(b.getReturnDate());
                                                                         if(currentDate.compareTo(returnDate) < 0){
-                                                                            out.println("Please return "+b.getBookName()+"!");
-                                                                        }else if((currentDate.compareTo(returnDate) == 0))    
-                                                                            out.println("Today is last date of returning "+b.getBookName());
-                                                                    %>
-                                                                
+                                                                            %>
+                                                                            <h2 style="color: red;"> <%= "Please return "+b.getBookName()+"!" %></h2>
+                                                                       <% }
+                                                                        else if((currentDate.compareTo(returnDate) == 0))  
+                                                                             { %>
+                                                                            <h4 style="color: red;"><%= "Today is last date of returning "+b.getBookName() %></h4>
+                                                                    
+                                                                                <% } %>
                                                                 <% } %>
                                                                 </tbody>
                                                         </table>

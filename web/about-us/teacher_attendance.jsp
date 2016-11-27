@@ -89,83 +89,13 @@
                         <div class="inner_wraper">
                             <div id="access" role="navigation">
                                 <div class="menu-header"><ul id="menu-main-menu-1" class="menu">
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-22 current_page_item menu-item-has-children menu-item-36"><a href="index.jsp">Home Page </a>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-22 current_page_item menu-item-has-children menu-item-36"><a href="personel.jsp">Personel </a>
-
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7840"><a href="#">Personel Information</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-50"><a href="academics.jsp"> Academics </a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-975"><a href="m_attendance.jsp">Attendance</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="attendance.jsp">1st Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="#">2nd Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="#">3rd Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="#">4th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="#">5th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="#">6th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-982"><a href="#">7th Semister</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7308"><a href="#">8th Semister</a></li>
-                                                    </ul>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-975"><a href="library.jsp">Library</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-980"><a href="library.jsp">Borrowed Books</a></li>
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-981"><a href="#">Books List</a></li>
-
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8172"><a href="#">Lectures</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9573"><a href="#">Time table</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37"><a href="#"> Miscellaneous </a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="#">News</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="#">Messege</a>
-
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37"><a href="#"> Result / Exams </a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9783"><a href="#">1st Semister</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="#">2nd Semister</a>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8238"><a href="#">3rd Semister</a>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="#">4th Semister</a>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8238"><a href="#">5th Semister</a>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8238"><a href="#">6th Semister</a>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-515"><a href="#">7th Semister</a>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8238"><a href="#">8th Semister</a>
-                                            </ul>
-                                        </li>
-                                        <li id="menu-item-8238" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8238"><a href="#"> Transport </a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8236"><a href="#">Points Route</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8235"><a href="#">Points location</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7300"><a href="#"> Attendance </a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8788"><a href="#">1st Semister</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8787"><a href="#">2nd Semister</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8791"><a href="#">3rd Semister</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8790"><a href="#">4th Semister</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8789"><a href="#">5th Semister</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8790"><a href="#">6th Semister</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8789"><a href="#">7th Semister</a></li>
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7306"><a href="#">8th Semister</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-7300"><a href="#"> Library </a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8787"><a href="#">Borrowed Books</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8791"><a href="#">Books List</a></li>
-
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7307"><a href="#"> Course Content </a></li>
-                                    </ul></div>                    </div><!-- #access -->
+                                        
+                                            
+                           
+                                        
+                                      
+                                       
+                                      </div>                    </div><!-- #access -->
                             <nav id="nav-mobile">
                             </nav>
                         </div>   

@@ -15,5 +15,6 @@
     <body>
         <h3>Sorry! exception occured!</h3>
         <%= exception.getMessage() %>
+        <% exception.printStackTrace(); %>
     </body>
 </html>

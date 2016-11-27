@@ -219,7 +219,7 @@
                                                                         <%=news.getDate() %>
                                                                     </td>
                                                                     <td>
-                                                                    <%--<%=news.getNews() %>--%>
+                                                                    <%=news.getSender() %>
                                                                  </td>
                                                                     <td>
                                                                     <%=news.getNews() %>
