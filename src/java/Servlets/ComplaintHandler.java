@@ -6,15 +6,14 @@
 package Servlets;
 
 import beans.Complain;
+import beans.Students;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -38,7 +37,7 @@ public class ComplaintHandler extends HttpServlet {
         PrintWriter pw = response.getWriter();
         response.setContentType("text/javascript");
         response.setCharacterEncoding("UTF-8");
-
+ System.out.println("inside complain handler");
          sf = (SessionFactory) request.getServletContext().getAttribute("sessionFactory");
          session = sf.openSession();
          //get Transaction object
@@ -46,8 +45,10 @@ public class ComplaintHandler extends HttpServlet {
         //GET PARAMETERS
         Complain complain = new Complain();
 
-        String name = request.getParameter("name");
-        String rollNumber = request.getParameter("rollNumber");
+        Students st = (Students)request.getSession().getAttribute("personalInfo");
+        
+//        String name = request.getParameter("name");
+//        String rollNumber = request.getParameter("rollNumber");
         String complaint = request.getParameter("complain");
 
         Calendar cal = Calendar.getInstance();
@@ -55,12 +56,13 @@ public class ComplaintHandler extends HttpServlet {
         
         complain.setDateTime(time);
         complain.setComplain(complaint);
-        complain.setName(name);
-        complain.setRollNumber(rollNumber);
+        complain.setName(st.getName());
+        complain.setRollNumber(st.getRollNum());
 //        //save beans
         int pk = (Integer) session.save(complain);
         tr.commit();
         session.evict(complain);
+        System.out.println("complain is stored");
         pw.print("true");
     }
 

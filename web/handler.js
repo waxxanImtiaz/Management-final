@@ -6,11 +6,13 @@ function validateForm() {
     if (rollNumber == null || rollNumber == "") {
         alert("Roll Number must be filled out");
         return false;
-    } else if (name == null || name == "")
+    } else
+        if (name == null || name == "")
     {
         alert("Name must be filled out");
         return false;
-    } else if (complaintField == null || complaintField == "") {
+    } else
+        if (complaintField == null || complaintField == "") {
         alert("Please fill Complaint/Help field first");
         return false;
     }
@@ -72,7 +74,7 @@ function handleServerResponse() {
         }
     } else {
         //alert("Ooops!! Something went wrong!"+xmlHttp.readyState);
-        setTimeout('process()', 1000);
+        //setTimeout('process()', 1000);
     }
 }
 

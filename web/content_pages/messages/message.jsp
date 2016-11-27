@@ -15,12 +15,15 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="box box-primary">
+             
             <div class="box-header with-border">
             </div>
+               <form name="message_form">
             <!-- /.box-header -->
             <div class="box-body">
              
                 <div class="form-group">
+                    
                         <label for="to">To</label>
                         <input type="text" class="form-control" id="to" placeholder="Enter Roll Number Of Student">
                     </div>
@@ -30,14 +33,16 @@
 
 </textarea>
               </div>
+             
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
               <div class="pull-right">
-                <button type="submit" class="btn btn-primary" onclick="return sendMessage();" ><i class="fa fa-envelope-o"></i> Send</button>
+                <button type="submit" class="btn btn-primary" onclick="return sendMess();" ><i class="fa fa-envelope-o"></i> Send</button>
               </div>
              </div>
             <!-- /.box-footer -->
+            </form>
           </div>
           <!-- /. box -->
         </div>

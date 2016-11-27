@@ -66,11 +66,11 @@
                         </div>
                         <nav id="nav-mobile">
                             <div class="menu-top-menu-container"><ul id="menu-top-menu" class="menu">
-                                    <li id="menu-item-7286" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7286"><a href="startPage.jsp">Log Out</a></li>
+                                    <li id="menu-item-7286" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7286"><a href="startProject.jsp">Log Out</a></li>
                                 </ul></div>                </nav>
                         <div class="top_menu">
                             <div class="menu-header"><ul id="menu-top-menu-1" class="menu">
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7286"><a href="startPage.jsp">Log Out</a></li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7286"><a href="startProject.jsp">Log Out</a></li>
                                 </ul></div>                
 
                             <div class="search">
@@ -203,7 +203,7 @@
                                                 <div id="serverOutput" >
 
                                                 </div>
-                                                <form name="complainForm" method="post"   >
+                                                <form name="complainForm"    >
                                                     Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <input type="text1" id="name" name="name" value="" size="35" ><br>
                                                     Roll Number:&nbsp;
@@ -215,6 +215,7 @@
                                                     <input type="submit" value="Send"  onclick ="return validateForm()" >
                                                 </form>
 
+                                                <!--return validateForm()-->
                                             </div>
                                         </div> </div>
                                 </div><!-- .entry-content -->

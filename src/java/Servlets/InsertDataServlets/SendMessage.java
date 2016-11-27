@@ -59,6 +59,7 @@ public class SendMessage extends HttpServlet {
             n.setRollNumber(to);
             n.setMessage(message);
 
+                System.out.println("message="+message);
             session.save(n);
 
             session.beginTransaction().commit();

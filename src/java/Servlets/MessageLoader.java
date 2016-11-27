@@ -45,9 +45,11 @@ public class MessageLoader extends HttpServlet {
         
         messageList = new ArrayList<Message>();
         message = messageCriteria.list();
+        
         for(Message m : message){
             if(m.getRollNumber().equalsIgnoreCase(st.getRollNum())){
                 messageList.add(m);
+                
             }
         }
         

@@ -276,7 +276,7 @@
 
                                     </ul>
                                 </li>
-                                <li class="page_item page-item-7830"><a href="#">Complaints/Help</a></li>
+                                <li class="page_item page-item-7830"><a href="complaint.jsp">Complaints/Help</a></li>
                             </ul>
 
 

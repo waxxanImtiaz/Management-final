@@ -206,10 +206,10 @@
                                                             <align="center" width="780">
                                                                 <tr><td colspan="5" width="197"><font>Messages From Admin</FONT></td> </tr>    
                                                                 <tr><td>
-                                                                        <h1>Date </h1>
+                                                                        <h3>Date </h3>
                                                                     </td>
                                                                     <td>
-                                                                        <h1>Message</h1>
+                                                                        <h3>Message</h3>
                                                                     </td>
                                                                 </tr>
                                                                 <% for (Message m : messageList) {%>
@@ -268,7 +268,7 @@
 
                                         </ul>
                                     </li>
-                                    <li class="page_item page-item-7830"><a href="#">Complaints/Help</a></li>
+                                    <li class="page_item page-item-7830"><a href="complaint.jsp">Complaints/Help</a></li>
                                 </ul>
 
 

@@ -66,16 +66,15 @@ function handleServerOfNewsSend() {
 
 var message;
 var to;
-function sendMessage(){
-     message = document.getElementById("message").value;
-     to = document.getElementById("to").value;
+function sendMess(){
     
-
+     message = document.forms["message_form"]["message"].value;
+     to = document.forms["message_form"]["to"].value;
+    
     if(message == "Write Message Here" || message == ""){
         alert("Please write message first");
         return false;
     }
-    
     storeMessage();
     return false;
 }
