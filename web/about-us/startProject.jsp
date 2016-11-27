@@ -26,7 +26,7 @@
                 <form role="form"   class="form" name="loginform" action="${pageContext.request.contextPath}/Checker" method="post">
                     <input type="text" placeholder="username" id="username" name="username" />
                     <input type="password" placeholder="password" id="password" name="password" />
-                    <button type="submit"  o >Login</button>
+                    <button type="submit"  >Login</button>
                     <!--<button type="submit">Forget Password</button>-->
                 </form>
             </div>

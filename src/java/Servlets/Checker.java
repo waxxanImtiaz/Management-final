@@ -110,7 +110,9 @@ public class Checker extends HttpServlet {
                     response.sendRedirect("chairman.jsp");
             }
             else {
-                showMessage("Invalid username or password");
+                 //showMessage("Invalid username or password");
+                 request.getRequestDispatcher("about-us/invalidPassword.jsp").include(request, response);
+               
             }
 
         } catch (Exception e) {

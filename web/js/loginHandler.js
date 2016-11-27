@@ -34,7 +34,7 @@ function checkLoginForm() {
 function sendToServer(){
     if (xmlHttp.readyState == 0 || xmlHttp.readyState == 4) {
 
-        xmlHttp.open("POST", "/final_year_project/Checker?username=" + formFields[0] +
+        xmlHttp.open("GET", "/final_year_project/Checker?username=" + formFields[0] +
                 "&password="+formFields[1],
                 true);
         xmlHttp.onreadystatechange = handlerLoginResponse;

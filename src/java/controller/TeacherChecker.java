@@ -59,18 +59,26 @@ public class TeacherChecker extends Person {
             c.add(res);
 
             System.out.println("inside isChairman()");
-            List result = c.list();
-            if (result != null) {
-                c = getInitializer().getSession().createCriteria(Master.class);
-                res =  Restrictions.eq("masterKey", getPassword());
-                c.add(res);
-                
-                result  = c.list();
-                if( result != null || result.size() >0 )
+            List<Master> result = c.list();
+            
+            for(Master m : result){
+                if(m.getDepart().equalsIgnoreCase(getUserName()) && m.getMasterKey().equalsIgnoreCase(getPassword()))
                     return true;
-            } else {
-                return false;
             }
+            return false;
+            
+//            if (result != null) {
+//                System.out.println("inside result != null ");
+//                c = getInitializer().getSession().createCriteria(Master.class);
+//                res =  Restrictions.eq("masterKey", getPassword());
+//                c.add(res);
+//                
+//                result  = c.list();
+//                if( result != null || result.size() >0 )
+//                    return true;
+//            } else {
+//                return false;
+//            }
 
            
         } catch (IndexOutOfBoundsException e) {
@@ -78,7 +86,7 @@ public class TeacherChecker extends Person {
             e.printStackTrace();
             return false;
         }
-        return false;
+     
     }
 
     /**
