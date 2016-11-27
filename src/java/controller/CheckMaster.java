@@ -36,7 +36,7 @@ public class CheckMaster extends Person {
 //            System.out.println("username="+studentChecker.getUserName());
 //            System.out.println("name="+studentChecker.getStudent());
             System.out.println("after loader initialization");
-            if(getStudentChecker().isUsernameOk() & isSameDepartment())
+            if(getStudentChecker().isUsernameOk() && isSameDepartment())
             {
                 System.out.println("isMaster true");
                 return true;
@@ -50,7 +50,7 @@ public class CheckMaster extends Person {
     {
         try
         {
-            boolean isOk = getStudentChecker().getStudent().getDepartment().equals(getMaster().getDepart());
+            boolean isOk = getStudentChecker().getStudent().getDepartment().equalsIgnoreCase(getMaster().getDepart());
         if(isOk)
         {
             super.getInitializer().getRequest().getServletContext().setAttribute("studentChecker", getStudentChecker());

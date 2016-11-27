@@ -61,7 +61,13 @@ public class TeacherChecker extends Person {
             System.out.println("inside isChairman()");
             List result = c.list();
             if (result != null) {
-                return true;
+                c = getInitializer().getSession().createCriteria(Master.class);
+                res =  Restrictions.eq("masterKey", getPassword());
+                c.add(res);
+                
+                result  = c.list();
+                if( result != null || result.size() >0 )
+                    return true;
             } else {
                 return false;
             }

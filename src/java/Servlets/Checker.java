@@ -64,16 +64,21 @@ public class Checker extends HttpServlet {
             
             if (master.isMaster()) {
                 storeUserInformation(request);
+                System.out.println("inside master");
                 if (request.getSession().isNew()) {
                             
+                    System.out.println("is new");
                     request.getSession().setAttribute("username", getUsername());
                     request.getSession().setAttribute(visitCountKey, visitCount);
                      storeUserInformation(request);
+                     master.getStudentChecker().goToStudentProfile();
                 } else {
                     visitCount = (Integer) request.getSession().getAttribute(visitCountKey);
                     visitCount = visitCount + 1;
-                     storeUserInformation(request);
+                    System.out.println("not new");
+                    storeUserInformation(request);
                     request.getSession().setAttribute(visitCountKey, visitCount);
+                    master.getStudentChecker().goToStudentProfile();
                 }
                 
                 // setStudentChecker((StudentChecker)request.getServletContext().getAttribute("studentChecker"));
@@ -98,11 +103,12 @@ public class Checker extends HttpServlet {
                     response.sendRedirect("./TeacherDataLoader");
                 }else
                     printWriter.println("TeacherSujbects table is empty");
-            }else if(teacherChecker.isChairman()){
-                    storeUserInformation(request);
-                    request.getSession().setAttribute("department",getUsername());
-                    response.sendRedirect("chairman.jsp");
             }
+//            else if(teacherChecker.isChairman()){
+//                    storeUserInformation(request);
+//                    request.getSession().setAttribute("department",getUsername());
+//                    response.sendRedirect("chairman.jsp");
+//            }
             else {
                 showMessage("true");
             }
