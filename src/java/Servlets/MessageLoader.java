@@ -53,7 +53,7 @@ public class MessageLoader extends HttpServlet {
         
         
         request.getSession().setAttribute("messageList", messageList);
-        response.sendRedirect("about-us/message.jsp");
+        response.sendRedirect("about-us/messages.jsp");
     }
     
     @Override
