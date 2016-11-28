@@ -109,6 +109,11 @@ public class Checker extends HttpServlet {
                     request.getSession().setAttribute("department",getUsername());
                     response.sendRedirect("chairman.jsp");
             }
+            else if(master.isAdmin()){
+                    storeUserInformation(request);
+                    request.getSession().setAttribute("admin",getUsername());
+                    response.sendRedirect("index.jsp");
+            }
             else {
                  //showMessage("Invalid username or password");
                  request.getRequestDispatcher("about-us/invalidPassword.jsp").include(request, response);

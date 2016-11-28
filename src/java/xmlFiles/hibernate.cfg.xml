@@ -18,6 +18,7 @@
     <!--<mapping resource="xmlFiles/notifications.hbm.xml"/>-->
     <mapping resource="xmlFiles/Teacher.hbm.xml"/>
     <mapping resource="xmlFiles/news.hbm.xml"/>
+    <mapping resource="xmlFiles/admin.hbm.xml"/>
     <mapping resource="xmlFiles/message.hbm.xml"/>
     <mapping resource="xmlFiles/TeacherSubjects.hbm.xml"/>
     <mapping resource="xmlFiles/StudentSemesterResult.hbm.xml"/>

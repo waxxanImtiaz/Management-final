@@ -6,81 +6,95 @@
 package controller;
 
 import beans.Master;
+import beans.Admin;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
-
 public class CheckMaster extends Person {
-   
+
     private Master master;
     private StudentChecker studentChecker;
     private Initialiazer initializer;
     private LibrarianChecker librarian;
-    public CheckMaster(String userName,String password,Initialiazer initializer)
-    {
+
+    public CheckMaster(String userName, String password, Initialiazer initializer) {
         super.setUserName(userName);
         super.setPassword(password);
         super.setInitializer(initializer);
-        setStudentChecker(new StudentChecker(super.getUserName(),super.getPassword(),super.getInitializer()));
-        
+        setStudentChecker(new StudentChecker(super.getUserName(), super.getPassword(), super.getInitializer()));
+
     }//end of constructor
-    
-    public boolean isMaster(){
-        if(!isMasterKey())
-        {
+
+    public boolean isMaster() {
+        if (!isMasterKey()) {
             System.out.println("user is not master");
             return false;
-        }
-        else{
+        } else {
 //            System.out.println("username="+studentChecker.getUserName());
 //            System.out.println("name="+studentChecker.getStudent());
             System.out.println("after loader initialization");
-            if(getStudentChecker().isUsernameOk() && isSameDepartment())
-            {
+            if (getStudentChecker().isUsernameOk() && isSameDepartment()) {
                 System.out.println("isMaster true");
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }//end of else if
     }
-    
-    private boolean isSameDepartment()
-    {
-        try
-        {
+
+    private boolean isSameDepartment() {
+        try {
             boolean isOk = getStudentChecker().getStudent().getDepartment().equalsIgnoreCase(getMaster().getDepart());
-        if(isOk)
-        {
-            super.getInitializer().getRequest().getServletContext().setAttribute("studentChecker", getStudentChecker());
-            return true;
-        }
-        else
-            return false;
-        }catch(NullPointerException e)
-        {
-            System.out.println("Exception in CheckMaster's method isSameDepartment():"+e.getMessage());
+            if (isOk) {
+                super.getInitializer().getRequest().getServletContext().setAttribute("studentChecker", getStudentChecker());
+                return true;
+            } else {
+                return false;
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Exception in CheckMaster's method isSameDepartment():" + e.getMessage());
         }
         return false;
     }//end of isSameDepartment
-    private boolean isMasterKey()  {
-      try{
-       Criteria c = getInitializer().getSession().createCriteria(Master.class);
-       c.add(Restrictions.eq("masterKey", getPassword()));
-          System.out.println("masterKey="+getPassword());
-       List result = c.list();
-       setMaster((Master)result.get(0));
-       return true;
-      }catch( IndexOutOfBoundsException e)
-      {
-          System.out.println("Exception in isMasterKey="+e.getMessage());
-          return false;
-      }catch(Exception e){
-          return false;
-      }
-      
-  }//end of isMasterKey method
+
+    private boolean isMasterKey() {
+        try {
+            Criteria c = getInitializer().getSession().createCriteria(Master.class);
+            c.add(Restrictions.eq("masterKey", getPassword()));
+            System.out.println("masterKey=" + getPassword());
+            List result = c.list();
+            setMaster((Master) result.get(0));
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Exception in isMasterKey=" + e.getMessage());
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }//end of isMasterKey method
+
+    public boolean isAdmin() {
+        try {
+            Criteria c = getInitializer().getSession().createCriteria(Admin.class);
+            System.out.println("username=" + getPassword());
+            List<Admin> result = c.list();
+
+            for (Admin a : result) {
+                if (a.getPassword().equalsIgnoreCase(getPassword()) && a.getUsername().equalsIgnoreCase(getUserName())) {
+                    return true;
+                }
+            }
+
+            return false;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Exception in isAdmin=" + e.getMessage());
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     /**
      * @return the master

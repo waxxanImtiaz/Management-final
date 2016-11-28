@@ -130,7 +130,7 @@
                                     <li class="user-footer">
                                       
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="about-us/startProject.jsp" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
